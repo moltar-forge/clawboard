@@ -25,7 +25,7 @@ jobs:
           - image: clawboard-api
             context: ./api
             target: production
-          - image: clawboard-dashboard
+          - image: clawboard-web
             context: ./web
             target: production
           - image: clawboard-workspace-service

@@ -9,15 +9,15 @@ Clawboard Dashboard is a static site (Vite build output in `dist/`). It can be d
 ```bash
 docker build \
   --build-arg VITE_API_URL=https://api.example.com/api/v1 \
-  -t clawboard-dashboard:latest .
+  -t clawboard-web:latest .
 
-docker run -p 80:80 clawboard-dashboard:latest
+docker run -p 80:80 clawboard-web:latest
 ```
 
 ### Pre-built images (GHCR)
 
 ```bash
-docker pull ghcr.io/moltar-forge/clawboard-dashboard:latest
+docker pull ghcr.io/moltar-forge/clawboard-web:latest
 ```
 
 Available tags: `latest`, `main`, `sha-<short>`, `v1.2.3`.

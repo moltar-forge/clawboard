@@ -24,7 +24,7 @@ jobs:
     if: startsWith(github.ref_name, 'web-v')
     uses: ./.github/workflows/release-docker.yml
     with:
-      image_name: clawboard-dashboard
+      image_name: clawboard-web
       context: ./web
       target: production
       tag_prefix: 'web-v'

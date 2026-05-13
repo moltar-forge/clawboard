@@ -53,7 +53,7 @@ The `release.yml` GitHub Actions workflow will:
 | `ghcr.io/moltar-forge/clawboard-api:main` | On every merge to main |
 | `ghcr.io/moltar-forge/clawboard-api:sha-abc1234` | On every merge to main |
 
-Same pattern applies for `clawboard-dashboard`.
+Same pattern applies for `clawboard-web`.
 
 ## Post-release
 
