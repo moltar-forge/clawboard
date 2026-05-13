@@ -96,8 +96,8 @@ Never put secret values directly in deployment YAML files that are committed to 
 `VITE_*` environment variables in the dashboard are **embedded into the built JavaScript bundle**
 and are therefore public. Never put secrets in dashboard environment variables.
 
-The only dashboard environment variable is `VITE_API_URL` — the URL of the Clawboard API. This is not a
-secret.
+The only dashboard environment variable is `VITE_API_URL` — the URL of the Clawboard API. This is
+not a secret.
 
 ## OpenClaw workspace tokens
 

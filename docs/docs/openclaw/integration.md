@@ -44,8 +44,9 @@ After restart, sign in as an `owner` or `admin` and open `Settings -> OpenClaw P
 
 ## Complete the device pairing workflow
 
-Clawboard now uses a device-authenticated OpenClaw session for gateway RPCs. The shared gateway token
-bootstraps the pairing handshake, but ongoing runtime access depends on the paired device identity.
+Clawboard now uses a device-authenticated OpenClaw session for gateway RPCs. The shared gateway
+token bootstraps the pairing handshake, but ongoing runtime access depends on the paired device
+identity.
 
 1. Configure `OPENCLAW_GATEWAY_URL` and `OPENCLAW_GATEWAY_TOKEN` in `.env`
 2. Restart the API

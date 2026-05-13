@@ -46,8 +46,8 @@ See [Workspace Service](./workspace-service) for deployment instructions.
 
 ### Gateway (port 18789)
 
-OpenClaw's own HTTP + WebSocket service that provides runtime control and session data. Clawboard uses
-it to:
+OpenClaw's own HTTP + WebSocket service that provides runtime control and session data. Clawboard
+uses it to:
 
 - Query live agent sessions
 - Retrieve session costs and token usage

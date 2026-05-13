@@ -56,8 +56,8 @@ node --version
 
 ## OpenClaw (strongly recommended)
 
-Clawboard is designed to work with OpenClaw. While Clawboard can technically run without it, the core
-features — agent monitoring, workspace browsing, agents page, and skills — require OpenClaw.
+Clawboard is designed to work with OpenClaw. While Clawboard can technically run without it, the
+core features — agent monitoring, workspace browsing, agents page, and skills — require OpenClaw.
 
 ### OpenClaw instance
 

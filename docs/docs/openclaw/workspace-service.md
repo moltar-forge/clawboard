@@ -7,13 +7,14 @@ sidebar_position: 4
 
 The workspace service is a lightweight HTTP REST sidecar **provided by Clawboard** — it is not part
 of the standard OpenClaw distribution. It runs alongside OpenClaw, shares the same workspace
-directory or volume, and exposes the workspace filesystem over HTTP so Clawboard API can read and write
-workspace files, manage configuration, and list agents.
+directory or volume, and exposes the workspace filesystem over HTTP so Clawboard API can read and
+write workspace files, manage configuration, and list agents.
 
 :::info Deployment
 
-You need to run the workspace service container (`ghcr.io/moltar-forge/clawboard-workspace-server:latest`)
-next to your OpenClaw instance. The image supports both `linux/amd64` and `linux/arm64` platforms.
+You need to run the workspace service container
+(`ghcr.io/moltar-forge/clawboard-workspace-server:latest`) next to your OpenClaw instance. The image
+supports both `linux/amd64` and `linux/arm64` platforms.
 
 See [Setting Up OpenClaw](./setup) for Docker and Kubernetes deployment examples. :::
 
@@ -170,8 +171,8 @@ Clawboard API proxies workspace requests through its own authenticated endpoints
 | `PUT /api/v1/openclaw/config`                  | Update `openclaw.json`                   |
 | `GET /api/v1/openclaw/agents`                  | List agents from `openclaw.json`         |
 
-Docs-link reconcile is internal in Clawboard API for this phase; there is no public Clawboard API endpoint
-for direct link writes.
+Docs-link reconcile is internal in Clawboard API for this phase; there is no public Clawboard API
+endpoint for direct link writes.
 
 ## Verifying the workspace service
 

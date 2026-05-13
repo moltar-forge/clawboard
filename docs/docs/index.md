@@ -34,7 +34,8 @@ research, product work, software development, or business operations.
 
 ## Key topics
 
-- **[OpenClaw Integration](./openclaw/overview)** — connect Clawboard to the OpenClaw AI agent runtime
+- **[OpenClaw Integration](./openclaw/overview)** — connect Clawboard to the OpenClaw AI agent
+  runtime
 - **[Skills](./skills/overview)** — create and manage agent skills
 - **[openclaw.json Reference](./configuration/openclaw-json)** — complete configuration reference
   with annotated sample

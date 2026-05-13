@@ -8,8 +8,8 @@ sidebar_position: 5
 # OpenClaw Gateway
 
 The OpenClaw gateway is the runtime control service. It provides HTTP and WebSocket endpoints for
-querying live agent sessions, retrieving usage data, and invoking tools. Clawboard API connects to the
-gateway to power the Agent Monitor and standup features.
+querying live agent sessions, retrieving usage data, and invoking tools. Clawboard API connects to
+the gateway to power the Agent Monitor and standup features.
 
 ## What the gateway enables in Clawboard
 
@@ -71,9 +71,9 @@ properly signed certificate or a reverse proxy that handles TLS termination. :::
 
 ## Device pairing workflow
 
-Clawboard now requires device-authenticated gateway access for runtime RPCs. The gateway token remains
-part of the bootstrap handshake, but owner/admin users must complete a one-time pairing flow in the
-dashboard before session data and runtime control become available.
+Clawboard now requires device-authenticated gateway access for runtime RPCs. The gateway token
+remains part of the bootstrap handshake, but owner/admin users must complete a one-time pairing flow
+in the dashboard before session data and runtime control become available.
 
 ### Pairing steps
 

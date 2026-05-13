@@ -93,8 +93,8 @@ Gateway features now require a one-time dashboard pairing step:
 4. Approve the pending Clawboard device in OpenClaw
 5. Click `Finalize pairing`
 
-You only need to do this once per Clawboard deployment unless you intentionally reset the integration
-state.
+You only need to do this once per Clawboard deployment unless you intentionally reset the
+integration state.
 
 ## Step 6: Verify
 
@@ -140,7 +140,7 @@ The status should become `ready` after approval and finalize.
 | 503 errors                         | Port-forward stopped or service restarted                | Restart the port-forward in the terminal                            |
 | Connection refused                 | Wrong namespace/service name or port-forward not running | Check service names: `kubectl get svc -n <namespace>`               |
 | 401 Unauthorized                   | Token mismatch                                           | Re-fetch the token from Kubernetes secrets                          |
-| Pairing stuck at `pending_pairing` | Device request not yet approved in OpenClaw              | Approve the pending Clawboard device, then finalize pairing            |
+| Pairing stuck at `pending_pairing` | Device request not yet approved in OpenClaw              | Approve the pending Clawboard device, then finalize pairing         |
 | Only seeing default agent          | API can't reach workspace service                        | Verify `OPENCLAW_WORKSPACE_URL` and that the port-forward is active |
 
 ## Tips

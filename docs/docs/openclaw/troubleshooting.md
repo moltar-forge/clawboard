@@ -102,8 +102,8 @@ scopes and try finalizing again.
 
 ### Pairing wizard shows "origin not allowed"
 
-**Cause**: `gateway.controlUi.allowedOrigins` does not include the exact origin the Clawboard gateway
-client is using.
+**Cause**: `gateway.controlUi.allowedOrigins` does not include the exact origin the Clawboard
+gateway client is using.
 
 **Fix**:
 

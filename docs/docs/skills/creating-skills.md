@@ -142,8 +142,8 @@ phrasings. :::
 
 ## Method 2: Ask an Agent to Create the Skill
 
-You can ask any Clawboard agent to create a skill for you. This is useful when you want to collaborate
-on skill design or when you need the agent's expertise.
+You can ask any Clawboard agent to create a skill for you. This is useful when you want to
+collaborate on skill design or when you need the agent's expertise.
 
 ### Sample Prompt
 

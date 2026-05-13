@@ -5,9 +5,9 @@ sidebar_label: Clawboard Required Config
 sidebar_position: 4
 ---
 
-Clawboard API connects to OpenClaw via two services: the workspace service (port 18780) and the gateway
-(port 18789). Certain `openclaw.json` settings must be configured correctly for Clawboard features to
-work. This page lists the settings that matter most.
+Clawboard API connects to OpenClaw via two services: the workspace service (port 18780) and the
+gateway (port 18789). Certain `openclaw.json` settings must be configured correctly for Clawboard
+features to work. This page lists the settings that matter most.
 
 :::tip For a complete reference of every field, see the [openclaw.json Reference](./openclaw-json).
 For a complete annotated example, see the [Sample Configuration](./sample-config). :::
@@ -171,8 +171,8 @@ directory or a 404.
 }
 ```
 
-Clawboard reads `identity.name` and `identity.emoji` to display agents in the agents page and workspace
-selector. Without these, agents will show as their raw `id` with no icon.
+Clawboard reads `identity.name` and `identity.emoji` to display agents in the agents page and
+workspace selector. Without these, agents will show as their raw `id` with no icon.
 
 ---
 

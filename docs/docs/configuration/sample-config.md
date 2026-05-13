@@ -421,8 +421,9 @@ Bindings route messages to agents:
   },
 ```
 
-The gateway runs on port 18789 with TLS (auto-generated self-signed cert). Add your Clawboard API and
-dashboard URLs to `allowedOrigins` so the gateway's ControlUI can be accessed from those origins.
+The gateway runs on port 18789 with TLS (auto-generated self-signed cert). Add your Clawboard API
+and dashboard URLs to `allowedOrigins` so the gateway's ControlUI can be accessed from those
+origins.
 
 ---
 
