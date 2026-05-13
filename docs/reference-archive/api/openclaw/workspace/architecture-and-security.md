@@ -2,20 +2,20 @@
 
 ## Architecture (overview)
 
-Mosbot exposes OpenClaw workspace file access via:
+Clawboard exposes OpenClaw workspace file access via:
 
 ```bash
-User (JWT) -> Mosbot API -> Workspace Service (sidecar) -> PVC filesystem
+User (JWT) -> Clawboard API -> Workspace Service (sidecar) -> PVC filesystem
 ```
 
 - The **workspace service** runs inside the OpenClaw pod and has access to the same PVC.
-- Mosbot API talks to the workspace service via internal networking (ClusterIP) or via port-forward in development.
+- Clawboard API talks to the workspace service via internal networking (ClusterIP) or via port-forward in development.
 
 ## Security model (defense in depth)
 
 - **Network isolation**: workspace service should be ClusterIP-only (no public ingress)
-- **User auth**: Mosbot API endpoints use JWT (same as other API routes)
-- **Service-to-service auth (optional)**: Mosbot API can send a bearer token to the workspace service
+- **User auth**: Clawboard API endpoints use JWT (same as other API routes)
+- **Service-to-service auth (optional)**: Clawboard API can send a bearer token to the workspace service
 - **Path validation**: normalize and reject traversal attempts (e.g. `..`)
 - **RBAC**: content reads and writes are restricted to elevated roles
 
@@ -30,16 +30,16 @@ If the workspace service supports atomic create (e.g. Node `fs.open(path, 'wx')`
 
 ## System-managed docs link reconciliation
 
-Mosbot API manages shared docs-link bootstrap internally; the dashboard does not perform link writes.
+Clawboard API manages shared docs-link bootstrap internally; the dashboard does not perform link writes.
 
-- On API startup, Mosbot attempts non-fatal reconcile for `main` plus all agent IDs in `openclaw.json` (`agents.list`)
-- On agent config create/update flows, Mosbot attempts a non-fatal reconcile for that agent
+- On API startup, Clawboard attempts non-fatal reconcile for `main` plus all agent IDs in `openclaw.json` (`agents.list`)
+- On agent config create/update flows, Clawboard attempts a non-fatal reconcile for that agent
 - Reconcile behavior:
   - `GET /links/docs/:agentId`
   - `PUT /links/docs/:agentId` only when state is `missing`
   - `linked` is a no-op
   - `conflict` is logged as warning; request continues
-- There is no public Mosbot API endpoint for link management in this phase
+- There is no public Clawboard API endpoint for link management in this phase
 
 This keeps lifecycle ownership server-side and avoids dashboard-triggered writes on page loads.
 

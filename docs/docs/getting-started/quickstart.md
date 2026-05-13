@@ -5,13 +5,13 @@ sidebar_label: Quickstart
 sidebar_position: 3
 ---
 
-Get MosBot OS running in under 10 minutes with the monorepo layout.
+Get Clawboard running in under 10 minutes with the monorepo layout.
 
 ## Step 1: Clone the repository
 
 ```bash
-git clone https://github.com/ByMosDev/mosbot-os.git
-cd mosbot
+git clone https://github.com/moltar-forge/clawboard.git
+cd clawboard
 ```
 
 ## Step 2: Configure environment variables
@@ -51,8 +51,8 @@ This starts:
 
 | Service          | URL                                            | Description                          |
 | ---------------- | ---------------------------------------------- | ------------------------------------ |
-| MosBot API       | [http://localhost:3000](http://localhost:3000) | Backend API                          |
-| MosBot Web       | [http://localhost:5173](http://localhost:5173) | UI (Vite dev server with hot-reload) |
+| Clawboard API       | [http://localhost:3000](http://localhost:3000) | Backend API                          |
+| Clawboard Web       | [http://localhost:5173](http://localhost:5173) | UI (Vite dev server with hot-reload) |
 | Workspace Server | [http://localhost:18780](http://localhost:18780) | OpenClaw workspace sidecar           |
 | PostgreSQL       | localhost:5432                                 | Database (internal)                  |
 

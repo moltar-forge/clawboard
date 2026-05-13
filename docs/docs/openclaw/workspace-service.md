@@ -5,21 +5,21 @@ sidebar_label: Workspace Service
 sidebar_position: 4
 ---
 
-The workspace service is a lightweight HTTP REST sidecar **provided by MosBot OS** — it is not part
+The workspace service is a lightweight HTTP REST sidecar **provided by Clawboard** — it is not part
 of the standard OpenClaw distribution. It runs alongside OpenClaw, shares the same workspace
-directory or volume, and exposes the workspace filesystem over HTTP so MosBot API can read and write
+directory or volume, and exposes the workspace filesystem over HTTP so Clawboard API can read and write
 workspace files, manage configuration, and list agents.
 
 :::info Deployment
 
-You need to run the workspace service container (`ghcr.io/bymosdev/mosbot-workspace-server:latest`)
+You need to run the workspace service container (`ghcr.io/bymosdev/clawboard-workspace-server:latest`)
 next to your OpenClaw instance. The image supports both `linux/amd64` and `linux/arm64` platforms.
 
 See [Setting Up OpenClaw](./setup) for Docker and Kubernetes deployment examples. :::
 
 ## Recommended mount configuration
 
-For full MosBot functionality (agent discovery + Projects/Skills/Docs file edits), use:
+For full Clawboard functionality (agent discovery + Projects/Skills/Docs file edits), use:
 
 - `CONFIG_ROOT=/openclaw-config`
 - `MAIN_WORKSPACE_DIR=workspace`
@@ -40,7 +40,7 @@ workspaces (`workspace-<agent>`) are resolved from `CONFIG_ROOT`. Main workspace
 ## Architecture
 
 ```text
-MosBot API
+Clawboard API
     │
     │ HTTP (Bearer token auth)
     ▼
@@ -60,7 +60,7 @@ directories.
 ## Authentication
 
 The workspace service uses bearer token authentication. The token is shared between the workspace
-service configuration and MosBot API's `OPENCLAW_WORKSPACE_TOKEN` environment variable.
+service configuration and Clawboard API's `OPENCLAW_WORKSPACE_TOKEN` environment variable.
 
 ### Generating a token
 
@@ -72,7 +72,7 @@ echo "Save this token: ${WORKSPACE_TOKEN}"
 Configure the same token in:
 
 1. OpenClaw's workspace service (as `WORKSPACE_SERVICE_TOKEN` in its environment)
-2. MosBot API's `.env` (as `OPENCLAW_WORKSPACE_TOKEN`)
+2. Clawboard API's `.env` (as `OPENCLAW_WORKSPACE_TOKEN`)
 
 ## Security model
 
@@ -83,7 +83,7 @@ internet:
 - **Bearer token auth**: all requests require a valid token
 - **Path validation**: the service normalizes paths and rejects directory traversal attempts (e.g.
   `..`)
-- **RBAC**: MosBot API enforces its own role-based access control before proxying requests to the
+- **RBAC**: Clawboard API enforces its own role-based access control before proxying requests to the
   workspace service
 
 ## Workspace directory structure
@@ -151,12 +151,12 @@ Project links are created as:
 /workspace/projects/<slug>           -> ../../projects/<slug>
 ```
 
-MosBot API reconciles links server-side on startup and during agent/project operations. Dashboard
+Clawboard API reconciles links server-side on startup and during agent/project operations. Dashboard
 page loads do not trigger direct link writes.
 
-## API endpoints (via MosBot API)
+## API endpoints (via Clawboard API)
 
-MosBot API proxies workspace requests through its own authenticated endpoints:
+Clawboard API proxies workspace requests through its own authenticated endpoints:
 
 | Endpoint                                       | Description                              |
 | ---------------------------------------------- | ---------------------------------------- |
@@ -170,18 +170,18 @@ MosBot API proxies workspace requests through its own authenticated endpoints:
 | `PUT /api/v1/openclaw/config`                  | Update `openclaw.json`                   |
 | `GET /api/v1/openclaw/agents`                  | List agents from `openclaw.json`         |
 
-Docs-link reconcile is internal in MosBot API for this phase; there is no public MosBot API endpoint
+Docs-link reconcile is internal in Clawboard API for this phase; there is no public Clawboard API endpoint
 for direct link writes.
 
 ## Verifying the workspace service
 
 ```bash
-# Direct check (bypassing MosBot API)
+# Direct check (bypassing Clawboard API)
 curl -H "Authorization: Bearer <workspace-token>" \
   http://localhost:18780/status
 
-# Via MosBot API (requires MosBot JWT)
-curl -H "Authorization: Bearer <mosbot-jwt>" \
+# Via Clawboard API (requires Clawboard JWT)
+curl -H "Authorization: Bearer <clawboard-jwt>" \
   http://localhost:3000/api/v1/openclaw/workspace/status
 ```
 
@@ -191,9 +191,9 @@ curl -H "Authorization: Bearer <mosbot-jwt>" \
 
 - `OPENCLAW_WORKSPACE_URL` is correct
 - The workspace service is running
-- Network connectivity between MosBot API and the workspace service
+- Network connectivity between Clawboard API and the workspace service
 
-**401 Unauthorized** The token doesn't match. Verify `OPENCLAW_WORKSPACE_TOKEN` in MosBot API's
+**401 Unauthorized** The token doesn't match. Verify `OPENCLAW_WORKSPACE_TOKEN` in Clawboard API's
 `.env` matches the token configured in the workspace service.
 
 **Workspace loads but models/agents fail** `CONFIG_ROOT` is not mounted correctly. Verify

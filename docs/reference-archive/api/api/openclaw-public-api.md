@@ -1,6 +1,6 @@
-# Mosbot Public API (for OpenClaw Integration)
+# Clawboard Public API (for OpenClaw Integration)
 
-This document describes the **public HTTP API contract** OpenClaw can use to integrate with Mosbot as a task backend.
+This document describes the **public HTTP API contract** OpenClaw can use to integrate with Clawboard as a task backend.
 
 ## Table of Contents
 
@@ -100,12 +100,12 @@ This document describes the **public HTTP API contract** OpenClaw can use to int
 ## Versioning
 
 - **API version**: `v1`
-- **Base URL**: `<MOSBOT_API_ORIGIN>/api/v1`
+- **Base URL**: `<CLAWBOARD_API_ORIGIN>/api/v1`
   - Example (local): `http://localhost:3000/api/v1`
 
 ## Health check (no auth)
 
-- **GET** `<MOSBOT_API_ORIGIN>/health`
+- **GET** `<CLAWBOARD_API_ORIGIN>/health`
 
 Response `200`:
 
@@ -115,7 +115,7 @@ Response `200`:
 
 ### Config (no auth)
 
-- **GET** `<MOSBOT_API_ORIGIN>/api/v1/config`
+- **GET** `<CLAWBOARD_API_ORIGIN>/api/v1/config`
 
 Returns non-sensitive instance settings (e.g., timezone for standup scheduling).
 
@@ -150,7 +150,7 @@ When rate-limited, the API responds with `429`:
 
 ### Authentication (JWT Bearer)
 
-Most integrations should authenticate as a dedicated Mosbot user and send:
+Most integrations should authenticate as a dedicated Clawboard user and send:
 
 ```bash
 Authorization: Bearer <JWT>
@@ -160,7 +160,7 @@ You can obtain a JWT via `POST /auth/login`.
 
 Notes:
 
-- Some endpoints currently allow requests without a token (they behave as “anonymous”), but **OpenClaw should still authenticate** so Mosbot can attribute actions (e.g. `reporter_id`) and support future access controls consistently.
+- Some endpoints currently allow requests without a token (they behave as “anonymous”), but **OpenClaw should still authenticate** so Clawboard can attribute actions (e.g. `reporter_id`) and support future access controls consistently.
 
 ### Response envelopes
 
@@ -229,7 +229,7 @@ When creating/updating a task:
 - Each tag is trimmed, converted to lowercase, deduplicated case-insensitively.
 - Empty strings are ignored.
 - Max **50** characters per tag.
-- If the normalized list is empty, Mosbot stores `tags` as `null`.
+- If the normalized list is empty, Clawboard stores `tags` as `null`.
 
 ### User (assignees/reporters)
 
@@ -337,7 +337,7 @@ Request:
 
 ```json
 {
-  "email": "owner@mosbot.local",
+  "email": "owner@clawboard.local",
   "password": "your-password"
 }
 ```
@@ -350,7 +350,7 @@ Response `200`:
     "user": {
       "id": "uuid",
       "name": "Owner",
-      "email": "owner@mosbot.local",
+      "email": "owner@clawboard.local",
       "avatar_url": null,
       "role": "owner"
     },
@@ -461,7 +461,7 @@ Response `200`:
 Example:
 
 ```bash
-curl "<MOSBOT_API_ORIGIN>/api/v1/tasks?status=IN%20PROGRESS&limit=50" \
+curl "<CLAWBOARD_API_ORIGIN>/api/v1/tasks?status=IN%20PROGRESS&limit=50" \
   -H "Authorization: Bearer <JWT>"
 ```
 
@@ -550,7 +550,7 @@ Field notes:
 - `description` — optional; long-form markdown body. Rendered in the task detail view.
 - `status` — defaults to `PLANNING` if omitted.
 - `type` — defaults to `task` if omitted.
-- `reporter_id` — if omitted and a JWT is provided, Mosbot sets it to the authenticated user.
+- `reporter_id` — if omitted and a JWT is provided, Clawboard sets it to the authenticated user.
 - `tags` — normalized on write (see rules above).
 - `parent_task_id` — creates a parent/child relationship (useful for epics with subtasks).
 - `task_number` — automatically assigned from a sequence; cannot be set manually.
@@ -2060,8 +2060,8 @@ Errors:
 
 Internal lifecycle note:
 
-- Mosbot API manages docs-link reconciliation server-side via the workspace-service link resource (`/links/docs/:agentId`) during startup and agent config create/update flows.
-- No dashboard-triggered or public link-management endpoint is exposed in Mosbot API in this phase.
+- Clawboard API manages docs-link reconciliation server-side via the workspace-service link resource (`/links/docs/:agentId`) during startup and agent config create/update flows.
+- No dashboard-triggered or public link-management endpoint is exposed in Clawboard API in this phase.
 
 ### GET `/openclaw/workspace/files/content`
 
@@ -2204,11 +2204,11 @@ Errors:
 
 ## OpenClaw config editor (admin/owner only)
 
-These endpoints expose the live `openclaw.json` configuration for reading and editing via the Mosbot Dashboard. All writes go through the OpenClaw Gateway's `config.apply` RPC, which validates the config against the Gateway's own schema before writing it. The existing config is backed up as a workspace file before each successful apply.
+These endpoints expose the live `openclaw.json` configuration for reading and editing via the Clawboard Dashboard. All writes go through the OpenClaw Gateway's `config.apply` RPC, which validates the config against the Gateway's own schema before writing it. The existing config is backed up as a workspace file before each successful apply.
 
 **Auth**: JWT Bearer token required. Role must be `admin` or `owner` — `agent` role is explicitly blocked.
 
-**Validation model**: Mosbot API does not perform local schema validation. The Gateway's `config.apply` RPC is the single source of truth. If the config is invalid, the RPC rejects it and the existing config is untouched.
+**Validation model**: Clawboard API does not perform local schema validation. The Gateway's `config.apply` RPC is the single source of truth. If the config is invalid, the RPC rejects it and the existing config is untouched.
 
 **Conflict safety**: Every write includes a `baseHash` (from the most recent `config.get` response). If the config has been modified externally since the client loaded it, the API returns `409` with the current config so the client can rebase.
 
@@ -2391,7 +2391,7 @@ Errors:
 
 ## Recommended OpenClaw integration flow (example)
 
-1. **Login** with a dedicated Mosbot integration user (`POST /auth/login`).
+1. **Login** with a dedicated Clawboard integration user (`POST /auth/login`).
 2. **Cache users** for assignee resolution (`GET /users?active_only=true`).
 3. **Optionally cache AI models** for task model selection (`GET /models`). Use the returned `id` values when setting `preferred_model` on tasks or `payload.model` on cron jobs.
 4. **List tasks** for sync (`GET /tasks?include_archived=true&limit=100&offset=...`).

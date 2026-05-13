@@ -6,20 +6,20 @@ sidebar_label: Changelog
 
 <!-- markdownlint-disable MD025 -->
 
-All notable changes to MosBot OS documentation are recorded here.
+All notable changes to Clawboard documentation are recorded here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 For application-level changes, see the changelogs in the respective repositories:
 
-- [api CHANGELOG](https://github.com/ByMosDev/mosbot-os/blob/main/api/CHANGELOG.md)
-- [web CHANGELOG](https://github.com/ByMosDev/mosbot-os/blob/main/web/CHANGELOG.md)
+- [api CHANGELOG](https://github.com/moltar-forge/clawboard/blob/main/api/CHANGELOG.md)
+- [web CHANGELOG](https://github.com/moltar-forge/clawboard/blob/main/web/CHANGELOG.md)
 
 ---
 
 ## [Unreleased]
 
-### mosbot-api
+### clawboard-api
 
 #### Added
 
@@ -52,12 +52,12 @@ For application-level changes, see the changelogs in the respective repositories
   root, `path=/` denied)
 - Documented system-managed docs-link reconciliation lifecycle (startup + agent create/update,
   non-fatal conflict handling)
-- Updated docs for agent onboarding lifecycle (issues #12/#13): toolkit seeding, `mosbot.env`,
+- Updated docs for agent onboarding lifecycle (issues #12/#13): toolkit seeding, `clawboard.env`,
   `BOOTSTRAP.md`, and bootstrap trigger behavior
 - Updated docs for re-bootstrap lifecycle (issue #31): admin+owner access, workspace reseeding, and
   single-active-key policy
 
-### mosbot-dashboard
+### clawboard-dashboard
 
 #### Added
 
@@ -89,9 +89,9 @@ For application-level changes, see the changelogs in the respective repositories
 
 ## 2026-03-02
 
-### mosbot-dashboard
+### clawboard-dashboard
 
-#### [0.1.4] — [Release](https://github.com/ByMosDev/mosbot-os/releases/tag/web-v0.1.4)
+#### [0.1.4] — [Release](https://github.com/moltar-forge/clawboard/releases/tag/web-v0.1.4)
 
 ##### Added
 
@@ -118,19 +118,19 @@ For application-level changes, see the changelogs in the respective repositories
 
 ## 2026-03-01
 
-### mosbot-api
+### clawboard-api
 
-#### [0.1.2] — [Release](https://github.com/ByMosDev/mosbot-os/releases/tag/api-v0.1.2)
+#### [0.1.2] — [Release](https://github.com/moltar-forge/clawboard/releases/tag/api-v0.1.2)
 
 ##### Changed
 
 - Updated workspace paths: `/shared/docs` → `/docs` and `/shared/projects` → `/projects`
 - Updated README and documentation to reference new documentation site
-  (bymosdev.github.io/mosbot-os)
+  (bymosdev.github.io/clawboard)
 - Added backward compatibility for legacy `/shared/projects` paths in activity feed
 - Updated API documentation to reflect new workspace path structure
 
-#### [0.1.1] — [Release](https://github.com/ByMosDev/mosbot-os/releases/tag/api-v0.1.1)
+#### [0.1.1] — [Release](https://github.com/moltar-forge/clawboard/releases/tag/api-v0.1.1)
 
 ##### Added
 
@@ -142,18 +142,18 @@ For application-level changes, see the changelogs in the respective repositories
 - Enhanced Dockerfile for multi-platform support
 - Improved CI workflows
 
-### mosbot-dashboard
+### clawboard-dashboard
 
-#### [0.1.3] — [Release](https://github.com/ByMosDev/mosbot-os/releases/tag/web-v0.1.3)
+#### [0.1.3] — [Release](https://github.com/moltar-forge/clawboard/releases/tag/web-v0.1.3)
 
 ##### Changed
 
 - Updated workspace paths: `/shared/docs` → `/docs` and `/shared/projects` → `/projects`
 - Updated README and documentation to reference new documentation site
-  (bymosdev.github.io/mosbot-os)
+  (bymosdev.github.io/clawboard)
 - Added backward compatibility for legacy `/shared/projects` paths in Log page
 
-#### [0.1.2] — [Release](https://github.com/ByMosDev/mosbot-os/releases/tag/web-v0.1.2)
+#### [0.1.2] — [Release](https://github.com/moltar-forge/clawboard/releases/tag/web-v0.1.2)
 
 ##### Added
 
@@ -163,7 +163,7 @@ For application-level changes, see the changelogs in the respective repositories
 
 - Updated .gitignore to include .env.bak file
 
-#### [0.1.1] — [Release](https://github.com/ByMosDev/mosbot-os/releases/tag/web-v0.1.1)
+#### [0.1.1] — [Release](https://github.com/moltar-forge/clawboard/releases/tag/web-v0.1.1)
 
 ##### Changed
 
@@ -177,14 +177,14 @@ For application-level changes, see the changelogs in the respective repositories
 
 ## 2026-02-28
 
-### mosbot-api
+### clawboard-api
 
-#### [0.1.0] — [Release](https://github.com/ByMosDev/mosbot-os/releases/tag/api-v0.1.0)
+#### [0.1.0] — [Release](https://github.com/moltar-forge/clawboard/releases/tag/api-v0.1.0)
 
-First push. Initial project setup and open source release of MosBot API.
+First push. Initial project setup and open source release of Clawboard API.
 
-### mosbot-dashboard
+### clawboard-dashboard
 
-#### [0.1.0] — [Release](https://github.com/ByMosDev/mosbot-os/releases/tag/web-v0.1.0)
+#### [0.1.0] — [Release](https://github.com/moltar-forge/clawboard/releases/tag/web-v0.1.0)
 
-First push. Initial project setup and open source release of MosBot Dashboard.
+First push. Initial project setup and open source release of Clawboard Dashboard.

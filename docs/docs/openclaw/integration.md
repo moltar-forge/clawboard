@@ -1,15 +1,15 @@
 ---
 id: integration
-title: Connecting MosBot API to OpenClaw
+title: Connecting Clawboard API to OpenClaw
 sidebar_label: Integration
 sidebar_position: 3
 ---
 
-# Connecting MosBot API to OpenClaw
+# Connecting Clawboard API to OpenClaw
 
-Once OpenClaw is running, connect MosBot API by adding the integration variables to your `.env`
+Once OpenClaw is running, connect Clawboard API by adding the integration variables to your `.env`
 file. Workspace access starts working as soon as the workspace service is configured. Gateway-backed
-features now require a one-time device pairing step in the MosBot dashboard.
+features now require a one-time device pairing step in the Clawboard dashboard.
 
 ## Minimal integration (workspace only)
 
@@ -44,7 +44,7 @@ After restart, sign in as an `owner` or `admin` and open `Settings -> OpenClaw P
 
 ## Complete the device pairing workflow
 
-MosBot now uses a device-authenticated OpenClaw session for gateway RPCs. The shared gateway token
+Clawboard now uses a device-authenticated OpenClaw session for gateway RPCs. The shared gateway token
 bootstraps the pairing handshake, but ongoing runtime access depends on the paired device identity.
 
 1. Configure `OPENCLAW_GATEWAY_URL` and `OPENCLAW_GATEWAY_TOKEN` in `.env`
@@ -52,10 +52,10 @@ bootstraps the pairing handshake, but ongoing runtime access depends on the pair
 3. Open the dashboard as an `owner` or `admin`
 4. Go to `Settings -> OpenClaw Pairing`
 5. Click `Start pairing`
-6. Approve the pending MosBot device in OpenClaw
+6. Approve the pending Clawboard device in OpenClaw
 7. Click `Finalize pairing`
 
-When pairing succeeds, MosBot stores the paired device identity in integration state and unlocks:
+When pairing succeeds, Clawboard stores the paired device identity in integration state and unlocks:
 
 - Agent Monitor live sessions and usage
 - Session history and runtime control
@@ -74,7 +74,7 @@ docker compose restart api
 ### Check workspace connectivity
 
 ```bash
-# Get a MosBot JWT first
+# Get a Clawboard JWT first
 TOKEN=$(curl -s -X POST http://localhost:3000/api/v1/auth/login \
   -H "Content-Type: application/json" \
   -d '{"email":"admin@example.com","password":"your-password"}' \
@@ -92,7 +92,7 @@ curl -H "Authorization: Bearer $TOKEN" \
   http://localhost:3000/api/v1/openclaw/integration/status
 ```
 
-If the integration is not ready, MosBot returns a status such as `pending_pairing` or
+If the integration is not ready, Clawboard returns a status such as `pending_pairing` or
 `paired_missing_scopes`.
 
 ### List agents
@@ -116,7 +116,7 @@ Use explicit allowlisted roots (`/workspace`, `/workspace-<agent>`, `/docs`, `/p
 
 ## Connecting to OpenClaw in different environments
 
-### OpenClaw runs locally (same machine as MosBot)
+### OpenClaw runs locally (same machine as Clawboard)
 
 Use `localhost` for both services:
 
@@ -139,7 +139,7 @@ kubectl port-forward -n <namespace> svc/openclaw 18789:18789
 
 Then use `localhost` in `.env`. See [Local Development](./local-development) for the full guide.
 
-### OpenClaw runs in Docker, MosBot API also in Docker
+### OpenClaw runs in Docker, Clawboard API also in Docker
 
 Use `host.docker.internal` to reach services on the host from inside a container:
 

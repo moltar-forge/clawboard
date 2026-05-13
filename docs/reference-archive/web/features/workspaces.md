@@ -1,6 +1,6 @@
 # Workspaces
 
-Workspaces are the shared artifact layer of MosBot OS: files, notes, specs, and operational outputs. The dashboard provides a browsable view over agent/workspace roots.
+Workspaces are the shared artifact layer of Clawboard: files, notes, specs, and operational outputs. The dashboard provides a browsable view over agent/workspace roots.
 
 ## What Workspaces provide
 
@@ -19,11 +19,11 @@ Workspaces are the shared artifact layer of MosBot OS: files, notes, specs, and 
 
 - Dashboard workspace screens are read-only with respect to docs-link bootstrap
 - Dashboard does not call workspace-service link/symlink ensure endpoints on mount or navigation
-- Docs-link reconcile/write behavior is system-managed server-side (mosbot-api lifecycle hooks)
+- Docs-link reconcile/write behavior is system-managed server-side (clawboard-api lifecycle hooks)
 
 ## Permissions model (product intent)
 
-MosBot OS separates “see structure” from “read/modify contents”:
+Clawboard separates “see structure” from “read/modify contents”:
 
 - **All authenticated users** can browse workspace structure and file metadata
 - **Only elevated roles** can read restricted file contents (policy-driven)

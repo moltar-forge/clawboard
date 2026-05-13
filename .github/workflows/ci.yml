@@ -20,13 +20,13 @@ jobs:
       postgres:
         image: postgres:15-alpine
         env:
-          POSTGRES_DB: mosbot_test
-          POSTGRES_USER: mosbot
+          POSTGRES_DB: clawboard_test
+          POSTGRES_USER: clawboard
           POSTGRES_PASSWORD: test-password
         ports:
           - 5432:5432
         options: >-
-          --health-cmd "pg_isready -U mosbot"
+          --health-cmd "pg_isready -U clawboard"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
@@ -34,8 +34,8 @@ jobs:
       NODE_ENV: test
       DB_HOST: localhost
       DB_PORT: 5432
-      DB_NAME: mosbot_test
-      DB_USER: mosbot
+      DB_NAME: clawboard_test
+      DB_USER: clawboard
       DB_PASSWORD: test-password
       JWT_SECRET: ci-test-secret-not-used-in-production
       CORS_ORIGIN: http://localhost:5173
@@ -109,7 +109,7 @@ jobs:
         if: matrix.component == 'web'
         env:
           VITE_API_URL: http://localhost:3000/api/v1
-          VITE_APP_NAME: MosBot
+          VITE_APP_NAME: Clawboard
         run: npm run -w ./web test:coverage
 
       - name: Web coveralls
@@ -128,7 +128,7 @@ jobs:
         if: matrix.component == 'web'
         env:
           VITE_API_URL: http://localhost:3000/api/v1
-          VITE_APP_NAME: MosBot
+          VITE_APP_NAME: Clawboard
         run: npm run -w ./web build
 
       # --- Docs ---

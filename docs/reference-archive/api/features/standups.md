@@ -1,10 +1,10 @@
 # Standups
 
-Daily executive standups are a core operational feature of MosBot OS. The COO agent orchestrates the standup end-to-end: it opens the meeting, collects reports from each executive agent in sequence (CTO, CPO, CMO), writes a closing summary, resolves any blockers or clarifications, and notifies the CEO (human) only if something requires human attention.
+Daily executive standups are a core operational feature of Clawboard. The COO agent orchestrates the standup end-to-end: it opens the meeting, collects reports from each executive agent in sequence (CTO, CPO, CMO), writes a closing summary, resolves any blockers or clarifications, and notifies the CEO (human) only if something requires human attention.
 
 ## Table of Contents
 
-- [How standups fit into MosBot OS](#how-standups-fit-into-mosbot-os)
+- [How standups fit into Clawboard](#how-standups-fit-into-clawboard)
 - [Full standup flow](#full-standup-flow)
 - [Data model](#data-model)
 - [Standup lifecycle](#standup-lifecycle)
@@ -19,18 +19,18 @@ Daily executive standups are a core operational feature of MosBot OS. The COO ag
 
 ---
 
-## How standups fit into MosBot OS
+## How standups fit into Clawboard
 
 ```mermaid
 flowchart LR
   OpenClawScheduler -->|"fires at 8am"| COO
-  COO -->|"POST /standups"| MosbotAPI[Mosbot_API]
+  COO -->|"POST /standups"| ClawboardAPI[Clawboard_API]
   COO -->|"sessions_send CTO, CPO, CMO"| OpenClawGateway[OpenClaw_Gateway]
   OpenClawGateway -->|agent_replies| COO
-  COO -->|"POST /standups/:id/entries+messages"| MosbotAPI
-  COO -->|"PATCH /standups/:id completed"| MosbotAPI
-  MosbotAPI -->|writes| DB[(Postgres)]
-  Dashboard -->|"GET /standups/:id"| MosbotAPI
+  COO -->|"POST /standups/:id/entries+messages"| ClawboardAPI
+  COO -->|"PATCH /standups/:id completed"| ClawboardAPI
+  ClawboardAPI -->|writes| DB[(Postgres)]
+  Dashboard -->|"GET /standups/:id"| ClawboardAPI
   COO -->|"message CEO if needed"| CEO[CEO_Human]
 ```
 
@@ -41,7 +41,7 @@ flowchart LR
 | **OpenClaw Scheduler** | Fires the daily standup job at 8 AM via a cron job entry in `/cron/jobs.json` |
 | **COO agent** | Owns the full standup flow: creates the record, collects reports, writes the summary, resolves blockers, escalates to CEO if needed |
 | **CTO / CPO / CMO agents** | Respond to COO's standup prompt with their Yesterday / Today / Blockers report |
-| **Mosbot API** | Persists standup records, entries, and messages; exposes REST endpoints for agents and the Dashboard |
+| **Clawboard API** | Persists standup records, entries, and messages; exposes REST endpoints for agents and the Dashboard |
 | **OpenClaw Gateway** | Routes `sessions_send` calls from the COO to each agent's running session |
 | **Postgres** | Source of truth for standup records, entries, and transcript messages |
 | **Dashboard** | Human-facing read interface; displays standup entries and transcripts |
@@ -149,7 +149,7 @@ One row per agent per standup (enforced by `UNIQUE (standup_id, agent_id)`).
 | `id` | UUID | Primary key |
 | `standup_id` | UUID | FK → `standups.id` |
 | `agent_id` | TEXT | Agent identifier, e.g. `coo`, `cto` |
-| `user_id` | UUID \| null | FK → `users.id` — the agent's Mosbot user account |
+| `user_id` | UUID \| null | FK → `users.id` — the agent's Clawboard user account |
 | `turn_order` | INTEGER | Position in the standup (1 = COO, 2 = CTO, etc.) |
 | `yesterday` | TEXT \| null | Parsed "Yesterday" section |
 | `today` | TEXT \| null | Parsed "Today" section |
@@ -250,7 +250,7 @@ Any response that fails to parse is still stored as-is in the `raw` column.
 
 ## Scheduled generation (OpenClaw Scheduler)
 
-Standups are triggered by the **OpenClaw Scheduler** — a cron job defined in the OpenClaw workspace file `/cron/jobs.json` and executed by the OpenClaw Gateway. There is no internal Node.js scheduler in Mosbot API.
+Standups are triggered by the **OpenClaw Scheduler** — a cron job defined in the OpenClaw workspace file `/cron/jobs.json` and executed by the OpenClaw Gateway. There is no internal Node.js scheduler in Clawboard API.
 
 ### How to configure the daily standup job
 
@@ -275,7 +275,7 @@ Add (or verify) a cron job entry in `/cron/jobs.json` via the Dashboard's Cron J
 }
 ```
 
-The `tz` field controls which timezone the cron expression fires in. Use the same timezone as your Mosbot instance (`GET /api/v1/config` returns the configured timezone).
+The `tz` field controls which timezone the cron expression fires in. Use the same timezone as your Clawboard instance (`GET /api/v1/config` returns the configured timezone).
 
 ### Flow when the scheduled job fires
 
@@ -335,7 +335,7 @@ The `UNIQUE (standup_id, agent_id)` constraint on `standup_entries` acts as an a
 
 ## RBAC policy
 
-Standup endpoints follow the standard MosBot API RBAC pattern:
+Standup endpoints follow the standard Clawboard API RBAC pattern:
 
 | Operation | Required role |
 | :--- | :--- |

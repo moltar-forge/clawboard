@@ -197,7 +197,7 @@ export default function AgentEditModal({ isOpen, onClose, onSave, agentId = null
         // Org/display fields from agents DB metadata
         id: leadershipEntry?.id || agentId,
         title: leadershipEntry?.title || '',
-        label: leadershipEntry?.label || `mosbot-${agentId}`,
+        label: leadershipEntry?.label || `clawboard-${agentId}`,
         displayName: leadershipEntry?.displayName || agentEntry?.identity?.name || '',
         description: leadershipEntry?.description || agentEntry?.identity?.theme || '',
         status: 'active',
@@ -407,7 +407,7 @@ export default function AgentEditModal({ isOpen, onClose, onSave, agentId = null
                         value={formData.displayName}
                         onChange={(e) => handleChange('displayName', e.target.value)}
                         disabled={isSaving}
-                        placeholder="e.g., MosBot, ResearchBot, BuilderBot"
+                        placeholder="e.g., Clawboard, ResearchBot, BuilderBot"
                         className="input-field w-full disabled:opacity-50"
                       />
                     </div>
@@ -419,7 +419,7 @@ export default function AgentEditModal({ isOpen, onClose, onSave, agentId = null
                         value={formData.label}
                         onChange={(e) => handleChange('label', e.target.value)}
                         disabled={isSaving}
-                        placeholder="e.g., mosbot-orchestrator"
+                        placeholder="e.g., clawboard-orchestrator"
                         className="input-field w-full disabled:opacity-50"
                       />
                     </div>

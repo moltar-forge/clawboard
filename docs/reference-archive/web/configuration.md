@@ -1,14 +1,14 @@
 # Configuration Reference
 
-MosBot Dashboard is configured entirely via `VITE_*` environment variables at build time.
+Clawboard Dashboard is configured entirely via `VITE_*` environment variables at build time.
 
 ## Variables
 
 | Variable | Required | Default | Description |
 | -------- | -------- | ------- | ----------- |
-| `VITE_API_URL` | **Yes** | `http://localhost:3000/api/v1` | Full URL of MosBot API including version prefix |
+| `VITE_API_URL` | **Yes** | `http://localhost:3000/api/v1` | Full URL of Clawboard API including version prefix |
 | `VITE_API_TIMEOUT` | No | `10000` | API request timeout in milliseconds |
-| `VITE_APP_NAME` | No | `MosBot` | App display name shown in the UI |
+| `VITE_APP_NAME` | No | `Clawboard` | App display name shown in the UI |
 
 ## Setting variables
 
@@ -27,7 +27,7 @@ Pass as build args:
 ```bash
 docker build \
   --build-arg VITE_API_URL=https://api.example.com/api/v1 
-  -t mosbot-dashboard:latest .
+  -t clawboard-dashboard:latest .
 ```
 
 Or via Docker Compose:

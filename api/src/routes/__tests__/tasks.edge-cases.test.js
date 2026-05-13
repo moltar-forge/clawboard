@@ -453,7 +453,7 @@ describe('Tasks Route Edge Cases', () => {
           session_key: 'agent:cto:isolated',
           run_id: 'run-123',
           branch: 'feat/issue-59',
-          pr_url: 'https://github.com/ByMosDev/mosbot-os/pull/99',
+          pr_url: 'https://github.com/moltar-forge/clawboard/pull/99',
           note: 'Working through API updates',
         });
 

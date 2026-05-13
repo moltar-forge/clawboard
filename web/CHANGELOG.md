@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to MosBot Dashboard will be documented in this file.
+All notable changes to Clawboard Dashboard will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -24,7 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Workspace agent list now shows the legacy `Archived (Old Main)` entry only when
   `/_archived_workspace_main` exists in the workspace service
 - Dashboard no longer performs workspace symlink/link write operations on page load;
-  docs-link reconciliation is system-managed by mosbot-api + workspace-service lifecycle hooks
+  docs-link reconciliation is system-managed by clawboard-api + workspace-service lifecycle hooks
 - Dashboard docs updated to reflect `/docs` as the shared docs workspace root
 - Dashboard docs now consistently refer to the Agents page (replacing legacy Org Chart wording)
 - CI workflow updated to include test execution step
@@ -72,7 +72,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Updated workspace paths: `/shared/docs` → `/docs` and `/shared/projects` → `/projects`
-- Updated README and documentation to reference new documentation site (bymosbot.github.io/mosbot-docs)
+- Updated README and documentation to reference new documentation site (moltar-forge.github.io/clawboard-docs)
 - Added backward compatibility for legacy `/shared/projects` paths in Log page
 
 ## [0.1.2] - 2026-03-01
@@ -97,11 +97,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.0] - 2026-02-28
 
-First push. Initial project setup and open source release of MosBot Dashboard.
+First push. Initial project setup and open source release of Clawboard Dashboard.
 
-[Unreleased]: https://github.com/ByMosDev/mosbot-os/compare/web-v0.1.4...HEAD
-[0.1.4]: https://github.com/ByMosDev/mosbot-os/compare/web-v0.1.3...web-v0.1.4
-[0.1.3]: https://github.com/ByMosDev/mosbot-os/compare/web-v0.1.2...web-v0.1.3
-[0.1.2]: https://github.com/ByMosDev/mosbot-os/compare/web-v0.1.1...web-v0.1.2
-[0.1.1]: https://github.com/ByMosDev/mosbot-os/compare/web-v0.1.0...web-v0.1.1
-[0.1.0]: https://github.com/ByMosDev/mosbot-os/releases/tag/web-v0.1.0
+[Unreleased]: https://github.com/moltar-forge/clawboard/compare/web-v0.1.4...HEAD
+[0.1.4]: https://github.com/moltar-forge/clawboard/compare/web-v0.1.3...web-v0.1.4
+[0.1.3]: https://github.com/moltar-forge/clawboard/compare/web-v0.1.2...web-v0.1.3
+[0.1.2]: https://github.com/moltar-forge/clawboard/compare/web-v0.1.1...web-v0.1.2
+[0.1.1]: https://github.com/moltar-forge/clawboard/compare/web-v0.1.0...web-v0.1.1
+[0.1.0]: https://github.com/moltar-forge/clawboard/releases/tag/web-v0.1.0

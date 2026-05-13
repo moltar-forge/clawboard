@@ -1,6 +1,6 @@
 # api
 
-MosBot backend API package.
+Clawboard backend API package.
 
 ## Commands
 

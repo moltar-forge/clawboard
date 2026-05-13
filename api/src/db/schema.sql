@@ -1,4 +1,4 @@
--- MosBot Database Schema
+-- Clawboard Database Schema
 
 -- ============================================================================
 -- VALIDATION FUNCTIONS

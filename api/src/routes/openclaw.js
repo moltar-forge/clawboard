@@ -248,9 +248,9 @@ async function cleanupProvisionedApiKeyArtifacts({
   if (!envWasWritten) return;
 
   try {
-    await makeOpenClawRequest('DELETE', `/files?path=${encodeURIComponent(`${workspaceRoot}/mosbot.env`)}`);
+    await makeOpenClawRequest('DELETE', `/files?path=${encodeURIComponent(`${workspaceRoot}/clawboard.env`)}`);
   } catch (envCleanupError) {
-    logger.warn(`Failed to cleanup ${flow} mosbot.env after provisioning failure`, {
+    logger.warn(`Failed to cleanup ${flow} clawboard.env after provisioning failure`, {
       agentId,
       workspaceRoot,
       error: envCleanupError.message,
@@ -370,7 +370,7 @@ async function rotateSingleAgentApiKey({ agentId, createdByUserId, label }) {
 
     if (activeIds.length > 0) {
       warnings.push(
-        'created replacement API key to restore missing mosbot.env; revoking previous keys after provisioning',
+        'created replacement API key to restore missing clawboard.env; revoking previous keys after provisioning',
       );
     }
 
@@ -393,30 +393,30 @@ async function rotateSingleAgentApiKey({ agentId, createdByUserId, label }) {
   }
 }
 
-function getMosbotApiBaseUrl(_req) {
-  const explicit = process.env.MOSBOT_API_URL || null;
+function getClawboardApiBaseUrl(_req) {
+  const explicit = process.env.CLAWBOARD_API_URL || null;
   if (explicit) return explicit.replace(/\/$/, '');
 
-  // Safe server-side fallback when explicit MOSBOT_API_URL is not configured.
+  // Safe server-side fallback when explicit CLAWBOARD_API_URL is not configured.
   // Never derive from request headers (host/x-forwarded-*) to avoid host-header poisoning.
   const corsOrigin = config.corsOrigin || null;
   if (corsOrigin) {
     return `${String(corsOrigin).replace(/\/$/, '')}/api/v1`;
   }
 
-  throw new Error('MOSBOT_API_URL (or CORS_ORIGIN fallback) is not configured');
+  throw new Error('CLAWBOARD_API_URL (or CORS_ORIGIN fallback) is not configured');
 }
 
 function buildAgentToolkitFiles(workspaceRoot) {
-  const mosbotAuthScript = `#!/usr/bin/env bash
+  const clawboardAuthScript = `#!/usr/bin/env bash
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "\${BASH_SOURCE[0]}")" && pwd)"
-ENV_FILE="\${MOSBOT_ENV_FILE:-\${PWD}/mosbot.env}"
-CACHE_FILE="\${MOSBOT_TOKEN_CACHE:-\${HOME}/.mosbot-token}"
+ENV_FILE="\${CLAWBOARD_ENV_FILE:-\${PWD}/clawboard.env}"
+CACHE_FILE="\${CLAWBOARD_TOKEN_CACHE:-\${HOME}/.clawboard-token}"
 
 if [[ ! -f "\${ENV_FILE}" ]]; then
-  echo "mosbot-auth: env file not found at \${ENV_FILE}" >&2
+  echo "clawboard-auth: env file not found at \${ENV_FILE}" >&2
   exit 1
 fi
 
@@ -425,29 +425,29 @@ set -a
 source "\${ENV_FILE}"
 set +a
 
-if [[ -z "\${MOSBOT_API_URL:-}" ]]; then
-  echo "mosbot-auth: MOSBOT_API_URL missing in \${ENV_FILE}" >&2
+if [[ -z "\${CLAWBOARD_API_URL:-}" ]]; then
+  echo "clawboard-auth: CLAWBOARD_API_URL missing in \${ENV_FILE}" >&2
   exit 1
 fi
 
-if [[ -z "\${MOSBOT_API_KEY:-}" ]]; then
-  echo "mosbot-auth: MOSBOT_API_KEY missing in \${ENV_FILE}" >&2
+if [[ -z "\${CLAWBOARD_API_KEY:-}" ]]; then
+  echo "clawboard-auth: CLAWBOARD_API_KEY missing in \${ENV_FILE}" >&2
   exit 1
 fi
 
-printf '%s\n' "\${MOSBOT_API_KEY}" > "\${CACHE_FILE}"
+printf '%s\n' "\${CLAWBOARD_API_KEY}" > "\${CACHE_FILE}"
 chmod 600 "\${CACHE_FILE}" 2>/dev/null || true
-printf '%s\n' "\${MOSBOT_API_KEY}"
+printf '%s\n' "\${CLAWBOARD_API_KEY}"
 `;
 
-  const mosbotTaskScript = `#!/usr/bin/env bash
+  const clawboardTaskScript = `#!/usr/bin/env bash
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "\${BASH_SOURCE[0]}")" && pwd)"
-ENV_FILE="\${MOSBOT_ENV_FILE:-\${PWD}/mosbot.env}"
+ENV_FILE="\${CLAWBOARD_ENV_FILE:-\${PWD}/clawboard.env}"
 
 if [[ ! -f "\${ENV_FILE}" ]]; then
-  echo "mosbot-task: env file not found at \${ENV_FILE}" >&2
+  echo "clawboard-task: env file not found at \${ENV_FILE}" >&2
   exit 1
 fi
 
@@ -456,17 +456,17 @@ set -a
 source "\${ENV_FILE}"
 set +a
 
-if [[ -z "\${MOSBOT_API_URL:-}" ]]; then
-  echo "mosbot-task: MOSBOT_API_URL missing in \${ENV_FILE}" >&2
+if [[ -z "\${CLAWBOARD_API_URL:-}" ]]; then
+  echo "clawboard-task: CLAWBOARD_API_URL missing in \${ENV_FILE}" >&2
   exit 1
 fi
 
-TOKEN="$(bash "\${SCRIPT_DIR}/mosbot-auth")"
+TOKEN="$(bash "\${SCRIPT_DIR}/clawboard-auth")"
 AUTH_HEADER="Authorization: Bearer \${TOKEN}"
 
 usage() {
   cat <<'USAGE'
-Usage: mosbot-task <command> [args]
+Usage: clawboard-task <command> [args]
 
 Commands:
   list [--status "TO DO"]
@@ -495,11 +495,11 @@ case "\${cmd}" in
     done
 
     if [[ -n "\${status}" ]]; then
-      curl -sG "\${MOSBOT_API_URL}/tasks" \
+      curl -sG "\${CLAWBOARD_API_URL}/tasks" \
         -H "\${AUTH_HEADER}" \
         --data-urlencode "status=\${status}"
     else
-      curl -s "\${MOSBOT_API_URL}/tasks" -H "\${AUTH_HEADER}"
+      curl -s "\${CLAWBOARD_API_URL}/tasks" -H "\${AUTH_HEADER}"
     fi
     ;;
 
@@ -530,7 +530,7 @@ case "\${cmd}" in
 
     payload=$(python3 -c 'import json,sys; title,summary,status,priority,typ,tags=sys.argv[1:]; p={"title":title,"status":status,"type":typ};if summary: p["summary"]=summary;if priority: p["priority"]=priority;if tags: p["tags"]=[t.strip() for t in tags.split(",") if t.strip()];print(json.dumps(p))' "\${title}" "\${summary}" "\${status}" "\${priority}" "\${type}" "\${tags}")
 
-    curl -s -X POST "\${MOSBOT_API_URL}/tasks" \
+    curl -s -X POST "\${CLAWBOARD_API_URL}/tasks" \
       -H "\${AUTH_HEADER}" \
       -H "Content-Type: application/json" \
       -d "\${payload}"
@@ -555,7 +555,7 @@ case "\${cmd}" in
       esac
     done
 
-    curl -s -X PATCH "\${MOSBOT_API_URL}/tasks/\${task_id}" \
+    curl -s -X PATCH "\${CLAWBOARD_API_URL}/tasks/\${task_id}" \
       -H "\${AUTH_HEADER}" \
       -H "Content-Type: application/json" \
       -d "\${payload}"
@@ -571,7 +571,7 @@ case "\${cmd}" in
     fi
 
     body_json=$(python3 -c 'import json,sys; print(json.dumps({"body":sys.argv[1]}))' "\${body}")
-    curl -s -X POST "\${MOSBOT_API_URL}/tasks/\${task_id}/comments" \
+    curl -s -X POST "\${CLAWBOARD_API_URL}/tasks/\${task_id}/comments" \
       -H "\${AUTH_HEADER}" \
       -H "Content-Type: application/json" \
       -d "\${body_json}"
@@ -583,7 +583,7 @@ case "\${cmd}" in
       echo "get requires a task id" >&2
       exit 1
     fi
-    curl -s "\${MOSBOT_API_URL}/tasks/\${task_id}" -H "\${AUTH_HEADER}"
+    curl -s "\${CLAWBOARD_API_URL}/tasks/\${task_id}" -H "\${AUTH_HEADER}"
     ;;
 
   *)
@@ -593,27 +593,27 @@ case "\${cmd}" in
 esac
 `;
 
-  const integrationDoc = `# MosBot Toolkit (Workspace Local)
+  const integrationDoc = `# Clawboard Toolkit (Workspace Local)
 
 This toolkit is generated into each agent workspace at \`./tools\`.
 
 ## Files
 
-- \`./tools/mosbot-auth\` - emits a usable API token (currently API key pass-through)
-- \`./tools/mosbot-task\` - task board helper CLI
+- \`./tools/clawboard-auth\` - emits a usable API token (currently API key pass-through)
+- \`./tools/clawboard-task\` - task board helper CLI
 - \`./tools/INTEGRATION.md\` - this guide
 
 ## Agent setup expectations
 
-1. Ensure \`mosbot.env\` exists in your workspace root.
-2. Export \`MOSBOT_ENV_FILE\` if your env file is in a non-default path.
+1. Ensure \`clawboard.env\` exists in your workspace root.
+2. Export \`CLAWBOARD_ENV_FILE\` if your env file is in a non-default path.
 3. Use helper scripts directly (provisioned with executable permissions):
 
 \`\`\`bash
-./tools/mosbot-task list --status "TO DO"
-./tools/mosbot-task create "Example task" --priority "Medium"
-./tools/mosbot-task update <task-id> --status "IN PROGRESS"
-./tools/mosbot-task comment <task-id> "Progress note"
+./tools/clawboard-task list --status "TO DO"
+./tools/clawboard-task create "Example task" --priority "Medium"
+./tools/clawboard-task update <task-id> --status "IN PROGRESS"
+./tools/clawboard-task comment <task-id> "Progress note"
 \`\`\`
 `;
 
@@ -621,19 +621,19 @@ This toolkit is generated into each agent workspace at \`./tools\`.
 
 Local workspace notes for this agent.
 
-## MosBot Toolkit
+## Clawboard Toolkit
 
-- \`./tools/mosbot-auth\`: Reads \`mosbot.env\` and returns a usable bearer token.
-- \`./tools/mosbot-task\`: Minimal task board CLI wrapper around \`/api/v1/tasks\` endpoints.
-- Scripts are provisioned with \`+x\`, so run directly: \`./tools/mosbot-task ...\`.
+- \`./tools/clawboard-auth\`: Reads \`clawboard.env\` and returns a usable bearer token.
+- \`./tools/clawboard-task\`: Minimal task board CLI wrapper around \`/api/v1/tasks\` endpoints.
+- Scripts are provisioned with \`+x\`, so run directly: \`./tools/clawboard-task ...\`.
 
-Default env file path: \`$PWD/mosbot.env\`.
-Override with: \`export MOSBOT_ENV_FILE=/path/to/mosbot.env\`.
+Default env file path: \`$PWD/clawboard.env\`.
+Override with: \`export CLAWBOARD_ENV_FILE=/path/to/clawboard.env\`.
 `;
 
   return [
-    { path: `${workspaceRoot}/tools/mosbot-auth`, content: mosbotAuthScript, mode: 0o755 },
-    { path: `${workspaceRoot}/tools/mosbot-task`, content: mosbotTaskScript, mode: 0o755 },
+    { path: `${workspaceRoot}/tools/clawboard-auth`, content: clawboardAuthScript, mode: 0o755 },
+    { path: `${workspaceRoot}/tools/clawboard-task`, content: clawboardTaskScript, mode: 0o755 },
     { path: `${workspaceRoot}/tools/INTEGRATION.md`, content: integrationDoc },
     { path: `${workspaceRoot}/TOOLS.md`, content: toolsDoc },
   ];
@@ -726,9 +726,9 @@ ${projectScopeSection}
    - \`SOUL.md\`: behavior, tone, boundaries, work style
    - \`USER.md\`: who you're helping and how to work with them
    - \`AGENTS.md\`: operating rules, workspace conventions, safety reminders
-4. Confirm \`mosbot.env\` exists in workspace root.
+4. Confirm \`clawboard.env\` exists in workspace root.
 ${projectChecklistStep}${queueStepNumber}. Pull your queue:
-   - \`./tools/mosbot-task list --status "TO DO"\`
+   - \`./tools/clawboard-task list --status "TO DO"\`
 ${statusStepNumber}. If at least one task exists, post a brief status comment on your first task: setup complete + assumptions.
    - If no task exists, explicitly note that and continue.
 ${deleteStepNumber}. Delete this \`BOOTSTRAP.md\` after setup is complete (even when no tasks exist).
@@ -741,13 +741,13 @@ ${deleteStepNumber}. Delete this \`BOOTSTRAP.md\` after setup is complete (even 
 `;
 }
 
-function buildAgentMosbotEnv({ req, agentId, apiKey }) {
-  const apiUrl = getMosbotApiBaseUrl(req);
+function buildAgentClawboardEnv({ req, agentId, apiKey }) {
+  const apiUrl = getClawboardApiBaseUrl(req);
   return [
-    `MOSBOT_API_URL=${apiUrl}`,
-    `MOSBOT_AGENT_ID=${agentId}`,
-    `MOSBOT_API_KEY=${apiKey}`,
-    'MOSBOT_ENV_VERSION=1',
+    `CLAWBOARD_API_URL=${apiUrl}`,
+    `CLAWBOARD_AGENT_ID=${agentId}`,
+    `CLAWBOARD_API_KEY=${apiKey}`,
+    'CLAWBOARD_ENV_VERSION=1',
   ].join('\n') + '\n';
 }
 
@@ -2113,7 +2113,7 @@ router.get('/agents', requireAuth, async (req, res, next) => {
       userId: req.user.id,
     });
 
-    // Keep DB registry close to runtime config even when config is changed outside MosBot.
+    // Keep DB registry close to runtime config even when config is changed outside Clawboard.
     try {
       await reconcileAgentsIfStale({ trigger: 'agents_read' });
     } catch (reconcileErr) {
@@ -2226,7 +2226,7 @@ router.get('/agents/config', requireAuth, async (req, res, next) => {
     logger.info('Fetching agents configuration', { userId: req.user.id });
 
     // Reconcile on read (throttled) to keep DB and runtime config aligned when
-    // config changes happen outside MosBot (e.g., OpenClaw UI/CLI edits).
+    // config changes happen outside Clawboard (e.g., OpenClaw UI/CLI edits).
     try {
       await reconcileAgentsIfStale({ trigger: 'agents_config_read' });
     } catch (reconcileErr) {
@@ -2507,7 +2507,7 @@ router.put('/agents/config/:agentId', requireAuth, requireAdmin, async (req, res
         await gatewayWsRpc('config.apply', {
           raw: openclawContent,
           baseHash: currentConfig?.hash || null,
-          note: `Agent updated via MosBot (${agentId}) by ${req.user.id}`,
+          note: `Agent updated via Clawboard (${agentId}) by ${req.user.id}`,
           restartDelayMs: 2000,
         });
 
@@ -2667,7 +2667,7 @@ router.post('/agents/config', requireAuth, requireAdmin, async (req, res, next) 
     req._agentWorkspaceRoot = workspaceRoot;
     req._agentCreateApiKeyProvisioned = false;
     let createdApiKeyId = null;
-    let updatedMosbotEnv = false;
+    let updatedClawboardEnv = false;
 
     try {
       await writeAgentToolkit(workspaceRoot);
@@ -2703,20 +2703,20 @@ router.post('/agents/config', requireAuth, requireAdmin, async (req, res, next) 
 
         try {
           await upsertWorkspaceFile(
-            `${workspaceRoot}/mosbot.env`,
-            buildAgentMosbotEnv({ req, agentId: agentData.id, apiKey: apiKeyResult.apiKey }),
+            `${workspaceRoot}/clawboard.env`,
+            buildAgentClawboardEnv({ req, agentId: agentData.id, apiKey: apiKeyResult.apiKey }),
           );
           req._agentCreateApiKeyProvisioned = true;
-          updatedMosbotEnv = true;
+          updatedClawboardEnv = true;
         } catch (envWriteError) {
           await cleanupProvisionedApiKeyArtifacts({
             createdApiKeyId,
             workspaceRoot,
-            envWasWritten: updatedMosbotEnv,
+            envWasWritten: updatedClawboardEnv,
             agentId: agentData.id,
             flow: 'bootstrap',
           });
-          await cleanupDbAgentRowIfCreated('mosbot_env_write_failed');
+          await cleanupDbAgentRowIfCreated('clawboard_env_write_failed');
           req._agentCreateApiKeyProvisioned = false;
 
           return res.status(500).json({
@@ -2767,7 +2767,7 @@ router.post('/agents/config', requireAuth, requireAdmin, async (req, res, next) 
       await cleanupProvisionedApiKeyArtifacts({
         createdApiKeyId,
         workspaceRoot,
-        envWasWritten: updatedMosbotEnv,
+        envWasWritten: updatedClawboardEnv,
         agentId: agentData.id,
         flow: 'bootstrap',
       });
@@ -2823,7 +2823,7 @@ router.post('/agents/config', requireAuth, requireAdmin, async (req, res, next) 
         }
       }
 
-      // Ensure explicit main entry exists in agents.list for MosBot/OpenClaw consistency.
+      // Ensure explicit main entry exists in agents.list for Clawboard/OpenClaw consistency.
       // If there is no explicit default yet, main is set as default to prevent fallback hijack.
       if (agentData.id !== 'main') {
         ensureMainAgentEntry(openclawConfig.agents.list);
@@ -2842,7 +2842,7 @@ router.post('/agents/config', requireAuth, requireAdmin, async (req, res, next) 
         await gatewayWsRpc('config.apply', {
           raw: openclawContent,
           baseHash: currentConfig?.hash || null,
-          note: `Agent created via MosBot (${agentData.id}) by ${req.user.id}`,
+          note: `Agent created via Clawboard (${agentData.id}) by ${req.user.id}`,
           restartDelayMs: 2000,
         });
         configApplied = true;
@@ -2850,7 +2850,7 @@ router.post('/agents/config', requireAuth, requireAdmin, async (req, res, next) 
         await cleanupProvisionedApiKeyArtifacts({
           createdApiKeyId,
           workspaceRoot,
-          envWasWritten: updatedMosbotEnv,
+          envWasWritten: updatedClawboardEnv,
           agentId: agentData.id,
           flow: 'bootstrap',
         });
@@ -2900,7 +2900,7 @@ router.post('/agents/config', requireAuth, requireAdmin, async (req, res, next) 
 
       // Workspace + bootstrap files were prepared before config.apply.
       // Trigger bootstrap execution immediately after agent creation so
-      // first-run setup is deterministic from the MosBot flow.
+      // first-run setup is deterministic from the Clawboard flow.
       // NOTE: backend does NOT remove BOOTSTRAP.md; only the agent should remove it.
       try {
         const bootstrapResult = await runBootstrapForNewAgent(agentData.id);
@@ -2941,7 +2941,7 @@ router.post('/agents/config', requireAuth, requireAdmin, async (req, res, next) 
       `${workspaceRootForResponse}/BOOTSTRAP.md`,
     ];
     if (req._agentCreateApiKeyProvisioned) {
-      updatedFiles.push(`${workspaceRootForResponse}/mosbot.env`);
+      updatedFiles.push(`${workspaceRootForResponse}/clawboard.env`);
     }
 
     res.status(201).json({
@@ -3097,10 +3097,10 @@ router.post(
     );
 
     const setupWarnings = [];
-    let updatedMosbotEnv = false;
+    let updatedClawboardEnv = false;
     let createdApiKeyId = null;
     let rotatedFromKeyIds = [];
-    const mosbotEnvPath = `${workspaceRoot}/mosbot.env`;
+    const clawboardEnvPath = `${workspaceRoot}/clawboard.env`;
 
     try {
       await writeAgentToolkit(workspaceRoot);
@@ -3129,19 +3129,19 @@ router.post(
         createdApiKeyId = apiKeyResult.keyId || null;
         try {
           await upsertWorkspaceFile(
-            mosbotEnvPath,
-            buildAgentMosbotEnv({ req, agentId: agentData.id, apiKey: apiKeyResult.apiKey }),
+            clawboardEnvPath,
+            buildAgentClawboardEnv({ req, agentId: agentData.id, apiKey: apiKeyResult.apiKey }),
           );
-          updatedMosbotEnv = true;
+          updatedClawboardEnv = true;
         } catch (envWriteError) {
           await cleanupProvisionedApiKeyArtifacts({
             createdApiKeyId,
             workspaceRoot,
-            envWasWritten: updatedMosbotEnv,
+            envWasWritten: updatedClawboardEnv,
             agentId: agentData.id,
             flow: 're-bootstrap',
           });
-          updatedMosbotEnv = false;
+          updatedClawboardEnv = false;
 
           return res.status(500).json({
             error: {
@@ -3154,7 +3154,7 @@ router.post(
       } else {
         let envExists = false;
         try {
-          envExists = await workspaceFileExists(mosbotEnvPath);
+          envExists = await workspaceFileExists(clawboardEnvPath);
         } catch (envCheckError) {
           return res.status(500).json({
             error: {
@@ -3166,7 +3166,7 @@ router.post(
         }
 
         if (!envExists) {
-          setupWarnings.push('mosbot.env missing; rotated active API key to restore credentials');
+          setupWarnings.push('clawboard.env missing; rotated active API key to restore credentials');
           const rotatedApiKeyResult = await rotateSingleAgentApiKey({
             agentId: agentData.id,
             createdByUserId: req.user.id,
@@ -3185,23 +3185,23 @@ router.post(
             : [];
           try {
             await upsertWorkspaceFile(
-              mosbotEnvPath,
-              buildAgentMosbotEnv({
+              clawboardEnvPath,
+              buildAgentClawboardEnv({
                 req,
                 agentId: agentData.id,
                 apiKey: rotatedApiKeyResult.apiKey,
               }),
             );
-            updatedMosbotEnv = true;
+            updatedClawboardEnv = true;
           } catch (envWriteError) {
             await cleanupProvisionedApiKeyArtifacts({
               createdApiKeyId,
               workspaceRoot,
-              envWasWritten: updatedMosbotEnv,
+              envWasWritten: updatedClawboardEnv,
               agentId: agentData.id,
               flow: 're-bootstrap',
             });
-            updatedMosbotEnv = false;
+            updatedClawboardEnv = false;
             return res.status(500).json({
               error: {
                 message: `workspace re-bootstrap failed: ${envWriteError.message}`,
@@ -3251,11 +3251,11 @@ router.post(
       await cleanupProvisionedApiKeyArtifacts({
         createdApiKeyId,
         workspaceRoot,
-        envWasWritten: updatedMosbotEnv,
+        envWasWritten: updatedClawboardEnv,
         agentId: agentData.id,
         flow: 're-bootstrap',
       });
-      updatedMosbotEnv = false;
+      updatedClawboardEnv = false;
       return res.status(500).json({
         error: {
           message: `workspace re-bootstrap failed: ${workspaceError.message}`,
@@ -3315,7 +3315,7 @@ router.post(
       `${workspaceRoot}/tools/*`,
       `${workspaceRoot}/TOOLS.md`,
       `${workspaceRoot}/BOOTSTRAP.md`,
-      ...(updatedMosbotEnv ? [`${workspaceRoot}/mosbot.env`] : []),
+      ...(updatedClawboardEnv ? [`${workspaceRoot}/clawboard.env`] : []),
     ];
 
     recordActivityLogEventSafe({

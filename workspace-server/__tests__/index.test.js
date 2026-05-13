@@ -154,7 +154,7 @@ describe("src/index.js — direct require (coverage)", () => {
     expect(() => require("../src/index")).not.toThrow();
 
     expect(logSpy).toHaveBeenCalledWith(
-      expect.stringMatching(/MosBot Workspace Service running on port/),
+      expect.stringMatching(/Clawboard Workspace Service running on port/),
     );
     expect(logSpy).toHaveBeenCalledWith(expect.stringMatching(/Config root:/));
     expect(logSpy).toHaveBeenCalledWith(expect.stringMatching(/Main workspace dir:/));

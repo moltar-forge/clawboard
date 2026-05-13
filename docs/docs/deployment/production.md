@@ -7,7 +7,7 @@ sidebar_position: 3
 
 # Production Checklist
 
-Before exposing MosBot OS to the internet or using it with real data, complete this checklist.
+Before exposing Clawboard to the internet or using it with real data, complete this checklist.
 
 ## Security
 
@@ -33,7 +33,7 @@ Before exposing MosBot OS to the internet or using it with real data, complete t
 
 - [ ] The database is **not publicly accessible** — only accessible from the API
 
-- [ ] OpenClaw services are **not publicly accessible** — only accessible from MosBot API
+- [ ] OpenClaw services are **not publicly accessible** — only accessible from Clawboard API
 
 ## Authentication
 
@@ -49,7 +49,7 @@ Before exposing MosBot OS to the internet or using it with real data, complete t
 
   ```bash
   # Manual backup
-  docker compose exec db pg_dump -U mosbot mosbot > backup-$(date +%Y%m%d).sql
+  docker compose exec db pg_dump -U clawboard clawboard > backup-$(date +%Y%m%d).sql
   ```
 
 - [ ] Backup restoration has been tested
@@ -92,11 +92,11 @@ Before exposing MosBot OS to the internet or using it with real data, complete t
 
 ```bash
 # API health check
-curl https://api-mosbot.example.com/health
+curl https://api-clawboard.example.com/health
 # → {"status":"ok","timestamp":"..."}
 
 # Login test
-curl -X POST https://api-mosbot.example.com/api/v1/auth/login \
+curl -X POST https://api-clawboard.example.com/api/v1/auth/login \
   -H "Content-Type: application/json" \
   -d '{"email":"admin@example.com","password":"your-password"}'
 # → {"token":"...","user":{...}}

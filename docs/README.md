@@ -1,6 +1,6 @@
 # docs
 
-Canonical MosBot documentation site (Docusaurus).
+Canonical Clawboard documentation site (Docusaurus).
 
 ## Commands
 

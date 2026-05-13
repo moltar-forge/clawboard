@@ -71,7 +71,7 @@ How the output should be structured.
 - Edge cases to handle
 ```
 
-The `name` and `description` frontmatter fields are used for display in the MosBot Dashboard. The
+The `name` and `description` frontmatter fields are used for display in the Clawboard Dashboard. The
 `description` field is also crucial for natural language skill matching — include trigger keywords
 and phrases that users might use when requesting this skill. The body is the instruction set the
 agent follows when the skill is invoked.

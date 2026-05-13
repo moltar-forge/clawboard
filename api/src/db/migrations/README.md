@@ -73,7 +73,7 @@ To reset the database with the new consolidated schema:
 ```bash
 # Drop and recreate the database
 docker-compose down
-docker volume rm mosbot-api_postgres-data  # or your volume name
+docker volume rm clawboard-api_postgres-data  # or your volume name
 docker-compose up -d
 
 # Migrations will run automatically on startup
@@ -83,12 +83,12 @@ Or manually:
 
 ```bash
 # Connect to postgres
-docker exec -it mosbot-postgres psql -U mosbot -d mosbot
+docker exec -it clawboard-postgres psql -U clawboard -d clawboard
 
 # Drop all tables
 DROP SCHEMA public CASCADE;
 CREATE SCHEMA public;
-GRANT ALL ON SCHEMA public TO mosbot;
+GRANT ALL ON SCHEMA public TO clawboard;
 GRANT ALL ON SCHEMA public TO public;
 
 # Exit and restart API to run migrations

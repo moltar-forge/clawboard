@@ -1,6 +1,6 @@
 # workspace-server
 
-Workspace sidecar service used by MosBot/OpenClaw integrations.
+Workspace sidecar service used by Clawboard/OpenClaw integrations.
 
 ## Commands
 

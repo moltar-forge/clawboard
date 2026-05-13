@@ -7,16 +7,16 @@ sidebar_position: 3
 
 # Secrets Management
 
-MosBot OS handles several types of secrets. This guide covers how to manage them safely.
+Clawboard handles several types of secrets. This guide covers how to manage them safely.
 
-## MosBot API secrets
+## Clawboard API secrets
 
 ### Environment variables
 
-All MosBot API secrets are provided via environment variables in `.env`. Never commit `.env` to
+All Clawboard API secrets are provided via environment variables in `.env`. Never commit `.env` to
 version control.
 
-The `.gitignore` in `mosbot-api` excludes `.env` by default. Verify this is the case before
+The `.gitignore` in `clawboard-api` excludes `.env` by default. Verify this is the case before
 committing.
 
 ### Critical secrets
@@ -69,8 +69,8 @@ In Kubernetes, store all secrets in `Secret` resources:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: mosbot-secrets
-  namespace: mosbot
+  name: clawboard-secrets
+  namespace: clawboard
 type: Opaque
 stringData:
   JWT_SECRET: 'your-jwt-secret'
@@ -85,7 +85,7 @@ env:
   - name: JWT_SECRET
     valueFrom:
       secretKeyRef:
-        name: mosbot-secrets
+        name: clawboard-secrets
         key: JWT_SECRET
 ```
 
@@ -96,7 +96,7 @@ Never put secret values directly in deployment YAML files that are committed to 
 `VITE_*` environment variables in the dashboard are **embedded into the built JavaScript bundle**
 and are therefore public. Never put secrets in dashboard environment variables.
 
-The only dashboard environment variable is `VITE_API_URL` — the URL of the MosBot API. This is not a
+The only dashboard environment variable is `VITE_API_URL` — the URL of the Clawboard API. This is not a
 secret.
 
 ## OpenClaw workspace tokens

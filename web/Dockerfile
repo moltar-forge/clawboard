@@ -1,4 +1,4 @@
-# MosBot Dashboard — multi-stage build
+# Clawboard Dashboard — multi-stage build
 FROM --platform=$BUILDPLATFORM node:25-alpine3.22 AS base
 
 # Install security updates and dumb-init for proper signal handling
@@ -22,7 +22,7 @@ FROM base AS development
 
 # Accept build-time env vars (injected by docker build --build-arg or compose args:)
 ARG VITE_API_URL=http://localhost:3000/api/v1
-ARG VITE_APP_NAME=MosBot
+ARG VITE_APP_NAME=Clawboard
 
 ENV VITE_API_URL=$VITE_API_URL
 ENV VITE_APP_NAME=$VITE_APP_NAME
@@ -62,7 +62,7 @@ WORKDIR /app
 
 # Accept build-time env vars (injected by docker build --build-arg or compose args:)
 ARG VITE_API_URL=http://localhost:3000/api/v1
-ARG VITE_APP_NAME=MosBot
+ARG VITE_APP_NAME=Clawboard
 
 ENV VITE_API_URL=$VITE_API_URL
 ENV VITE_APP_NAME=$VITE_APP_NAME

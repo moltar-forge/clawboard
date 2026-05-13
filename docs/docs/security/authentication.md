@@ -7,13 +7,13 @@ sidebar_position: 1
 
 # Authentication
 
-MosBot OS uses JWT (JSON Web Token) based authentication. Users log in with email and password and
+Clawboard uses JWT (JSON Web Token) based authentication. Users log in with email and password and
 receive a token that's used for all subsequent API requests.
 
 ## How it works
 
 ```
-Dashboard                MosBot API              PostgreSQL
+Dashboard                Clawboard API              PostgreSQL
    │                         │                       │
    │  POST /auth/login        │                       │
    │  {email, password}  ──► │                       │
@@ -30,7 +30,7 @@ Dashboard                MosBot API              PostgreSQL
 ```
 
 1. The user submits their email and password
-2. MosBot API looks up the user in PostgreSQL
+2. Clawboard API looks up the user in PostgreSQL
 3. The password is verified using bcrypt
 4. A JWT is signed with `JWT_SECRET` and returned
 5. The dashboard stores the token and sends it as `Authorization: Bearer <token>` on every request
@@ -62,13 +62,13 @@ Minimum password requirements:
 
 ## Session management
 
-MosBot OS uses stateless JWT authentication — there are no server-side sessions. To invalidate a
+Clawboard uses stateless JWT authentication — there are no server-side sessions. To invalidate a
 token before it expires, you must change `JWT_SECRET` (which invalidates all tokens) or wait for the
 token to expire naturally.
 
 ## First-run bootstrap
 
-On first startup, if `BOOTSTRAP_OWNER_EMAIL` and `BOOTSTRAP_OWNER_PASSWORD` are set, MosBot API
+On first startup, if `BOOTSTRAP_OWNER_EMAIL` and `BOOTSTRAP_OWNER_PASSWORD` are set, Clawboard API
 creates an initial owner account. Remove `BOOTSTRAP_OWNER_PASSWORD` from `.env` after your first
 login.
 

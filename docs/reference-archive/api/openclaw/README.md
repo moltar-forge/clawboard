@@ -1,6 +1,6 @@
 # OpenClaw integration docs
 
-This folder contains canonical documentation for Mosbot’s OpenClaw integrations.
+This folder contains canonical documentation for Clawboard’s OpenClaw integrations.
 
 ## Workspace integration
 

@@ -22,13 +22,13 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - image: mosbot-api
+          - image: clawboard-api
             context: ./api
             target: production
-          - image: mosbot-dashboard
+          - image: clawboard-dashboard
             context: ./web
             target: production
-          - image: mosbot-workspace-service
+          - image: clawboard-workspace-service
             context: ./workspace-server
             target: production
     steps:

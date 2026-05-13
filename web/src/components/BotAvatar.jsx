@@ -193,7 +193,7 @@ export default function BotAvatar({ enableEyeTracking = false, compact = false }
             animation: heartbeat-offline 4s ease-in-out infinite;
           }
         `}</style>
-        <div ref={avatarRef} className="relative w-10 h-10" title={`MosBot · ${activityStatus}`}>
+        <div ref={avatarRef} className="relative w-10 h-10" title={`Clawboard · ${activityStatus}`}>
           {/* Circular border with status color and heartbeat */}
           <div
             className={classNames(
@@ -923,7 +923,7 @@ export default function BotAvatar({ enableEyeTracking = false, compact = false }
 
         {/* Bot Name + Status */}
         <h2 className="text-base font-bold text-dark-100 inline-flex items-center gap-2">
-          <span>MosBot</span>
+          <span>Clawboard</span>
           <span className="text-dark-500 font-normal" aria-hidden="true">
             ·
           </span>

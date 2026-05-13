@@ -6,12 +6,12 @@ sidebar_position: 4
 ---
 
 The **Workspaces** feature lets you browse, view, and edit the files in your agents' workspaces
-directly from the MosBot Dashboard.
+directly from the Clawboard Dashboard.
 
 :::info Requires OpenClaw Workspace Service Workspace browsing requires the OpenClaw Workspace
 Service to be configured. See [OpenClaw Integration](../openclaw/overview). :::
 
-![Workspaces](/img/screenshots/mosbot-workspaces.png)
+![Workspaces](/img/screenshots/clawboard-workspaces.png)
 
 ## What workspaces contain
 
@@ -20,12 +20,12 @@ Each agent has its own workspace directory in the OpenClaw filesystem. A typical
 ```text
 workspace-coo/
 ├── tools/
-│   ├── mosbot-auth      ← auth/token helper
-│   ├── mosbot-task      ← task board helper
+│   ├── clawboard-auth      ← auth/token helper
+│   ├── clawboard-task      ← task board helper
 │   └── INTEGRATION.md   ← usage guide
 ├── TOOLS.md             ← workspace-local tool notes
 ├── BOOTSTRAP.md         ← first-run setup checklist (agent removes after completion)
-├── mosbot.env           ← MosBot API credentials (when key provisioning succeeds)
+├── clawboard.env           ← Clawboard API credentials (when key provisioning succeeds)
 ├── memory/
 │   ├── 2026-03-01.md    ← daily memory files
 │   └── 2026-02-28.md
@@ -59,7 +59,7 @@ workspace/
     └── <project-slug> -> ../../projects/<project-slug>
 ```
 
-The `tools/*`, `TOOLS.md`, and `BOOTSTRAP.md` files are seeded by MosBot during agent create and
+The `tools/*`, `TOOLS.md`, and `BOOTSTRAP.md` files are seeded by Clawboard during agent create and
 re-bootstrap flows.
 
 ## Browsing files

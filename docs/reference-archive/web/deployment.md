@@ -1,6 +1,6 @@
 # Deployment
 
-MosBot Dashboard is a static site (Vite build output in `dist/`). It can be deployed anywhere that serves static files.
+Clawboard Dashboard is a static site (Vite build output in `dist/`). It can be deployed anywhere that serves static files.
 
 ## Docker (recommended)
 
@@ -9,15 +9,15 @@ MosBot Dashboard is a static site (Vite build output in `dist/`). It can be depl
 ```bash
 docker build \
   --build-arg VITE_API_URL=https://api.example.com/api/v1 \
-  -t mosbot-dashboard:latest .
+  -t clawboard-dashboard:latest .
 
-docker run -p 80:80 mosbot-dashboard:latest
+docker run -p 80:80 clawboard-dashboard:latest
 ```
 
 ### Pre-built images (GHCR)
 
 ```bash
-docker pull ghcr.io/bymosbot/mosbot-dashboard:latest
+docker pull ghcr.io/byclawboard/clawboard-dashboard:latest
 ```
 
 Available tags: `latest`, `main`, `sha-<short>`, `v1.2.3`.
@@ -27,7 +27,7 @@ Available tags: `latest`, `main`, `sha-<short>`, `v1.2.3`.
 The easiest way to run everything together:
 
 ```bash
-cd mosbot-api
+cd clawboard-api
 make up
 # Dashboard available at http://localhost:5173
 ```

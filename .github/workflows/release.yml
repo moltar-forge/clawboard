@@ -12,7 +12,7 @@ jobs:
     if: startsWith(github.ref_name, 'api-v')
     uses: ./.github/workflows/release-docker.yml
     with:
-      image_name: mosbot-api
+      image_name: clawboard-api
       context: ./api
       target: production
       tag_prefix: 'api-v'
@@ -24,7 +24,7 @@ jobs:
     if: startsWith(github.ref_name, 'web-v')
     uses: ./.github/workflows/release-docker.yml
     with:
-      image_name: mosbot-dashboard
+      image_name: clawboard-dashboard
       context: ./web
       target: production
       tag_prefix: 'web-v'
@@ -36,7 +36,7 @@ jobs:
     if: startsWith(github.ref_name, 'workspace-server-v')
     uses: ./.github/workflows/release-docker.yml
     with:
-      image_name: mosbot-workspace-service
+      image_name: clawboard-workspace-service
       context: ./workspace-server
       target: production
       tag_prefix: 'workspace-server-v'

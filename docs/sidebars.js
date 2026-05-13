@@ -35,7 +35,7 @@ const sidebars = {
       items: [
         'configuration/openclaw-json',
         'configuration/sample-config',
-        'configuration/mosbot-required-config',
+        'configuration/clawboard-required-config',
         'configuration/best-practices',
       ],
     },

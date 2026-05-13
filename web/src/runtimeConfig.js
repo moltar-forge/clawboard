@@ -16,6 +16,6 @@ const isApiUrlConfigured = Boolean(runtimeConfig.VITE_API_URL || import.meta.env
 
 export const config = {
   apiUrl: get('VITE_API_URL', 'http://localhost:3000/api/v1'),
-  appName: get('VITE_APP_NAME', 'MosBot'),
+  appName: get('VITE_APP_NAME', 'Clawboard'),
   isApiUrlConfigured,
 };

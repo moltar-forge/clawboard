@@ -6,14 +6,14 @@ sidebar_position: 6
 ---
 
 The **Scheduler** lets you view and manage all cron jobs configured in OpenClaw from within the
-MosBot Dashboard. Instead of editing JSON files directly, you can enable, disable, and inspect
+Clawboard Dashboard. Instead of editing JSON files directly, you can enable, disable, and inspect
 scheduled tasks through a dedicated UI.
 
 :::info Requires OpenClaw The Scheduler is powered by OpenClaw's cron engine. You must have OpenClaw
 configured and connected before scheduled tasks will appear. See
 [OpenClaw Integration](../openclaw/overview). :::
 
-![Scheduler](/img/screenshots/mosbot-ascheduler.png)
+![Scheduler](/img/screenshots/clawboard-ascheduler.png)
 
 ## What is a scheduled job?
 
@@ -49,7 +49,7 @@ useful when you want to temporarily suspend a recurring task without losing its 
 
 ## Common scheduled jobs
 
-Most MosBot OS deployments configure at least the following scheduled tasks:
+Most Clawboard deployments configure at least the following scheduled tasks:
 
 | Job             | Default schedule | Agent | Purpose                           |
 | --------------- | ---------------- | ----- | --------------------------------- |
@@ -93,7 +93,7 @@ Check that `OPENCLAW_BASE_URL` is set in your `.env` and that `/cron/jobs.json` 
 OpenClaw configuration.
 
 **A job is enabled but not running** Verify the cron expression is valid and the timezone is
-correct. Also confirm that the target agent has an active account in MosBot (see **Settings →
+correct. Also confirm that the target agent has an active account in Clawboard (see **Settings →
 Users**).
 
 **Jobs show stale "last run" times** The dashboard polls OpenClaw for job status. If the data looks

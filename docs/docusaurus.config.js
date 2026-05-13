@@ -4,15 +4,15 @@ const { themes: prismThemes } = require('prism-react-renderer');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'MosBot OS',
+  title: 'Clawboard',
   tagline: 'A self-hosted operating system for AI agent work',
   favicon: 'img/favicon.ico',
 
   url: 'https://bymosdev.github.io',
-  baseUrl: '/mosbot/',
+  baseUrl: '/clawboard/',
 
-  organizationName: 'ByMosDev',
-  projectName: 'mosbot',
+  organizationName: 'moltar-forge',
+  projectName: 'clawboard',
   trailingSlash: false,
 
   onBrokenLinks: 'throw',
@@ -36,7 +36,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/',
-          editUrl: 'https://github.com/ByMosDev/mosbot-os/tree/main/docs/',
+          editUrl: 'https://github.com/moltar-forge/clawboard/tree/main/docs/',
         },
         blog: false,
         theme: {
@@ -55,7 +55,7 @@ const config = {
         rel: 'icon',
         type: 'image/png',
         sizes: '16x16',
-        href: '/mosbot/img/favicon-16x16.png',
+        href: '/clawboard/img/favicon-16x16.png',
       },
     },
     {
@@ -64,7 +64,7 @@ const config = {
         rel: 'icon',
         type: 'image/png',
         sizes: '32x32',
-        href: '/mosbot/img/favicon-32x32.png',
+        href: '/clawboard/img/favicon-32x32.png',
       },
     },
     {
@@ -72,7 +72,7 @@ const config = {
       attributes: {
         rel: 'apple-touch-icon',
         sizes: '180x180',
-        href: '/mosbot/img/apple-touch-icon.png',
+        href: '/clawboard/img/apple-touch-icon.png',
       },
     },
   ],
@@ -80,16 +80,16 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: 'img/mosbot-social-card.png',
+      image: 'img/clawboard-social-card.png',
       colorMode: {
         defaultMode: 'dark',
         disableSwitch: false,
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: 'MosBot OS',
+        title: 'Clawboard',
         logo: {
-          alt: 'MosBot OS Logo',
+          alt: 'Clawboard Logo',
           src: 'img/logo.png',
         },
         items: [
@@ -112,17 +112,17 @@ const config = {
             label: 'Known Issues',
           },
           {
-            href: 'https://github.com/ByMosDev/mosbot-os/tree/main/api',
+            href: 'https://github.com/moltar-forge/clawboard/tree/main/api',
             label: 'API',
             position: 'right',
           },
           {
-            href: 'https://github.com/ByMosDev/mosbot-os/tree/main/web',
+            href: 'https://github.com/moltar-forge/clawboard/tree/main/web',
             label: 'Web',
             position: 'right',
           },
           {
-            href: 'https://github.com/ByMosDev/mosbot-os',
+            href: 'https://github.com/moltar-forge/clawboard',
             label: 'GitHub',
             position: 'right',
           },
@@ -145,20 +145,20 @@ const config = {
             items: [
               {
                 label: 'api',
-                href: 'https://github.com/ByMosDev/mosbot-os/tree/main/api',
+                href: 'https://github.com/moltar-forge/clawboard/tree/main/api',
               },
               {
                 label: 'web',
-                href: 'https://github.com/ByMosDev/mosbot-os/tree/main/web',
+                href: 'https://github.com/moltar-forge/clawboard/tree/main/web',
               },
               {
                 label: 'workspace-server',
-                href: 'https://github.com/ByMosDev/mosbot-os/tree/main/workspace-server',
+                href: 'https://github.com/moltar-forge/clawboard/tree/main/workspace-server',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} MosBot OS. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Clawboard. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,

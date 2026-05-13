@@ -30,7 +30,7 @@ describe('runtimeConfig', () => {
     const { config } = await import('./runtimeConfig');
     // Empty strings are falsy, so defaults should apply
     expect(config.apiUrl).toBe('http://localhost:3000/api/v1');
-    expect(config.appName).toBe('MosBot');
+    expect(config.appName).toBe('Clawboard');
   });
 
   it('isApiUrlConfigured is false when no explicit URL is set', async () => {

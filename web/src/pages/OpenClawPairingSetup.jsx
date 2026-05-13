@@ -124,7 +124,7 @@ export default function OpenClawPairingSetup() {
           <div>
             <h1 className="text-xl font-semibold text-yellow-100">OpenClaw Pairing Required</h1>
             <p className="text-sm text-yellow-200 mt-2">
-              MosBot is locked until OpenClaw integration pairing is completed with required
+              Clawboard is locked until OpenClaw integration pairing is completed with required
               operator scopes.
             </p>
           </div>
@@ -200,7 +200,7 @@ export default function OpenClawPairingSetup() {
                 {step1State}
               </span>
             </div>
-            <p className="text-xs text-dark-400">Create MosBot device identity and open a pairing request.</p>
+            <p className="text-xs text-dark-400">Create Clawboard device identity and open a pairing request.</p>
             <button className="btn-primary w-full" onClick={handleStartPairing} disabled={shouldDisableStart}>
               {startButtonLabel}
             </button>
@@ -225,7 +225,7 @@ export default function OpenClawPairingSetup() {
                 {step3State}
               </span>
             </div>
-            <p className="text-xs text-dark-400">Validate required scopes and unlock MosBot UI.</p>
+            <p className="text-xs text-dark-400">Validate required scopes and unlock Clawboard UI.</p>
             <button className="btn-secondary w-full" onClick={handleFinalizePairing} disabled={finalizeDisabled}>
               {isFinalizing ? 'Finalizing…' : 'Finalize pairing'}
             </button>

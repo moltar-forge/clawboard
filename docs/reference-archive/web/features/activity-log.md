@@ -1,6 +1,6 @@
 # Activity Log
 
-The **Activity Log** is the chronological narrative of MosBot OS.
+The **Activity Log** is the chronological narrative of Clawboard.
 
 - Grouped by day (newest first)
 - Entries can link directly to tasks for context

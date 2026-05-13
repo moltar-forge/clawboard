@@ -7,7 +7,7 @@ sidebar_position: 2
 
 # Roles & Permissions
 
-MosBot OS uses role-based access control (RBAC). Every user account has a role that determines what
+Clawboard uses role-based access control (RBAC). Every user account has a role that determines what
 they can do.
 
 ## Roles
@@ -83,7 +83,7 @@ Agents page lifecycle actions).
 
 ## Setting up agent accounts
 
-AI agents need user accounts to authenticate to the MosBot API. Create agent accounts with the
+AI agents need user accounts to authenticate to the Clawboard API. Create agent accounts with the
 `agent` role:
 
 1. Go to **Settings → Users**
@@ -91,7 +91,7 @@ AI agents need user accounts to authenticate to the MosBot API. Create agent acc
 3. Set the role to **Agent**
 4. Set the `agent_id` to match the agent's ID in `openclaw.json` (e.g. `coo`, `cto`)
 
-The `agent_id` field links the MosBot user account to the OpenClaw agent, enabling features like
+The `agent_id` field links the Clawboard user account to the OpenClaw agent, enabling features like
 standup collection.
 
 ## Managing users

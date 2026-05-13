@@ -2,7 +2,7 @@
 
 ## Common checks
 
-### Workspace service is reachable (from Mosbot API runtime)
+### Workspace service is reachable (from Clawboard API runtime)
 
 If running locally with port-forward, start with:
 
@@ -10,19 +10,19 @@ If running locally with port-forward, start with:
 curl -v http://localhost:18780/health
 ```
 
-### Mosbot workspace status
+### Clawboard workspace status
 
 ```bash
-curl -H "Authorization: Bearer <MOSBOT_JWT>" \
+curl -H "Authorization: Bearer <CLAWBOARD_JWT>" \
   "http://localhost:3000/api/v1/openclaw/workspace/status"
 ```
 
 ## Typical failure modes
 
-- **503 from Mosbot API workspace endpoints**
-  - Mosbot is not configured with `OPENCLAW_WORKSPACE_URL`, or the service is down
+- **503 from Clawboard API workspace endpoints**
+  - Clawboard is not configured with `OPENCLAW_WORKSPACE_URL`, or the service is down
 - **401/403**
-  - Missing/invalid Mosbot JWT or insufficient role for content/mutation routes
+  - Missing/invalid Clawboard JWT or insufficient role for content/mutation routes
 - **404 file not found**
   - Wrong path (remember workspace paths are rooted at `/`)
 - **403 `PATH_NOT_ALLOWED` from workspace service**
@@ -30,7 +30,7 @@ curl -H "Authorization: Bearer <MOSBOT_JWT>" \
   - `path=/` is intentionally denied; use an explicit root such as `/workspace`, `/docs`, `/projects`, `/skills`, or `/workspace-<agent>`
 - **`docs` link not present under a workspace**
   - Reconciliation is system-triggered (startup + agent create/update)
-  - Mosbot API logs warnings for link conflicts but does not fail user requests
+  - Clawboard API logs warnings for link conflicts but does not fail user requests
 
 ## Kubernetes debugging snippets
 

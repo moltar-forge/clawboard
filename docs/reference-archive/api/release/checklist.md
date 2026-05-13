@@ -48,12 +48,12 @@ The `release.yml` GitHub Actions workflow will:
 
 | Tag | When created |
 | --- | ------------ |
-| `ghcr.io/bymosbot/mosbot-api:v1.2.3` | On tag push |
-| `ghcr.io/bymosbot/mosbot-api:latest` | On tag push |
-| `ghcr.io/bymosbot/mosbot-api:main` | On every merge to main |
-| `ghcr.io/bymosbot/mosbot-api:sha-abc1234` | On every merge to main |
+| `ghcr.io/byclawboard/clawboard-api:v1.2.3` | On tag push |
+| `ghcr.io/byclawboard/clawboard-api:latest` | On tag push |
+| `ghcr.io/byclawboard/clawboard-api:main` | On every merge to main |
+| `ghcr.io/byclawboard/clawboard-api:sha-abc1234` | On every merge to main |
 
-Same pattern applies for `mosbot-dashboard`.
+Same pattern applies for `clawboard-dashboard`.
 
 ## Post-release
 

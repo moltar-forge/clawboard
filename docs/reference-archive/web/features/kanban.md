@@ -1,6 +1,6 @@
 # Kanban
 
-The **Kanban Board** is the primary place to run work in MosBot OS.
+The **Kanban Board** is the primary place to run work in Clawboard.
 
 ## Status pipeline
 

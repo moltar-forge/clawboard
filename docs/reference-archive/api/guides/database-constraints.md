@@ -1,6 +1,6 @@
 # Database constraints
 
-This guide documents the database-level constraints that provide defense-in-depth for Mosbot.
+This guide documents the database-level constraints that provide defense-in-depth for Clawboard.
 
 ## Source of truth
 

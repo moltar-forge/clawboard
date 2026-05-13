@@ -1,23 +1,23 @@
-# MosBot Dashboard docs
+# Clawboard Dashboard docs
 
-These docs describe the **MosBot Dashboard** (the UI/control plane) and how it fits into **MosBot OS**.
+These docs describe the **Clawboard Dashboard** (the UI/control plane) and how it fits into **Clawboard**.
 
-- If you're a **human/operator**, start with: `mosbot-os/overview.md`
+- If you're a **human/operator**, start with: `clawboard/overview.md`
 - If you're a **developer**, start with: `getting-started/local-development.md`
 
-> **Looking for full MosBot OS docs?** Visit **[bymosbot.github.io/mosbot-docs](https://bymosbot.github.io/mosbot-docs/)** — the official documentation site covering setup, OpenClaw integration, skills, configuration, and deployment.
+> **Looking for full Clawboard docs?** Visit **[moltar-forge.github.io/clawboard-docs](https://moltar-forge.github.io/clawboard-docs/)** — the official documentation site covering setup, OpenClaw integration, skills, configuration, and deployment.
 
 ## What this docs folder is (and isn't)
 
 - This repo's `docs/` is **project documentation** for the dashboard (product, ops, integrations, runbooks).
-- It is **not** the same thing as the **MosBot OS "Docs" workspace** shown inside the dashboard UI (the `/docs` folder in OpenClaw config-root workspaces).
+- It is **not** the same thing as the **Clawboard "Docs" workspace** shown inside the dashboard UI (the `/docs` folder in OpenClaw config-root workspaces).
 - Engineering conventions for code changes live in `.cursor/rules/` (Cursor rules), not here.
 
 ## Index
 
-### MosBot OS
+### Clawboard
 
-- `mosbot-os/overview.md` — MosBot OS mental model + dashboard navigation map
+- `clawboard/overview.md` — Clawboard mental model + dashboard navigation map
 
 ### Getting started
 
@@ -42,7 +42,7 @@ These docs describe the **MosBot Dashboard** (the UI/control plane) and how it f
 
 ### Integrations
 
-- `integrations/mosbot-api.md` — how the dashboard talks to MosBot API
+- `integrations/clawboard-api.md` — how the dashboard talks to Clawboard API
 - `integrations/openclaw.md` — OpenClaw assumptions and health/status semantics
 
 ### Operations / deployment

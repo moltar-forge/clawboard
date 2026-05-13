@@ -1,29 +1,29 @@
 ---
 id: overview
-title: What is MosBot OS?
+title: What is Clawboard?
 sidebar_label: Overview
 sidebar_position: 1
 ---
 
-# What is MosBot OS?
+# What is Clawboard?
 
-**MosBot OS** is a self-hosted operating system for AI agent work. It gives you a human-operable
+**Clawboard** is a self-hosted operating system for AI agent work. It gives you a human-operable
 control plane on top of [OpenClaw](https://openclaw.dev) — the AI agent runtime — so you can manage
 tasks, monitor agents, browse workspaces, and orchestrate agent activity from a single interface.
 
 ## The three-layer model
 
-MosBot OS is composed of three layers that work together:
+Clawboard is composed of three layers that work together:
 
 ```
 ┌─────────────────────────────────────────────┐
-│         MosBot Dashboard (UI Layer)         │
+│         Clawboard Dashboard (UI Layer)         │
 │  React SPA — task management, agents page,  │
 │  workspace visualization, agent monitoring  │
 └─────────────────┬───────────────────────────┘
                   │ REST API (HTTP/JSON)
 ┌─────────────────▼───────────────────────────┐
-│        MosBot API (Backend Layer)           │
+│        Clawboard API (Backend Layer)           │
 │  Node.js/Express + PostgreSQL               │
 │  Transforms and serves OpenClaw data        │
 └─────────────────┬───────────────────────────┘
@@ -35,7 +35,7 @@ MosBot OS is composed of three layers that work together:
 └─────────────────────────────────────────────┘
 ```
 
-### MosBot Dashboard
+### Clawboard Dashboard
 
 The UI layer. A React single-page application that provides:
 
@@ -48,7 +48,7 @@ The UI layer. A React single-page application that provides:
 - **Scheduler** — schedule and monitor recurring agent tasks
 - **Users** — role-based access control
 
-### MosBot API
+### Clawboard API
 
 The backend and integration layer. A Node.js/Express service that:
 
@@ -69,14 +69,14 @@ The AI agent runtime. The source of truth for:
 
 :::tip OpenClaw is required for full functionality
 
-MosBot OS is designed to work with OpenClaw. While the API and Dashboard can start without it (task
+Clawboard is designed to work with OpenClaw. While the API and Dashboard can start without it (task
 management, users, and activity logs will work), the core value — agent monitoring, workspace
 browsing, agents page, and skills — requires OpenClaw. Install OpenClaw first for the complete
 experience. :::
 
-## What MosBot OS is for
+## What Clawboard is for
 
-MosBot OS is designed for people who run AI agents as part of their daily work — whether that's
+Clawboard is designed for people who run AI agents as part of their daily work — whether that's
 research, product work, software development, or business operations. It provides:
 
 - **Visibility**: see what your agents are doing, what they've done, and how much it costs

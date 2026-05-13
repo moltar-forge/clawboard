@@ -1,17 +1,17 @@
 # Architecture
 
-MosBot OS is a three-layer system:
+Clawboard is a three-layer system:
 
 ```text
 ┌─────────────────────────────────────────────┐
-│         MosBot Dashboard (UI Layer)         │
+│         Clawboard Dashboard (UI Layer)         │
 │  React SPA — task management, org chart,    │
 │  workspace visualization, agent monitoring  │
 └─────────────────┬───────────────────────────┘
                   │ REST API (HTTP/JSON)
                   │ Auth: JWT Bearer token
 ┌─────────────────▼───────────────────────────┐
-│        MosBot API (Backend Proxy)           │
+│        Clawboard API (Backend Proxy)           │
 │  Node.js/Express + PostgreSQL               │
 │  Transforms and serves OpenClaw data        │
 └─────────────────┬───────────────────────────┘
@@ -25,14 +25,14 @@ MosBot OS is a three-layer system:
 
 ## Components
 
-### MosBot Dashboard
+### Clawboard Dashboard
 
 - **Tech**: React 18, Vite, Tailwind CSS, Zustand, Axios
-- **Role**: UI layer only. Reads from and writes to MosBot API. Never talks to OpenClaw directly.
+- **Role**: UI layer only. Reads from and writes to Clawboard API. Never talks to OpenClaw directly.
 - **Auth**: JWT tokens stored in `localStorage`, sent as `Authorization: Bearer` header.
 - **Deployment**: Static site (Vite build output). Can be served by nginx, CDN, or any static host.
 
-### MosBot API
+### Clawboard API
 
 - **Tech**: Node.js 20, Express 4, PostgreSQL 15, bcrypt, jsonwebtoken
 - **Role**: Transformation and persistence layer. Owns user accounts, tasks, activity logs, and standups. Proxies OpenClaw data.
@@ -42,10 +42,10 @@ MosBot OS is a three-layer system:
 ### OpenClaw
 
 - **Role**: AI agent runtime. Source of truth for agent definitions, workspaces, sessions, and cron jobs.
-- **Integration**: MosBot API connects to two OpenClaw services:
+- **Integration**: Clawboard API connects to two OpenClaw services:
   - **Workspace service** (HTTP REST) — reads/writes `openclaw.json` and workspace files
   - **Gateway** (HTTP + WebSocket RPC) — queries live sessions and invokes tools
-- **Optional**: MosBot API degrades gracefully when OpenClaw is not configured. Task management and user management work without it.
+- **Optional**: Clawboard API degrades gracefully when OpenClaw is not configured. Task management and user management work without it.
 
 ## Database
 
@@ -65,7 +65,7 @@ Key tables:
 ## Authentication flow
 
 ```text
-Dashboard                MosBot API              PostgreSQL
+Dashboard                Clawboard API              PostgreSQL
    │                         │                       │
    │  POST /auth/login        │                       │
    │  {email, password}  ──► │                       │

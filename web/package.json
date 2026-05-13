@@ -1,7 +1,7 @@
 {
-  "name": "mosbot-dashboard",
+  "name": "clawboard-dashboard",
   "version": "0.1.4",
-  "description": "MosBot task management dashboard - self-hosted frontend",
+  "description": "Clawboard task management dashboard - self-hosted frontend",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -4,7 +4,7 @@
 
 - Node.js **20.x**
 - npm
-- A running MosBot API instance (local or remote)
+- A running Clawboard API instance (local or remote)
 
 ## Install
 

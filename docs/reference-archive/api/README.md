@@ -1,16 +1,16 @@
-# MosBot OS Documentation
+# Clawboard Documentation
 
-This is the **canonical documentation home for MosBot OS** — the self-hosted operating system for AI agent work.
+This is the **canonical documentation home for Clawboard** — the self-hosted operating system for AI agent work.
 
-MosBot OS is composed of two repos. Docs live alongside the code they describe, but this file is the single entry point for the full system.
+Clawboard is composed of two repos. Docs live alongside the code they describe, but this file is the single entry point for the full system.
 
-> **User-facing documentation** is now at **[bymosbot.github.io/mosbot-docs](https://bymosbot.github.io/mosbot-docs/)**. This file indexes developer-focused docs that live alongside the code.
+> **User-facing documentation** is now at **[moltar-forge.github.io/clawboard-docs](https://moltar-forge.github.io/clawboard-docs/)**. This file indexes developer-focused docs that live alongside the code.
 
 ---
 
-## MosBot OS — start here
+## Clawboard — start here
 
-- **What is MosBot OS**: `docs/mosbot-os.md`
+- **What is Clawboard**: `docs/clawboard.md`
 - **First run (full stack)**: `docs/getting-started/first-run.md`
 - **Configuration reference**: `docs/configuration.md`
 - **System architecture**: `docs/architecture.md`
@@ -18,7 +18,7 @@ MosBot OS is composed of two repos. Docs live alongside the code they describe, 
 
 ---
 
-## MosBot API docs
+## Clawboard API docs
 
 This repo. Covers the backend service, database, OpenClaw integration, and deployment.
 
@@ -59,11 +59,11 @@ This repo. Covers the backend service, database, OpenClaw integration, and deplo
 
 ---
 
-## MosBot Dashboard docs
+## Clawboard Dashboard docs
 
 The dashboard is a separate repo. Its docs cover the UI, features, and frontend deployment.
 
-See: [`docs/dashboard.md`](dashboard.md) for the full index, or go directly to the [mosbot-dashboard repository](https://github.com/ByMosDev/mosbot-os/tree/main/web).
+See: [`docs/dashboard.md`](dashboard.md) for the full index, or go directly to the [clawboard-dashboard repository](https://github.com/moltar-forge/clawboard/tree/main/web).
 
 ---
 

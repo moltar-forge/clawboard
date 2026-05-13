@@ -7,12 +7,12 @@ sidebar_position: 6
 
 # Local Development with OpenClaw
 
-This guide covers running MosBot API locally while connecting to OpenClaw services deployed in
+This guide covers running Clawboard API locally while connecting to OpenClaw services deployed in
 Kubernetes, using `kubectl port-forward`.
 
 ## When you need this
 
-- You're developing MosBot locally but OpenClaw runs in a Kubernetes cluster
+- You're developing Clawboard locally but OpenClaw runs in a Kubernetes cluster
 - You want to test agent monitoring, workspace browsing, or skills management
 - You need to verify OpenClaw integration without a full local OpenClaw setup
 
@@ -20,7 +20,7 @@ Kubernetes, using `kubectl port-forward`.
 
 - OpenClaw deployed in a Kubernetes cluster
 - `kubectl` configured to access the cluster (`kubectl get pods` works)
-- MosBot API running locally (via `npm run dev` or Docker)
+- Clawboard API running locally (via `npm run dev` or Docker)
 
 ## Step 1: Get the tokens
 
@@ -53,7 +53,7 @@ Keep both terminals open while developing. If a port-forward drops, restart it.
 
 ## Step 3: Configure `.env`
 
-### If running MosBot API natively (on your host)
+### If running Clawboard API natively (on your host)
 
 ```bash
 OPENCLAW_WORKSPACE_URL=http://localhost:18780
@@ -62,7 +62,7 @@ OPENCLAW_GATEWAY_URL=http://localhost:18789
 OPENCLAW_GATEWAY_TOKEN=<gateway-token-from-step-1>
 ```
 
-### If running MosBot API in Docker
+### If running Clawboard API in Docker
 
 Use `host.docker.internal` to reach the port-forwarded services from inside the container:
 
@@ -87,13 +87,13 @@ docker compose restart api
 
 Gateway features now require a one-time dashboard pairing step:
 
-1. Sign in to MosBot as an `owner` or `admin`
+1. Sign in to Clawboard as an `owner` or `admin`
 2. Open `Settings -> OpenClaw Pairing`
 3. Click `Start pairing`
-4. Approve the pending MosBot device in OpenClaw
+4. Approve the pending Clawboard device in OpenClaw
 5. Click `Finalize pairing`
 
-You only need to do this once per MosBot deployment unless you intentionally reset the integration
+You only need to do this once per Clawboard deployment unless you intentionally reset the integration
 state.
 
 ## Step 6: Verify
@@ -112,7 +112,7 @@ You should see a JSON array of agents from your `openclaw.json`.
 curl -H "Authorization: Bearer <workspace-token>" http://localhost:18780/status
 ```
 
-### Check workspace via MosBot API
+### Check workspace via Clawboard API
 
 ```bash
 TOKEN=$(curl -s -X POST http://localhost:3000/api/v1/auth/login \
@@ -140,7 +140,7 @@ The status should become `ready` after approval and finalize.
 | 503 errors                         | Port-forward stopped or service restarted                | Restart the port-forward in the terminal                            |
 | Connection refused                 | Wrong namespace/service name or port-forward not running | Check service names: `kubectl get svc -n <namespace>`               |
 | 401 Unauthorized                   | Token mismatch                                           | Re-fetch the token from Kubernetes secrets                          |
-| Pairing stuck at `pending_pairing` | Device request not yet approved in OpenClaw              | Approve the pending MosBot device, then finalize pairing            |
+| Pairing stuck at `pending_pairing` | Device request not yet approved in OpenClaw              | Approve the pending Clawboard device, then finalize pairing            |
 | Only seeing default agent          | API can't reach workspace service                        | Verify `OPENCLAW_WORKSPACE_URL` and that the port-forward is active |
 
 ## Tips

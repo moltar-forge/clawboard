@@ -4,7 +4,7 @@ title: Known Issues
 sidebar_label: Known Issues
 ---
 
-This page lists currently known issues and limitations in MosBot OS. We are actively working on
+This page lists currently known issues and limitations in Clawboard. We are actively working on
 resolving these.
 
 ## Agents Page

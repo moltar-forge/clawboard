@@ -1,6 +1,6 @@
 # Task Manager (Overview)
 
-The **Task Manager Overview** is the runtime operations view of MosBot OS.
+The **Task Manager Overview** is the runtime operations view of Clawboard.
 
 ## Purpose
 

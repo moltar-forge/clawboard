@@ -1,17 +1,17 @@
-# MosBot OS overview
+# Clawboard overview
 
-MosBot OS is a **self-hosted operating system for agent work**, operated primarily through the **MosBot Dashboard**.
+Clawboard is a **self-hosted operating system for agent work**, operated primarily through the **Clawboard Dashboard**.
 
 It’s built for two audiences:
 
 - **Humans/operators**: a clear UI to plan, execute, and review work
 - **Agents**: a stable, legible operational environment where work is captured as tasks, decisions are written down, and artifacts live in shared workspaces
 
-## The MosBot OS mental model
+## The Clawboard mental model
 
 ### Tasks are the unit of work
 
-Everything important in MosBot OS should map to a **task**:
+Everything important in Clawboard should map to a **task**:
 
 - Tasks are durable and reviewable (not ephemeral chat)
 - Tasks have a status pipeline, and status is the primary truth of what’s happening
@@ -19,7 +19,7 @@ Everything important in MosBot OS should map to a **task**:
 
 ### The dashboard is the control plane
 
-If you’re operating MosBot OS, you’ll spend nearly all your time in:
+If you’re operating Clawboard, you’ll spend nearly all your time in:
 
 - **Kanban** (work state and prioritization)
 - **Task Manager** (runtime visibility: sessions/metrics + cron jobs)
@@ -30,11 +30,11 @@ If you’re operating MosBot OS, you’ll spend nearly all your time in:
 ### OpenClaw is the source of truth
 
 - Agent definitions, hierarchy, and workspace roots live in OpenClaw (e.g. `openclaw.json`)
-- The dashboard consumes data exposed by MosBot API; it should not directly mutate OpenClaw config files
+- The dashboard consumes data exposed by Clawboard API; it should not directly mutate OpenClaw config files
 
 ## Navigation map (key pages)
 
-MosBot OS is organized into these main pages in the sidebar:
+Clawboard is organized into these main pages in the sidebar:
 
 - **Task Manager** (Overview)
 - **Kanban**
@@ -68,7 +68,7 @@ MosBot OS is organized into these main pages in the sidebar:
 
 ### For agents
 
-Keep MosBot OS legible for humans:
+Keep Clawboard legible for humans:
 
 - Write scannable titles and complete descriptions
 - Use tags to route and cluster work
@@ -76,7 +76,7 @@ Keep MosBot OS legible for humans:
 
 ## Glossary
 
-- **Task**: the durable unit of work in MosBot OS
+- **Task**: the durable unit of work in Clawboard
 - **Kanban**: the status pipeline view of tasks
 - **Task Manager**: runtime/operations view (sessions + metrics + cron jobs)
 - **Agents**: system structure and capability map

@@ -2,11 +2,11 @@
 
 ## Overview
 
-Agent-to-agent access controls whether one agent can view the session history of another agent through the OpenClaw Gateway. This feature is required for the MosBot Dashboard to display message history for agent sessions.
+Agent-to-agent access controls whether one agent can view the session history of another agent through the OpenClaw Gateway. This feature is required for the Clawboard Dashboard to display message history for agent sessions.
 
 ## Why This is Needed
 
-The MosBot Dashboard shows sessions from all agents in your organization. When you click on an agent session (e.g., `agent:cmo:main`), the dashboard needs to fetch the full message history from OpenClaw Gateway.
+The Clawboard Dashboard shows sessions from all agents in your organization. When you click on an agent session (e.g., `agent:cmo:main`), the dashboard needs to fetch the full message history from OpenClaw Gateway.
 
 Without agent-to-agent access enabled, OpenClaw returns:
 
@@ -103,7 +103,7 @@ Expected response should contain messages, not a "forbidden" error.
 
 ### 3. Test via Dashboard
 
-1. Open the MosBot Dashboard
+1. Open the Clawboard Dashboard
 2. Navigate to an agent session (e.g., CMO, CTO)
 3. Click to view session details
 4. Messages should now be visible instead of "No messages in this session"
@@ -127,7 +127,7 @@ Enabling agent-to-agent access allows:
 
 1. **Enable in trusted environments** - Only enable if all agents in your deployment are trusted
 2. **Audit access** - Monitor OpenClaw Gateway logs for cross-agent access patterns
-3. **Use RBAC** - Combine with MosBot API RBAC to control who can view agent sessions via the dashboard
+3. **Use RBAC** - Combine with Clawboard API RBAC to control who can view agent sessions via the dashboard
 4. **Consider alternatives** - If security is a concern, consider using separate OpenClaw instances per agent
 
 ## Troubleshooting
@@ -181,7 +181,7 @@ Check OpenClaw Gateway documentation for advanced access control options.
 ## Related Documentation
 
 - [OpenClaw Gateway Configuration](https://github.com/openclaw/openclaw/blob/main/docs/gateway/configuration-reference.md)
-- [MosBot API OpenClaw Integration](./README.md)
+- [Clawboard API OpenClaw Integration](./README.md)
 - [Troubleshooting Empty Sessions](../troubleshooting/empty-sessions-with-usage.md)
 
 ## Support

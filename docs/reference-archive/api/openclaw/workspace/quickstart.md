@@ -1,11 +1,11 @@
 # OpenClaw workspace integration (quickstart)
 
-This is the shortest path to getting Mosbot API reading OpenClaw workspace files via the workspace sidecar service.
+This is the shortest path to getting Clawboard API reading OpenClaw workspace files via the workspace sidecar service.
 
 ## What you deploy
 
 - **OpenClaw** pod includes a **workspace service** sidecar exposing the workspace PVC via HTTP (ClusterIP)
-- **Mosbot API** calls the workspace service and exposes `/api/v1/openclaw/workspace/*`
+- **Clawboard API** calls the workspace service and exposes `/api/v1/openclaw/workspace/*`
 
 ## Configure secrets
 
@@ -16,7 +16,7 @@ WORKSPACE_TOKEN="$(openssl rand -base64 32)"
 echo "Save this token securely: ${WORKSPACE_TOKEN}"
 ```
 
-## Configure Mosbot API
+## Configure Clawboard API
 
 Set:
 
@@ -25,24 +25,24 @@ Set:
 
 ## Verify
 
-1) Get a Mosbot JWT (login), then:
+1) Get a Clawboard JWT (login), then:
 
 ```bash
-curl -H "Authorization: Bearer <MOSBOT_JWT>" \
+curl -H "Authorization: Bearer <CLAWBOARD_JWT>" \
   "http://localhost:3000/api/v1/openclaw/workspace/status"
 ```
 
 1) List files:
 
 ```bash
-curl -H "Authorization: Bearer <MOSBOT_JWT>" \
+curl -H "Authorization: Bearer <CLAWBOARD_JWT>" \
   "http://localhost:3000/api/v1/openclaw/workspace/files?path=/workspace&recursive=true"
 ```
 
 Notes:
 
 - `path=/` is denied by workspace-service policy; always use an explicit allowlisted path
-- Docs links are reconciled by Mosbot API lifecycle hooks (startup + agent create/update), not by dashboard page loads
+- Docs links are reconciled by Clawboard API lifecycle hooks (startup + agent create/update), not by dashboard page loads
 
 ## Full docs
 

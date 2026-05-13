@@ -25,8 +25,8 @@ started.
 | ------------- | ----------- | -------------------------------- |
 | `DB_HOST`     | `localhost` | PostgreSQL host                  |
 | `DB_PORT`     | `5432`      | PostgreSQL port                  |
-| `DB_NAME`     | `mosbot`    | Database name                    |
-| `DB_USER`     | `mosbot`    | Database user                    |
+| `DB_NAME`     | `clawboard`    | Database name                    |
+| `DB_USER`     | `clawboard`    | Database user                    |
 | `DB_PASSWORD` | —           | Database password (**required**) |
 
 Test database (optional — used for integration tests when set):
@@ -81,12 +81,12 @@ Test database (optional — used for integration tests when set):
 
 ## OpenClaw Device Auth
 
-MosBot now provisions and stores OpenClaw device credentials through the dashboard pairing flow
+Clawboard now provisions and stores OpenClaw device credentials through the dashboard pairing flow
 instead of environment variables.
 
 ## Subagent runtime files
 
-`/runtime/mosbot/*` runtime JSON/JSONL integrations are retired and are no longer part of the
+`/runtime/clawboard/*` runtime JSON/JSONL integrations are retired and are no longer part of the
 supported workspace contract.
 
 ## Model pricing (optional)

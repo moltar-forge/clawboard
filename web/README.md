@@ -1,6 +1,6 @@
 # web
 
-MosBot dashboard frontend package.
+Clawboard dashboard frontend package.
 
 ## Commands
 

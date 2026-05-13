@@ -225,7 +225,7 @@ Only add origins that actually need access to the gateway:
 {
   "controlUi": {
     "allowedOrigins": [
-      "https://your-mosbot-dashboard.example.com",
+      "https://your-clawboard-dashboard.example.com",
       "https://your-openclaw-ui.example.com"
     ]
   }

@@ -157,7 +157,7 @@ async function applyConfig({ userId, userRole, raw, baseHash, note }) {
     applyResult = await gatewayWsRpc('config.apply', {
       raw: rawToApply,
       baseHash: currentHash || baseHash,
-      note: note || `Updated via MosBot Dashboard by user ${userId}`,
+      note: note || `Updated via Clawboard Dashboard by user ${userId}`,
       restartDelayMs: 2000,
     });
   } catch (applyErr) {

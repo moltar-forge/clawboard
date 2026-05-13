@@ -1,6 +1,6 @@
 # Secret and Configuration Management
 
-This document describes how MosBot API handles secrets and sensitive configuration.
+This document describes how Clawboard API handles secrets and sensitive configuration.
 
 ## Where configuration lives
 

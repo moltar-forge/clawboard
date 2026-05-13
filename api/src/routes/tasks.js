@@ -2394,12 +2394,12 @@ router.get(
           messageLimit: 0, // Don't fetch messages in list
         });
 
-        // Filter sessions by displayName/label matching mosbot-task-{taskId}-
+        // Filter sessions by displayName/label matching clawboard-task-{taskId}-
         const taskSessions = sessions.filter((s) => {
           const displayName = s.displayName || s.sessionLabel || '';
           return (
-            displayName.startsWith(`mosbot-task-${id}-`) ||
-            displayName.startsWith(`mosbot-task-${taskNumber}-`)
+            displayName.startsWith(`clawboard-task-${id}-`) ||
+            displayName.startsWith(`clawboard-task-${taskNumber}-`)
           );
         });
 

@@ -9,7 +9,7 @@ Settings is the operator surface for user management and access control.
 
 ## Roles
 
-Roles commonly used by MosBot OS:
+Roles commonly used by Clawboard:
 
 - **owner**: highest privilege
 - **admin**: administrative privilege

@@ -100,7 +100,7 @@ async function start() {
   }
 
   app.listen(config.port, () => {
-    logger.info('MosBot API running', {
+    logger.info('Clawboard API running', {
       port: config.port,
       environment: config.nodeEnv,
       healthCheck: `http://localhost:${config.port}/health`,

@@ -1,6 +1,6 @@
 # Database Constraints Guide
 
-This guide documents the database-level constraints added to the Mosbot API for enhanced data integrity.
+This guide documents the database-level constraints added to the Clawboard API for enhanced data integrity.
 
 ## Overview
 

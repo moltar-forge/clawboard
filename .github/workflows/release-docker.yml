@@ -4,7 +4,7 @@ on:
   workflow_call:
     inputs:
       image_name:
-        description: 'Image name (e.g., mosbot-api)'
+        description: 'Image name (e.g., clawboard-api)'
         required: true
         type: string
       context:

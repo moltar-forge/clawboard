@@ -1,16 +1,16 @@
 {
-  "name": "mosbot-workspace-service",
+  "name": "clawboard-workspace-service",
   "version": "0.1.0",
-  "description": "HTTP service for OpenClaw workspace file access - MosBot OS sidecar",
+  "description": "HTTP service for OpenClaw workspace file access - Clawboard sidecar",
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ByMosDev/mosbot-os.git"
+    "url": "https://github.com/moltar-forge/clawboard.git"
   },
   "bugs": {
-    "url": "https://github.com/ByMosDev/mosbot-os/issues"
+    "url": "https://github.com/moltar-forge/clawboard/issues"
   },
-  "homepage": "https://github.com/ByMosDev/mosbot-os/tree/main/workspace-server#readme",
+  "homepage": "https://github.com/moltar-forge/clawboard/tree/main/workspace-server#readme",
   "scripts": {
     "start": "node server.js",
     "format": "prettier --write .",
@@ -20,12 +20,12 @@
     "test:coverage": "jest --coverage --forceExit"
   },
   "keywords": [
-    "mosbot",
+    "clawboard",
     "openclaw",
     "workspace",
     "file-service"
   ],
-  "author": "MosBot",
+  "author": "Clawboard",
   "license": "MIT",
   "dependencies": {
     "dotenv": "^17.3.1",

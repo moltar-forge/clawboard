@@ -12,7 +12,7 @@ HARNESS_COMPOSE := ./docker/docker-compose.yml
 	harness.setup harness.up harness.down harness.reset harness.logs harness.ps
 
 help:
-	@echo "MosBot Root Makefile"
+	@echo "Clawboard Root Makefile"
 	@echo ""
 	@echo "Repository:"
 	@echo "  make repo.lint          Run root lint workflow"
@@ -91,7 +91,7 @@ api.db-reset:
 	npm run -w ./api db:reset
 
 api.build:
-	docker build --target production -t mosbot-api:local ./api
+	docker build --target production -t clawboard-api:local ./api
 
 web.dev:
 	npm run -w ./web dev

@@ -2,7 +2,7 @@
 
 ## Problem Description
 
-Some sessions in the MosBot Dashboard display usage statistics (input tokens, output tokens, cost) but show "No messages in this session" when opened.
+Some sessions in the Clawboard Dashboard display usage statistics (input tokens, output tokens, cost) but show "No messages in this session" when opened.
 
 Example:
 ```
@@ -146,13 +146,13 @@ When a session shows usage but no messages, check the logs for:
 
 ```bash
 # Look for the session key in question
-grep "Session history loaded" logs/mosbot-api.log | grep "messageCount: 0"
+grep "Session history loaded" logs/clawboard-api.log | grep "messageCount: 0"
 
 # Check what sessionsHistory returned
-grep "sessions_history tool result" logs/mosbot-api.log
+grep "sessions_history tool result" logs/clawboard-api.log
 
 # Look for warnings about empty results
-grep "sessions_history returned empty messages" logs/mosbot-api.log
+grep "sessions_history returned empty messages" logs/clawboard-api.log
 ```
 
 ### 2. Check OpenClaw Gateway Availability

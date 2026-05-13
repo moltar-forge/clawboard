@@ -1,7 +1,7 @@
 {
-  "name": "mosbot-api",
+  "name": "clawboard-api",
   "version": "0.1.2",
-  "description": "MosBot task management API - self-hosted backend",
+  "description": "Clawboard task management API - self-hosted backend",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
@@ -17,12 +17,12 @@
     "lint:check": "eslint src/ --max-warnings 0"
   },
   "keywords": [
-    "mosbot",
+    "clawboard",
     "task-management",
     "api",
     "self-hosted"
   ],
-  "author": "MosBot",
+  "author": "Clawboard",
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^6.0.0",

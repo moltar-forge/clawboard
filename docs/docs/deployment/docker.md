@@ -26,9 +26,9 @@ Development uses:
 Build package images directly:
 
 ```bash
-docker build -t mosbot-api:local ./api
-docker build -t mosbot-web:local ./web
-docker build -t mosbot-workspace-server:local ./workspace-server
+docker build -t clawboard-api:local ./api
+docker build -t clawboard-web:local ./web
+docker build -t clawboard-workspace-server:local ./workspace-server
 ```
 
 ## Common commands

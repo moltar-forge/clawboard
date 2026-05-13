@@ -7,13 +7,13 @@ sidebar_position: 2
 
 # Prerequisites
 
-Before setting up MosBot OS, make sure you have the following installed and available.
+Before setting up Clawboard, make sure you have the following installed and available.
 
 ## Required
 
 ### Docker and Docker Compose v2
 
-The recommended way to run MosBot OS is via Docker Compose. You need:
+The recommended way to run Clawboard is via Docker Compose. You need:
 
 - **Docker Desktop** (macOS/Windows) or **Docker Engine** (Linux) — version 24+
 - **Docker Compose v2** — included with Docker Desktop; on Linux install the `docker-compose-plugin`
@@ -43,7 +43,7 @@ git --version
 
 ## For local development (without Docker)
 
-If you want to run MosBot API or Dashboard outside of Docker:
+If you want to run Clawboard API or Dashboard outside of Docker:
 
 ### Node.js 20+
 
@@ -56,7 +56,7 @@ node --version
 
 ## OpenClaw (strongly recommended)
 
-MosBot OS is designed to work with OpenClaw. While MosBot can technically run without it, the core
+Clawboard is designed to work with OpenClaw. While Clawboard can technically run without it, the core
 features — agent monitoring, workspace browsing, agents page, and skills — require OpenClaw.
 
 ### OpenClaw instance

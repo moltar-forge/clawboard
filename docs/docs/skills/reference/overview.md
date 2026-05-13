@@ -5,15 +5,15 @@ sidebar_label: Overview
 sidebar_position: 0
 ---
 
-This section provides detailed reference documentation for all available skills in MosBot OS. Skills
+This section provides detailed reference documentation for all available skills in Clawboard. Skills
 are organized by type (Shared vs Agent-Specific) and include usage instructions, examples, and
 implementation details.
 
-:::tip Recommended for MosBot OS Integration The skills documented here are **highly recommended**
-for OpenClaw agents to work effectively with MosBot OS. They enable essential capabilities like task
+:::tip Recommended for Clawboard Integration The skills documented here are **highly recommended**
+for OpenClaw agents to work effectively with Clawboard. They enable essential capabilities like task
 creation and orchestration, context management, and multi-modal input processing (e.g., voice
 transcription). See the
-[Skills Overview](../overview.md#recommended-skills-for-mosbot-os-integration) for more details on
+[Skills Overview](../overview.md#recommended-skills-for-clawboard-integration) for more details on
 why these skills matter. :::
 
 :::info All skills in this reference are currently under development and may change significantly.
@@ -106,7 +106,7 @@ current workload.
 
 ## Related Documentation
 
-- [Skills Overview](../overview.md) - Introduction to skills in MosBot OS
+- [Skills Overview](../overview.md) - Introduction to skills in Clawboard
 - [Shared vs Agent Skills](../shared-vs-agent.md) - Understanding skill types
 - [Creating Skills](../creating-skills.md) - Guide to creating new skills
 - [Skill Structure](../skill-structure.md) - Technical structure of skills

@@ -8,10 +8,10 @@ sidebar_position: 5
 # OpenClaw Gateway
 
 The OpenClaw gateway is the runtime control service. It provides HTTP and WebSocket endpoints for
-querying live agent sessions, retrieving usage data, and invoking tools. MosBot API connects to the
+querying live agent sessions, retrieving usage data, and invoking tools. Clawboard API connects to the
 gateway to power the Agent Monitor and standup features.
 
-## What the gateway enables in MosBot
+## What the gateway enables in Clawboard
 
 - **Agent Monitor**: live session status, costs, and token usage per agent
 - **Session history**: view conversation history and session details
@@ -54,7 +54,7 @@ The gateway is configured under the `gateway` section of `openclaw.json`:
 | `tls.autoGenerate`         | Auto-generate a self-signed certificate        |
 | `controlUi.allowedOrigins` | Allowed CORS origins for the gateway UI        |
 
-## Connecting MosBot API to the gateway
+## Connecting Clawboard API to the gateway
 
 Add these variables to `.env`:
 
@@ -71,21 +71,21 @@ properly signed certificate or a reverse proxy that handles TLS termination. :::
 
 ## Device pairing workflow
 
-MosBot now requires device-authenticated gateway access for runtime RPCs. The gateway token remains
+Clawboard now requires device-authenticated gateway access for runtime RPCs. The gateway token remains
 part of the bootstrap handshake, but owner/admin users must complete a one-time pairing flow in the
 dashboard before session data and runtime control become available.
 
 ### Pairing steps
 
 1. Configure `OPENCLAW_GATEWAY_URL` and `OPENCLAW_GATEWAY_TOKEN`
-2. Restart MosBot API
+2. Restart Clawboard API
 3. Sign in as an `owner` or `admin`
 4. Open `Settings -> OpenClaw Pairing`
 5. Click `Start pairing`
-6. Approve the pending MosBot device in OpenClaw
+6. Approve the pending Clawboard device in OpenClaw
 7. Click `Finalize pairing`
 
-MosBot persists the paired device identity after the workflow completes.
+Clawboard persists the paired device identity after the workflow completes.
 
 ## Verifying gateway connectivity
 
@@ -93,7 +93,7 @@ MosBot persists the paired device identity after the workflow completes.
 # Basic health check
 curl http://localhost:18789/health
 
-# Via MosBot API (requires MosBot JWT)
+# Via Clawboard API (requires Clawboard JWT)
 TOKEN=$(curl -s -X POST http://localhost:3000/api/v1/auth/login \
   -H "Content-Type: application/json" \
   -d '{"email":"admin@example.com","password":"your-password"}' \
@@ -110,11 +110,11 @@ curl -H "Authorization: Bearer $TOKEN" \
 - `OPENCLAW_GATEWAY_URL` is set and correct
 - The gateway is running and accessible
 - `OPENCLAW_GATEWAY_TOKEN` is correct
-- The MosBot device has been approved and pairing is `ready`
+- The Clawboard device has been approved and pairing is `ready`
 
 **Pairing wizard cannot connect** Check:
 
-- `gateway.controlUi.allowedOrigins` includes the gateway origin MosBot is using
+- `gateway.controlUi.allowedOrigins` includes the gateway origin Clawboard is using
 - `OPENCLAW_GATEWAY_URL` matches the actual gateway scheme and host
 - The gateway token is valid
 

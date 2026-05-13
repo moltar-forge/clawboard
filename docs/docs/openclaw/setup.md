@@ -5,26 +5,26 @@ sidebar_label: Setup
 sidebar_position: 2
 ---
 
-OpenClaw is the AI agent runtime that MosBot OS connects to. This guide covers what you need to run
-alongside OpenClaw to enable the full MosBot OS integration.
+OpenClaw is the AI agent runtime that Clawboard connects to. This guide covers what you need to run
+alongside OpenClaw to enable the full Clawboard integration.
 
 :::info OpenClaw Documentation
 
 OpenClaw has its own documentation. This guide covers only what you need to know to integrate it
-with MosBot OS. :::
+with Clawboard. :::
 
-## What MosBot needs alongside OpenClaw
+## What Clawboard needs alongside OpenClaw
 
-MosBot API connects to two services:
+Clawboard API connects to two services:
 
 | Service           | Port  | Provided by             |
 | ----------------- | ----- | ----------------------- |
-| Workspace service | 18780 | **MosBot OS** (sidecar) |
+| Workspace service | 18780 | **Clawboard** (sidecar) |
 | Gateway           | 18789 | **OpenClaw** (built-in) |
 
 The **gateway** (port 18789) is built into OpenClaw — no extra setup required.
 
-The **workspace service** (port 18780) is a lightweight HTTP sidecar provided by MosBot OS. It runs
+The **workspace service** (port 18780) is a lightweight HTTP sidecar provided by Clawboard. It runs
 alongside OpenClaw and exposes the OpenClaw workspace filesystem over HTTP. You need to deploy it
 next to your OpenClaw instance, sharing the same workspace directory or volume.
 
@@ -32,7 +32,7 @@ next to your OpenClaw instance, sharing the same workspace directory or volume.
 
 ### Option A: Docker (local)
 
-Add the MosBot workspace service to the same Docker Compose file as OpenClaw. It must share the same
+Add the Clawboard workspace service to the same Docker Compose file as OpenClaw. It must share the same
 OpenClaw home directory volume:
 
 ```yaml
@@ -44,8 +44,8 @@ services:
     ports:
       - '18789:18789'
 
-  mosbot-workspace:
-    image: ghcr.io/bymosdev/mosbot-workspace-server:latest
+  clawboard-workspace:
+    image: ghcr.io/bymosdev/clawboard-workspace-server:latest
     environment:
       WORKSPACE_SERVICE_TOKEN: your-secure-token
       CONFIG_ROOT: /openclaw-config
@@ -64,7 +64,7 @@ services:
 - Main workspace virtual path is `/workspace`.
 - Sub-agent workspaces resolve from `/workspace-<agent>` to `~/.openclaw/workspace-<agent>`.
 - Shared dirs `/projects`, `/skills`, `/docs` resolve to `~/.openclaw/{projects,skills,docs}`.
-- Use a read-write mount for normal MosBot usage (Projects/Skills/Docs and config edits).
+- Use a read-write mount for normal Clawboard usage (Projects/Skills/Docs and config edits).
 
 :::
 
@@ -86,13 +86,13 @@ directory:
 
 ```bash
 docker run -d \
-  --name mosbot-workspace \
+  --name clawboard-workspace \
   -e WORKSPACE_SERVICE_TOKEN=your-secure-token \
   -e CONFIG_ROOT=/openclaw-config \
   -e MAIN_WORKSPACE_DIR=workspace \
   -v /path/to/openclaw/config:/openclaw-config \
   -p 18780:18780 \
-  ghcr.io/bymosdev/mosbot-workspace-server:latest
+  ghcr.io/bymosdev/clawboard-workspace-server:latest
 ```
 
 ## Migration from old workspace env model
@@ -121,7 +121,7 @@ See the [Configuration Reference](../configuration/openclaw-json) for a complete
 
 ## Generating tokens
 
-MosBot API authenticates to both services using bearer tokens. You need to generate and configure
+Clawboard API authenticates to both services using bearer tokens. You need to generate and configure
 these tokens.
 
 ### Workspace service token
@@ -135,14 +135,14 @@ openssl rand -base64 32
 Configure this token in:
 
 1. The workspace service container (as `WORKSPACE_SERVICE_TOKEN`)
-2. MosBot API's `.env` (as `OPENCLAW_WORKSPACE_TOKEN`)
+2. Clawboard API's `.env` (as `OPENCLAW_WORKSPACE_TOKEN`)
 
 ### Gateway token
 
 The gateway token is configured in `openclaw.json` under `gateway.auth`. Retrieve it from your
 OpenClaw configuration or generate one following OpenClaw's documentation.
 
-Configure this token in MosBot API's `.env` as `OPENCLAW_GATEWAY_TOKEN`. MosBot uses it to bootstrap
+Configure this token in Clawboard API's `.env` as `OPENCLAW_GATEWAY_TOKEN`. Clawboard uses it to bootstrap
 the device pairing workflow; gateway-backed features are unlocked only after an `owner`/`admin`
 completes pairing in the dashboard.
 
@@ -160,4 +160,4 @@ curl http://localhost:18789/health
 ## Next steps
 
 Once both services are running and you have your tokens, proceed to
-[Connecting MosBot API](./integration).
+[Connecting Clawboard API](./integration).

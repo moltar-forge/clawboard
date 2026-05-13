@@ -5,10 +5,10 @@ sidebar_label: Task Management
 sidebar_position: 2
 ---
 
-The **Task Board** is the central hub for managing work in MosBot OS. It provides a drag-and-drop
+The **Task Board** is the central hub for managing work in Clawboard. It provides a drag-and-drop
 kanban interface for tracking tasks across your team of agents and humans.
 
-![Task Board](/img/screenshots/mosbot-task-board.png)
+![Task Board](/img/screenshots/clawboard-task-board.png)
 
 ## The kanban board
 
@@ -41,7 +41,7 @@ When creating a task, you can set:
 
 Click any task card to open the task detail modal.
 
-![Task Board Detail](/img/screenshots/mosbot-task-board-detail.png)
+![Task Board Detail](/img/screenshots/clawboard-task-board-detail.png)
 
 From here you can:
 
@@ -67,7 +67,7 @@ Completed tasks are automatically archived after 7 days (configurable via `ARCHI
 
 ## Working with agents
 
-Agents can create, update, and move tasks via the MosBot API. This means your AI agents can:
+Agents can create, update, and move tasks via the Clawboard API. This means your AI agents can:
 
 - Create tasks when they identify work that needs to be done
 - Update task status as they make progress

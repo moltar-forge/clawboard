@@ -1,15 +1,15 @@
 #!/bin/bash
 set -e
 
-# Build and push mosbot-api to GHCR with a version tag.
+# Build and push clawboard-api to GHCR with a version tag.
 # Usage: ./build-and-push.sh <version>
 # Example: ./build-and-push.sh 1.2.3
 
 GITHUB_ORG="${GITHUB_ORG:?Set GITHUB_ORG to your GitHub organization or username}"
-IMAGE_NAME="ghcr.io/${GITHUB_ORG}/mosbot-api"
+IMAGE_NAME="ghcr.io/${GITHUB_ORG}/clawboard-api"
 VERSION="${1:?Usage: ./build-and-push.sh <version>   e.g. ./build-and-push.sh 1.2.3}"
 
-echo "Building mosbot-api (multi-platform)..."
+echo "Building clawboard-api (multi-platform)..."
 echo "Image: ${IMAGE_NAME}:${VERSION}"
 echo "Platforms: linux/amd64, linux/arm64"
 

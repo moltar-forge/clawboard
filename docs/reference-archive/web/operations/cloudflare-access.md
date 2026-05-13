@@ -1,6 +1,6 @@
-# Cloudflare Access runbook (MosBot)
+# Cloudflare Access runbook (Clawboard)
 
-This document describes the Cloudflare Access configuration commonly used for MosBot:
+This document describes the Cloudflare Access configuration commonly used for Clawboard:
 
 - **Dashboard** (frontend)
 - **API** (backend)
@@ -34,7 +34,7 @@ The dashboard API client must send requests with credentials (cookies).
 
 ## API requirements
 
-MosBot API must be configured to:
+Clawboard API must be configured to:
 
 - Allow credentials
 - Set a specific allowed origin (do not use `*` with credentials)

@@ -100,7 +100,7 @@ describe('GET /api/v1/tasks/:id/subagents', () => {
     openclawGatewayClient.sessionsList.mockResolvedValue([
       {
         key: 'agent:main:subagent:abc',
-        displayName: `mosbot-task-${taskId}-001`,
+        displayName: `clawboard-task-${taskId}-001`,
         kind: 'other',
         model: 'sonnet',
         totalTokens: 15000,
@@ -142,7 +142,7 @@ describe('GET /api/v1/tasks/:id/subagents', () => {
     openclawGatewayClient.sessionsList.mockResolvedValue([
       {
         key: 'agent:main:subagent:failed',
-        displayName: `mosbot-task-${taskId}-001`,
+        displayName: `clawboard-task-${taskId}-001`,
         kind: 'other',
         model: 'haiku',
         abortedLastRun: true,

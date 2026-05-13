@@ -1,16 +1,16 @@
-# MosBot Dashboard — Documentation
+# Clawboard Dashboard — Documentation
 
-The dashboard docs live in the [mosbot-dashboard repository](https://github.com/ByMosDev/mosbot-os/tree/main/web) alongside the code they describe.
+The dashboard docs live in the [clawboard-dashboard repository](https://github.com/moltar-forge/clawboard/tree/main/web) alongside the code they describe.
 
-> **Note:** A dedicated `mosbot-docs` repo is planned. When it exists, all docs will be consolidated there and this page will redirect.
+> **Note:** A dedicated `clawboard-docs` repo is planned. When it exists, all docs will be consolidated there and this page will redirect.
 
 ---
 
 ## Index
 
-### MosBot OS
+### Clawboard
 
-- `mosbot-os/overview.md` — MosBot OS mental model and dashboard navigation map
+- `clawboard/overview.md` — Clawboard mental model and dashboard navigation map
 
 ### Getting started
 
@@ -36,7 +36,7 @@ The dashboard docs live in the [mosbot-dashboard repository](https://github.com/
 
 ### Integrations
 
-- `integrations/mosbot-api.md` — How the dashboard talks to MosBot API
+- `integrations/clawboard-api.md` — How the dashboard talks to Clawboard API
 - `integrations/openclaw.md` — OpenClaw health/status semantics and degradation
 
 ### Operations / deployment

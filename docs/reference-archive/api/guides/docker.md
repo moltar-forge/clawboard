@@ -2,7 +2,7 @@
 
 ## Full-stack test harness
 
-The `docker/` directory contains a self-contained test harness that runs the entire MosBot + OpenClaw stack locally. This is the recommended way to test the full integration.
+The `docker/` directory contains a self-contained test harness that runs the entire Clawboard + OpenClaw stack locally. This is the recommended way to test the full integration.
 
 ### Prerequisites
 
@@ -10,7 +10,7 @@ Clone all three repos side-by-side:
 
 ```text
 parent-folder/
-├── mosbot-api/
+├── clawboard-api/
 ├── web/
 └── workspace-server/
 ```
@@ -20,7 +20,7 @@ Docker and Docker Compose v2 are required.
 ### First-time setup
 
 ```bash
-cd mosbot/docker
+cd clawboard/docker
 make setup
 ```
 
@@ -42,7 +42,7 @@ Services started:
 
 | Service   | URL                      | Description                  |
 | --------- | ------------------------ | ---------------------------- |
-| API       | http://localhost:3000     | MosBot API                   |
+| API       | http://localhost:3000     | Clawboard API                   |
 | Dashboard | http://localhost:5173     | Vite dev server (hot-reload) |
 | OpenClaw  | http://localhost:18789    | OpenClaw Gateway             |
 | Workspace | http://localhost:18780    | Workspace Service            |
@@ -64,7 +64,7 @@ After `make reset`, run `make setup` again to start fresh.
 The root `docker-compose.yml` runs a 3-service stack without OpenClaw. This is useful when you only need the API and dashboard, or when connecting to an external OpenClaw instance.
 
 ```bash
-cd mosbot-api
+cd clawboard-api
 docker compose up -d
 ```
 
@@ -75,8 +75,8 @@ See `docs/getting-started/first-run.md` for initial `.env` setup.
 For a production-like local build using pre-built images from GHCR:
 
 ```bash
-docker pull ghcr.io/bymosbot/mosbot-api:latest
-docker run -p 3000:3000 --env-file .env ghcr.io/bymosbot/mosbot-api:latest
+docker pull ghcr.io/byclawboard/clawboard-api:latest
+docker run -p 3000:3000 --env-file .env ghcr.io/byclawboard/clawboard-api:latest
 ```
 
 ## Related

@@ -7,7 +7,7 @@ sidebar_position: 2
 
 # Kubernetes Deployment
 
-MosBot OS can be deployed to Kubernetes using the manifests included in `api/k8s`.
+Clawboard can be deployed to Kubernetes using the manifests included in `api/k8s`.
 
 ## Repository structure
 
@@ -66,11 +66,11 @@ kubectl apply -k k8s/overlays/production
 ### 3. Verify
 
 ```bash
-kubectl get pods -n mosbot
-kubectl get svc -n mosbot
+kubectl get pods -n clawboard
+kubectl get svc -n clawboard
 
 # Check API health
-kubectl port-forward -n mosbot svc/mosbot-api 3000:3000
+kubectl port-forward -n clawboard svc/clawboard-api 3000:3000
 curl http://localhost:3000/health
 ```
 
@@ -82,37 +82,37 @@ Configure an ingress to expose the API and dashboard publicly. Example with ngin
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: mosbot
-  namespace: mosbot
+  name: clawboard
+  namespace: clawboard
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: 'true'
 spec:
   rules:
-    - host: api-mosbot.example.com
+    - host: api-clawboard.example.com
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: mosbot-api
+                name: clawboard-api
                 port:
                   number: 3000
-    - host: mosbot.example.com
+    - host: clawboard.example.com
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: mosbot-web
+                name: clawboard-web
                 port:
                   number: 80
   tls:
     - hosts:
-        - api-mosbot.example.com
-        - mosbot.example.com
-      secretName: mosbot-tls
+        - api-clawboard.example.com
+        - clawboard.example.com
+      secretName: clawboard-tls
 ```
 
 ## Resource recommendations
@@ -153,13 +153,13 @@ spec:
           image: postgres:15
           env:
             - name: POSTGRES_DB
-              value: mosbot
+              value: clawboard
             - name: POSTGRES_USER
-              value: mosbot
+              value: clawboard
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: mosbot-secrets
+                  name: clawboard-secrets
                   key: DB_PASSWORD
           volumeMounts:
             - name: data
@@ -179,7 +179,7 @@ spec:
 If OpenClaw also runs in Kubernetes, use in-cluster service DNS names for the integration:
 
 ```yaml
-# In mosbot-api secret/configmap
+# In clawboard-api secret/configmap
 OPENCLAW_WORKSPACE_URL: 'http://openclaw-workspace.openclaw-personal.svc.cluster.local:18780'
 OPENCLAW_GATEWAY_URL: 'http://openclaw.openclaw-personal.svc.cluster.local:18789'
 ```
@@ -190,7 +190,7 @@ See [OpenClaw on Kubernetes](../openclaw/kubernetes) for the full guide.
 
 ```bash
 # Update the image tag in your deployment
-kubectl set image deployment/mosbot-api api=ghcr.io/bymosdev/mosbot-api:v1.2.3 -n mosbot
+kubectl set image deployment/clawboard-api api=ghcr.io/bymosdev/clawboard-api:v1.2.3 -n clawboard
 
 # Or apply updated manifests
 kubectl apply -k k8s/base

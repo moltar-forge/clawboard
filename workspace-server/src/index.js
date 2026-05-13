@@ -53,7 +53,7 @@ const app = createApp({
 });
 
 app.listen(PORT, () => {
-  console.log(`MosBot Workspace Service running on port ${PORT}`);
+  console.log(`Clawboard Workspace Service running on port ${PORT}`);
   console.log(`Config root: ${CONFIG_ROOT}`);
   console.log(`Main workspace dir: ${MAIN_WORKSPACE_DIR}`);
   console.log(`Main workspace FS root: ${MAIN_WORKSPACE_FS_ROOT}`);

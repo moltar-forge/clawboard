@@ -1186,7 +1186,7 @@ async function updateHeartbeatConfig(agentId, heartbeatConfig) {
         await gatewayWsRpc('config.apply', {
           raw: updatedRaw,
           baseHash: currentHash,
-          note: `Heartbeat config updated for agent ${agentId} via MosBot Dashboard`,
+          note: `Heartbeat config updated for agent ${agentId} via Clawboard Dashboard`,
           restartDelayMs: 2000,
         });
         logger.info('Heartbeat config applied via config.apply (gateway restart triggered)', {

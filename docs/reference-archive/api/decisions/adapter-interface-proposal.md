@@ -6,13 +6,13 @@ This document was moved from `docs/proposals/adapter-interface-proposal.md` to `
 
 ## Overview
 
-This document proposes a generic adapter interface for integrating task management systems (Notion, Mosbot, and future backends) with OpenClaw. The adapter abstracts backend-specific operations into a unified interface.
+This document proposes a generic adapter interface for integrating task management systems (Notion, Clawboard, and future backends) with OpenClaw. The adapter abstracts backend-specific operations into a unified interface.
 
 ---
 
 ## Common Operations for Notion-Based Task Integrations
 
-Based on typical Notion task management workflows and Mosbot's current capabilities, here are the core operations:
+Based on typical Notion task management workflows and Clawboard's current capabilities, here are the core operations:
 
 ### Task CRUD Operations
 
@@ -207,7 +207,7 @@ interface CommentInput {
 
 // Sync Options
 interface SyncOptions {
-  direction?: 'bidirectional' | 'notion_to_mosbot' | 'mosbot_to_notion';
+  direction?: 'bidirectional' | 'notion_to_clawboard' | 'clawboard_to_notion';
   since?: Date;
   taskIds?: string[];
 }
@@ -224,8 +224,8 @@ interface Conflict {
   taskId: string;
   field: string;
   notionValue: any;
-  mosbotValue: any;
-  resolution?: 'notion' | 'mosbot' | 'manual';
+  clawboardValue: any;
+  resolution?: 'notion' | 'clawboard' | 'manual';
 }
 ```
 
@@ -234,7 +234,7 @@ interface Conflict {
 ```typescript
 interface AdapterConfig {
   // Backend type
-  type: 'notion' | 'mosbot' | 'jira' | 'linear' | 'asana';
+  type: 'notion' | 'clawboard' | 'jira' | 'linear' | 'asana';
 
   // Authentication
   auth: {
@@ -253,9 +253,9 @@ interface AdapterConfig {
     notionDatabaseId?: string;
     notionWorkspaceId?: string;
 
-    // Mosbot-specific
-    mosbotApiUrl?: string;
-    mosbotWorkspaceId?: string;
+    // Clawboard-specific
+    clawboardApiUrl?: string;
+    clawboardWorkspaceId?: string;
 
     // Status mapping (backend status -> canonical status)
     statusMapping?: Record<string, TaskStatus>;
@@ -270,7 +270,7 @@ interface AdapterConfig {
     strategy: 'polling' | 'webhook';
     interval?: number; // For polling (ms)
     webhookUrl?: string; // For webhooks
-    conflictResolution?: 'notion' | 'mosbot' | 'manual' | 'newest';
+    conflictResolution?: 'notion' | 'clawboard' | 'manual' | 'newest';
   };
 
   // Rate limiting
@@ -285,5 +285,5 @@ interface AdapterConfig {
 
 ## Notes
 
-- This is a proposal document. Treat it as a starting point; final interface should align with actual Mosbot public API contract and OpenClaw adapter needs.
-- Mosbot’s contract surface (current): `docs/api/openclaw-public-api.md`
+- This is a proposal document. Treat it as a starting point; final interface should align with actual Clawboard public API contract and OpenClaw adapter needs.
+- Clawboard’s contract surface (current): `docs/api/openclaw-public-api.md`

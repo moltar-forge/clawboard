@@ -2,20 +2,20 @@
 
 ## Overview
 
-The Model Fleet feature provides a UI and API for managing AI models available in MosBot. **OpenClaw config is the source of truth** for all model definitions.
+The Model Fleet feature provides a UI and API for managing AI models available in Clawboard. **OpenClaw config is the source of truth** for all model definitions.
 
 ## Architecture
 
 ```
 ┌─────────────────────────────────────────────┐
-│ MosBot Dashboard                            │
+│ Clawboard Dashboard                            │
 │ /settings/model-fleet page                 │
 │ (View/Edit models, admin-only CRUD)        │
 └─────────────────┬───────────────────────────┘
                   │ REST API
                   │
 ┌─────────────────▼───────────────────────────┐
-│ MosBot API                                  │
+│ Clawboard API                                  │
 │ /api/v1/admin/models (CRUD endpoints)      │
 │ /api/v1/models (public list endpoint)      │
 └─────────────────┬───────────────────────────┘

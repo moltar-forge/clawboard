@@ -832,7 +832,7 @@ describe('OpenClaw Routes', () => {
         status: 200,
         json: async () => ({
           content: JSON.stringify({
-            leadership: [{ id: 'orchestrator', displayName: 'MosBot' }],
+            leadership: [{ id: 'orchestrator', displayName: 'Clawboard' }],
             departments: [],
           }),
         }),
@@ -874,7 +874,7 @@ describe('OpenClaw Routes', () => {
               list: [
                 {
                   id: 'orchestrator',
-                  identity: { name: 'MosBot', theme: 'Orchestration', emoji: '🤖' },
+                  identity: { name: 'Clawboard', theme: 'Orchestration', emoji: '🤖' },
                   model: { primary: 'openrouter/anthropic/claude-sonnet-4.5' },
                 },
               ],
@@ -1103,7 +1103,7 @@ describe('OpenClaw Routes', () => {
           displayName: 'Updated COO',
           heartbeatEnabled: true,
           heartbeatEvery: '30m',
-          heartbeatPrompt: 'Check MosBot queue and pick top-priority task.',
+          heartbeatPrompt: 'Check Clawboard queue and pick top-priority task.',
         });
 
       expect(response.status).toBe(200);
@@ -1111,7 +1111,7 @@ describe('OpenClaw Routes', () => {
       expect(applyCall).toBeDefined();
       const cfg = JSON.parse(applyCall[1]?.raw || '{}');
       const coo = cfg.agents.list.find((a) => a.id === 'coo');
-      expect(coo?.heartbeat?.prompt).toBe('Check MosBot queue and pick top-priority task.');
+      expect(coo?.heartbeat?.prompt).toBe('Check Clawboard queue and pick top-priority task.');
     });
 
     it('should update main metadata without requiring agents.json', async () => {
@@ -1273,7 +1273,7 @@ describe('OpenClaw Routes', () => {
           displayName: 'New Agent Display Name',
           heartbeatEnabled: true,
           heartbeatEvery: '30m',
-          heartbeatPrompt: 'Check your assigned MosBot tasks and start the top priority ready item.',
+          heartbeatPrompt: 'Check your assigned Clawboard tasks and start the top priority ready item.',
         });
 
       expect(response.status).toBe(201);
@@ -1282,7 +1282,7 @@ describe('OpenClaw Routes', () => {
       const cfg = JSON.parse(applyCall[1]?.raw || '{}');
       const created = cfg.agents.list.find((a) => a.id === 'new-agent');
       expect(created?.heartbeat?.prompt).toBe(
-        'Check your assigned MosBot tasks and start the top priority ready item.',
+        'Check your assigned Clawboard tasks and start the top priority ready item.',
       );
     });
 
@@ -1363,7 +1363,7 @@ describe('OpenClaw Routes', () => {
           writes.push({ method: options.method, path: body.path, mode: body.mode });
 
           // Simulate older workspace service behavior: rejects mode payloads.
-          if (body.path?.endsWith('/tools/mosbot-auth') && body.mode != null) {
+          if (body.path?.endsWith('/tools/clawboard-auth') && body.mode != null) {
             return {
               ok: false,
               status: 400,
@@ -1398,12 +1398,12 @@ describe('OpenClaw Routes', () => {
 
       expect(response.status).toBe(201);
 
-      const authWrites = writes.filter((w) => w.path === '/workspace-new-agent/tools/mosbot-auth');
+      const authWrites = writes.filter((w) => w.path === '/workspace-new-agent/tools/clawboard-auth');
       expect(authWrites.length).toBeGreaterThanOrEqual(2);
       expect(authWrites[0].mode).toBe(0o755);
       expect(authWrites.some((w) => w.mode == null)).toBe(true);
 
-      const taskWrite = writes.find((w) => w.path === '/workspace-new-agent/tools/mosbot-task');
+      const taskWrite = writes.find((w) => w.path === '/workspace-new-agent/tools/clawboard-task');
       expect(taskWrite?.mode).toBe(0o755);
     });
 
@@ -1765,7 +1765,7 @@ describe('OpenClaw Routes', () => {
       expect(nonGetCalls).toHaveLength(0);
     });
 
-    it('should keep existing active api key and skip mosbot.env rewrite', async () => {
+    it('should keep existing active api key and skip clawboard.env rewrite', async () => {
       const token = getToken('admin-id', 'admin');
       const writePaths = [];
 
@@ -1811,8 +1811,8 @@ describe('OpenClaw Routes', () => {
         });
 
       expect(response.status).toBe(201);
-      expect(writePaths.some((p) => p.endsWith('/mosbot.env'))).toBe(false);
-      expect(response.body.data.updatedFiles.some((f) => f.endsWith('/mosbot.env'))).toBe(false);
+      expect(writePaths.some((p) => p.endsWith('/clawboard.env'))).toBe(false);
+      expect(response.body.data.updatedFiles.some((f) => f.endsWith('/clawboard.env'))).toBe(false);
     });
 
     it('should cleanup new DB agent row when toolkit bootstrap fails before config.apply', async () => {
@@ -1830,7 +1830,7 @@ describe('OpenClaw Routes', () => {
 
         if ((options?.method === 'PUT' || options?.method === 'POST') && options?.body) {
           const body = JSON.parse(options.body);
-          if (String(body?.path || '').endsWith('/tools/mosbot-auth')) {
+          if (String(body?.path || '').endsWith('/tools/clawboard-auth')) {
             return {
               ok: false,
               status: 500,
@@ -1941,7 +1941,7 @@ describe('OpenClaw Routes', () => {
       const envDeleteCall = global.fetch.mock.calls.find(
         ([url, opts]) =>
           opts?.method === 'DELETE' &&
-          String(url).includes('/files?path=%2Fworkspace-new-agent%2Fmosbot.env'),
+          String(url).includes('/files?path=%2Fworkspace-new-agent%2Fclawboard.env'),
       );
       expect(envDeleteCall).toBeDefined();
 
@@ -2033,12 +2033,12 @@ describe('OpenClaw Routes', () => {
       expect(response.body.data.updatedFiles).toContain('/workspace-custom-coo/BOOTSTRAP.md');
       expect(writePaths).toEqual(
         expect.arrayContaining([
-          '/workspace-custom-coo/tools/mosbot-auth',
-          '/workspace-custom-coo/tools/mosbot-task',
+          '/workspace-custom-coo/tools/clawboard-auth',
+          '/workspace-custom-coo/tools/clawboard-task',
           '/workspace-custom-coo/tools/INTEGRATION.md',
           '/workspace-custom-coo/TOOLS.md',
           '/workspace-custom-coo/BOOTSTRAP.md',
-          '/workspace-custom-coo/mosbot.env',
+          '/workspace-custom-coo/clawboard.env',
         ]),
       );
       expect(bootstrapContent).toContain('re-bootstrap');
@@ -2084,7 +2084,7 @@ describe('OpenClaw Routes', () => {
               '/workspace-custom-coo/tools/*',
               '/workspace-custom-coo/TOOLS.md',
               '/workspace-custom-coo/BOOTSTRAP.md',
-              '/workspace-custom-coo/mosbot.env',
+              '/workspace-custom-coo/clawboard.env',
             ]),
           }),
         }),
@@ -2442,7 +2442,7 @@ describe('OpenClaw Routes', () => {
       expect(response.body.data.updatedFiles).toContain('/workspace-main-custom/BOOTSTRAP.md');
       expect(writePaths).toEqual(
         expect.arrayContaining([
-          '/workspace-main-custom/tools/mosbot-auth',
+          '/workspace-main-custom/tools/clawboard-auth',
           '/workspace-main-custom/BOOTSTRAP.md',
         ]),
       );
@@ -2506,7 +2506,7 @@ describe('OpenClaw Routes', () => {
       expect(global.fetch).not.toHaveBeenCalled();
     });
 
-    it('should keep existing active api key and skip mosbot.env rewrite', async () => {
+    it('should keep existing active api key and skip clawboard.env rewrite', async () => {
       const token = getToken('admin-id', 'admin');
       const writePaths = [];
 
@@ -2558,11 +2558,11 @@ describe('OpenClaw Routes', () => {
         .set('Authorization', `Bearer ${token}`);
 
       expect(response.status).toBe(200);
-      expect(writePaths.some((p) => p.endsWith('/mosbot.env'))).toBe(false);
-      expect(response.body.data.updatedFiles.some((f) => f.endsWith('/mosbot.env'))).toBe(false);
+      expect(writePaths.some((p) => p.endsWith('/clawboard.env'))).toBe(false);
+      expect(response.body.data.updatedFiles.some((f) => f.endsWith('/clawboard.env'))).toBe(false);
     });
 
-    it('should rotate active api key when mosbot.env is missing', async () => {
+    it('should rotate active api key when clawboard.env is missing', async () => {
       const token = getToken('admin-id', 'admin');
       const writePaths = [];
       let activeKeySelectCount = 0;
@@ -2634,8 +2634,8 @@ describe('OpenClaw Routes', () => {
 
         if (
           options?.method === 'GET' &&
-          (String(url).includes('/files/content?path=%2Fworkspace-coo%2Fmosbot.env') ||
-            String(url).includes('/files/content?path=/workspace-coo/mosbot.env'))
+          (String(url).includes('/files/content?path=%2Fworkspace-coo%2Fclawboard.env') ||
+            String(url).includes('/files/content?path=/workspace-coo/clawboard.env'))
         ) {
           return {
             ok: false,
@@ -2663,11 +2663,11 @@ describe('OpenClaw Routes', () => {
 
       expect(response.status).toBe(200);
       expect(activeKeySelectCount).toBeGreaterThanOrEqual(1);
-      expect(writePaths).toEqual(expect.arrayContaining(['/workspace-coo/mosbot.env']));
-      expect(response.body.data.updatedFiles).toContain('/workspace-coo/mosbot.env');
+      expect(writePaths).toEqual(expect.arrayContaining(['/workspace-coo/clawboard.env']));
+      expect(response.body.data.updatedFiles).toContain('/workspace-coo/clawboard.env');
       expect(
         (response.body.data.warnings || []).some((w) =>
-          String(w).includes('mosbot.env missing; rotated active API key'),
+          String(w).includes('clawboard.env missing; rotated active API key'),
         ),
       ).toBe(true);
 
@@ -2811,7 +2811,7 @@ describe('OpenClaw Routes', () => {
       const envDeleteCall = global.fetch.mock.calls.find(
         ([url, opts]) =>
           opts?.method === 'DELETE' &&
-          String(url).includes('/files?path=%2Fworkspace-coo%2Fmosbot.env'),
+          String(url).includes('/files?path=%2Fworkspace-coo%2Fclawboard.env'),
       );
       expect(envDeleteCall).toBeDefined();
     });

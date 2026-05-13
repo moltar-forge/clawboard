@@ -5,7 +5,7 @@ sidebar_label: Shared vs Agent-Specific
 sidebar_position: 2
 ---
 
-MosBot OS supports two categories of skills, each stored in a different location in the OpenClaw
+Clawboard supports two categories of skills, each stored in a different location in the OpenClaw
 workspace filesystem.
 
 ## Shared skills
@@ -55,7 +55,7 @@ Use agent-specific skills for:
 
 ## How the Skills page organizes them
 
-In the MosBot Dashboard's Skills page, skills are grouped into two sections:
+In the Clawboard Dashboard's Skills page, skills are grouped into two sections:
 
 1. **Shared Skills** — all files from `/skills/`
 2. **Agent-Only Skills** — grouped by agent, showing each agent's skills from

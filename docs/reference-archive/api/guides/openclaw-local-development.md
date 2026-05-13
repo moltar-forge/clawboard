@@ -1,6 +1,6 @@
 # OpenClaw local development
 
-This guide covers running Mosbot API locally while connecting to OpenClaw services (workspace + gateway) via `kubectl port-forward`.
+This guide covers running Clawboard API locally while connecting to OpenClaw services (workspace + gateway) via `kubectl port-forward`.
 
 ## When you need this
 
@@ -16,7 +16,7 @@ This guide covers running Mosbot API locally while connecting to OpenClaw servic
 
 ## 1) Get tokens (Kubernetes)
 
-Mosbot API expects tokens for OpenClaw services. Your secrets/namespace names may differ; adjust as needed.
+Clawboard API expects tokens for OpenClaw services. Your secrets/namespace names may differ; adjust as needed.
 
 ```bash
 # Workspace service token

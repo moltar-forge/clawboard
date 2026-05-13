@@ -1,6 +1,6 @@
 # Roles and permissions (RBAC)
 
-This doc describes Mosbot API role-based access control at a policy level.
+This doc describes Clawboard API role-based access control at a policy level.
 
 ## Roles
 

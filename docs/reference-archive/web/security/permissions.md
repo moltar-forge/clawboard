@@ -1,6 +1,6 @@
 # Permissions (roles and capabilities)
 
-MosBot Dashboard uses role-based access control. The UI reflects permissions for clarity, but **the backend is authoritative**.
+Clawboard Dashboard uses role-based access control. The UI reflects permissions for clarity, but **the backend is authoritative**.
 
 ## Roles
 
@@ -27,6 +27,6 @@ This matrix describes intended UX behavior.
 ### Tasks
 
 - **View tasks**: all authenticated roles
-- **Mutate tasks (create/update/status move)**: depends on MosBot API policy; dashboard should assume backend enforcement
+- **Mutate tasks (create/update/status move)**: depends on Clawboard API policy; dashboard should assume backend enforcement
 
-If this matrix diverges from MosBot API, the API wins—update the dashboard UX + docs to match.
+If this matrix diverges from Clawboard API, the API wins—update the dashboard UX + docs to match.

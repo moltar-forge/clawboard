@@ -1,4 +1,4 @@
-# Full-stack test harness for MosBot + OpenClaw integration testing.
+# Full-stack test harness for Clawboard + OpenClaw integration testing.
 # Run from repo root: make harness.setup && make harness.up
 #
 # This is NOT the production compose — it is for local development and testing only.
@@ -89,7 +89,7 @@ services:
       context: ../workspace-server/
       dockerfile: Dockerfile
       target: development
-    container_name: mosbot-workspace
+    container_name: clawboard-workspace
     environment:
       NODE_ENV: development
       WORKSPACE_SERVICE_TOKEN: ${OPENCLAW_WORKSPACE_TOKEN:?OPENCLAW_WORKSPACE_TOKEN is required}
@@ -116,7 +116,7 @@ services:
       context: ../api
       dockerfile: Dockerfile
       target: development
-    container_name: mosbot-api
+    container_name: clawboard-api
     depends_on:
       postgres:
         condition: service_healthy
@@ -130,14 +130,14 @@ services:
       TIMEZONE: ${TIMEZONE:-UTC}
       DB_HOST: postgres
       DB_PORT: 5432
-      DB_NAME: ${DB_NAME:-mosbot}
-      DB_USER: ${DB_USER:-mosbot}
+      DB_NAME: ${DB_NAME:-clawboard}
+      DB_USER: ${DB_USER:-clawboard}
       DB_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD is required}
       JWT_SECRET: ${JWT_SECRET:?JWT_SECRET is required}
       JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-7d}
       CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:5173}
       # Bootstrap owner account (first run only — unset after initial setup)
-      BOOTSTRAP_OWNER_EMAIL: ${BOOTSTRAP_OWNER_EMAIL:-mosbot@gmail.com}
+      BOOTSTRAP_OWNER_EMAIL: ${BOOTSTRAP_OWNER_EMAIL:-clawboard@gmail.com}
       BOOTSTRAP_OWNER_PASSWORD: ${BOOTSTRAP_OWNER_PASSWORD:-}
       BOOTSTRAP_OWNER_NAME: ${BOOTSTRAP_OWNER_NAME:-Admin}
       # Archive Job Configuration
@@ -174,39 +174,39 @@ services:
       dockerfile: Dockerfile
       args:
         VITE_API_URL: ${VITE_API_URL:-http://localhost:3000/api/v1}
-        VITE_APP_NAME: ${VITE_APP_NAME:-MosBot}
+        VITE_APP_NAME: ${VITE_APP_NAME:-Clawboard}
       target: development
-    container_name: mosbot-dashboard
+    container_name: clawboard-dashboard
     ports:
       - "5173:5173"
     environment:
       NODE_ENV: development
       VITE_API_URL: ${VITE_API_URL:-http://localhost:3000/api/v1}
-      VITE_APP_NAME: ${VITE_APP_NAME:-MosBot}
+      VITE_APP_NAME: ${VITE_APP_NAME:-Clawboard}
       CHOKIDAR_USEPOLLING: "true"
       CHOKIDAR_INTERVAL: "1000"
     command: ["npm", "run", "dev", "--", "--host", "0.0.0.0", "--port", "5173"]
     volumes:
       - ../web:/app
-      - mosbot_dashboard_node_modules:/app/node_modules
+      - clawboard_dashboard_node_modules:/app/node_modules
 
   postgres:
     image: postgres:15-alpine
-    container_name: mosbot-postgres
+    container_name: clawboard-postgres
     environment:
-      POSTGRES_DB: ${DB_NAME:-mosbot}
-      POSTGRES_USER: ${DB_USER:-mosbot}
-      POSTGRES_PASSWORD: ${DB_PASSWORD:-mosbot}
+      POSTGRES_DB: ${DB_NAME:-clawboard}
+      POSTGRES_USER: ${DB_USER:-clawboard}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-clawboard}
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-mosbot}"]
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-clawboard}"]
       interval: 10s
       timeout: 5s
       retries: 5
 
 volumes:
   postgres_data:
-  mosbot_dashboard_node_modules:
+  clawboard_dashboard_node_modules:

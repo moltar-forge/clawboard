@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to MosBot API will be documented in this file.
+All notable changes to Clawboard API will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -38,7 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Documentation references updated for OpenClaw path changes
 - API startup now performs non-fatal docs-link reconciliation for `main` and configured agents from `openclaw.json`
 - Agent configuration create/update flows now trigger non-fatal docs-link reconciliation for affected agents
-- Docs-link reconciliation remains internal-only in this phase (no public Mosbot API link-management endpoint; dashboard does not trigger writes)
+- Docs-link reconciliation remains internal-only in this phase (no public Clawboard API link-management endpoint; dashboard does not trigger writes)
 
 ### Fixed
 
@@ -58,7 +58,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Updated workspace paths: `/shared/docs` → `/docs` and `/shared/projects` → `/projects`
-- Updated README and documentation to reference new documentation site (bymosbot.github.io/mosbot-docs)
+- Updated README and documentation to reference new documentation site (moltar-forge.github.io/clawboard-docs)
 - Added backward compatibility for legacy `/shared/projects` paths in activity feed
 - Updated API documentation to reflect new workspace path structure
 
@@ -76,9 +76,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.0] - 2026-02-28
 
-First push. Initial project setup and open source release of MosBot API.
+First push. Initial project setup and open source release of Clawboard API.
 
-[Unreleased]: https://github.com/ByMosDev/mosbot-os/compare/api-v0.1.2...HEAD
-[0.1.2]: https://github.com/ByMosDev/mosbot-os/compare/api-v0.1.1...api-v0.1.2
-[0.1.1]: https://github.com/ByMosDev/mosbot-os/compare/api-v0.1.0...api-v0.1.1
-[0.1.0]: https://github.com/ByMosDev/mosbot-os/releases/tag/api-v0.1.0
+[Unreleased]: https://github.com/moltar-forge/clawboard/compare/api-v0.1.2...HEAD
+[0.1.2]: https://github.com/moltar-forge/clawboard/compare/api-v0.1.1...api-v0.1.2
+[0.1.1]: https://github.com/moltar-forge/clawboard/compare/api-v0.1.0...api-v0.1.1
+[0.1.0]: https://github.com/moltar-forge/clawboard/releases/tag/api-v0.1.0

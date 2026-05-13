@@ -1,12 +1,12 @@
 ---
-id: mosbot-required-config
-title: Key openclaw.json Settings for MosBot
-sidebar_label: MosBot Required Config
+id: clawboard-required-config
+title: Key openclaw.json Settings for Clawboard
+sidebar_label: Clawboard Required Config
 sidebar_position: 4
 ---
 
-MosBot API connects to OpenClaw via two services: the workspace service (port 18780) and the gateway
-(port 18789). Certain `openclaw.json` settings must be configured correctly for MosBot features to
+Clawboard API connects to OpenClaw via two services: the workspace service (port 18780) and the gateway
+(port 18789). Certain `openclaw.json` settings must be configured correctly for Clawboard features to
 work. This page lists the settings that matter most.
 
 :::tip For a complete reference of every field, see the [openclaw.json Reference](./openclaw-json).
@@ -25,21 +25,21 @@ For a complete annotated example, see the [Sample Configuration](./sample-config
       "allowedOrigins": [
         "http://localhost:18789",
         "https://your-openclaw-domain.example.com",
-        "https://your-mosbot-dashboard.example.com"
+        "https://your-clawboard-dashboard.example.com"
       ]
     }
   }
 }
 ```
 
-Add both your OpenClaw UI origin and your MosBot dashboard origin. If the dashboard origin is
+Add both your OpenClaw UI origin and your Clawboard dashboard origin. If the dashboard origin is
 missing, the browser will block WebSocket and API calls to the gateway with a CORS error.
 
 ---
 
 ## Gateway: pairing prerequisites
 
-**Required for MosBot's device pairing workflow.**
+**Required for Clawboard's device pairing workflow.**
 
 ```json
 {
@@ -55,15 +55,15 @@ missing, the browser will block WebSocket and API calls to the gateway with a CO
 }
 ```
 
-MosBot API now uses the dashboard pairing wizard to provision a device-authenticated gateway
+Clawboard API now uses the dashboard pairing wizard to provision a device-authenticated gateway
 identity. For that flow to work:
 
 - `gateway.auth.mode` must be `token`
-- `gateway.controlUi.allowedOrigins` must include the actual gateway origin MosBot opens
-- `OPENCLAW_GATEWAY_TOKEN` must be configured in MosBot API
+- `gateway.controlUi.allowedOrigins` must include the actual gateway origin Clawboard opens
+- `OPENCLAW_GATEWAY_TOKEN` must be configured in Clawboard API
 - An `owner` or `admin` must complete `Settings -> OpenClaw Pairing`
 
-MosBot no longer relies on `allowInsecureAuth` as an operational fallback for gateway RPCs.
+Clawboard no longer relies on `allowInsecureAuth` as an operational fallback for gateway RPCs.
 
 ---
 
@@ -81,7 +81,7 @@ MosBot no longer relies on `allowInsecureAuth` as an operational fallback for ga
 }
 ```
 
-Set `auth.mode: "token"` so MosBot API can bootstrap the pairing handshake using the
+Set `auth.mode: "token"` so Clawboard API can bootstrap the pairing handshake using the
 `OPENCLAW_GATEWAY_TOKEN` environment variable.
 
 ---
@@ -101,7 +101,7 @@ Set `auth.mode: "token"` so MosBot API can bootstrap the pairing handshake using
 ```
 
 `visibility: "agent"` allows agents to see their own session history. Without this, the
-`sessions_list` and `sessions_history` tool calls that MosBot uses will return empty results.
+`sessions_list` and `sessions_history` tool calls that Clawboard uses will return empty results.
 
 ---
 
@@ -119,7 +119,7 @@ Set `auth.mode: "token"` so MosBot API can bootstrap the pairing handshake using
 }
 ```
 
-Enable this if you want agents to delegate work to other agents as subagents. MosBot's subagent
+Enable this if you want agents to delegate work to other agents as subagents. Clawboard's subagent
 activity tracking depends on this being enabled.
 
 ---
@@ -144,7 +144,7 @@ Each agent must have a `workspace` path that points to a real directory on the w
 }
 ```
 
-MosBot API reads this path from `openclaw.json` via the workspace service to determine where each
+Clawboard API reads this path from `openclaw.json` via the workspace service to determine where each
 agent's files live. If the path is missing or wrong, the workspace browser will show an empty
 directory or a 404.
 
@@ -161,7 +161,7 @@ directory or a 404.
       {
         "id": "coo",
         "identity": {
-          "name": "MosBot",
+          "name": "Clawboard",
           "theme": "Research - Delegation - Execution - Orchestration",
           "emoji": "🤖"
         }
@@ -171,7 +171,7 @@ directory or a 404.
 }
 ```
 
-MosBot reads `identity.name` and `identity.emoji` to display agents in the agents page and workspace
+Clawboard reads `identity.name` and `identity.emoji` to display agents in the agents page and workspace
 selector. Without these, agents will show as their raw `id` with no icon.
 
 ---
@@ -201,7 +201,7 @@ selector. Without these, agents will show as their raw `id` with no icon.
 The `../docs` path (relative to each agent's workspace) points to the shared `docs/` directory at
 the workspace root. This makes shared documentation available as memory to all agents.
 
-:::info Workspace path convention MosBot expects shared content at the workspace root:
+:::info Workspace path convention Clawboard expects shared content at the workspace root:
 
 ```text
 /                         ← workspace root
@@ -249,38 +249,38 @@ Always reference the bot token via `${TELEGRAM_BOT_TOKEN}` — never hardcode it
 
 ## Device pairing workflow
 
-**Required for full gateway-backed MosBot features.**
+**Required for full gateway-backed Clawboard features.**
 
-Device auth uses an Ed25519 key pair to authenticate MosBot API as a trusted device. Once paired,
-MosBot receives the operator scopes it needs for session visibility, usage, and runtime control.
+Device auth uses an Ed25519 key pair to authenticate Clawboard API as a trusted device. Once paired,
+Clawboard receives the operator scopes it needs for session visibility, usage, and runtime control.
 
 ### Step 1: Configure gateway bootstrap
 
-Add these values to MosBot API's `.env`:
+Add these values to Clawboard API's `.env`:
 
 ```bash
 OPENCLAW_GATEWAY_URL=http://localhost:18789
 OPENCLAW_GATEWAY_TOKEN=your-gateway-token
 ```
 
-### Step 2: Start pairing in MosBot
+### Step 2: Start pairing in Clawboard
 
-1. Restart MosBot API
+1. Restart Clawboard API
 2. Sign in as an `owner` or `admin`
 3. Open `Settings -> OpenClaw Pairing`
 4. Click `Start pairing`
 
 ### Step 3: Approve and finalize
 
-1. Approve the pending MosBot device in OpenClaw
-2. Return to MosBot and click `Finalize pairing`
+1. Approve the pending Clawboard device in OpenClaw
+2. Return to Clawboard and click `Finalize pairing`
 3. Confirm the integration status is `ready`
 
 ---
 
-## Minimal openclaw.json for MosBot
+## Minimal openclaw.json for Clawboard
 
-The smallest `openclaw.json` that gives MosBot full functionality:
+The smallest `openclaw.json` that gives Clawboard full functionality:
 
 ```json
 {
@@ -317,7 +317,7 @@ The smallest `openclaw.json` that gives MosBot full functionality:
     "mode": "local",
     "bind": "lan",
     "controlUi": {
-      "allowedOrigins": ["http://localhost:18789", "https://your-mosbot-dashboard.example.com"]
+      "allowedOrigins": ["http://localhost:18789", "https://your-clawboard-dashboard.example.com"]
     },
     "auth": {
       "mode": "token"

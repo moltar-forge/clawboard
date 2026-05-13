@@ -5,7 +5,7 @@ sidebar_label: Configuration
 sidebar_position: 4
 ---
 
-All MosBot API configuration is provided via environment variables. Copy `.env.example` to `.env` in
+All Clawboard API configuration is provided via environment variables. Copy `.env.example` to `.env` in
 the repository root to get started.
 
 ## Required variables
@@ -32,8 +32,8 @@ These must be set before the API will start:
 | ------------- | ----------- | ----------------------------------------------------------- |
 | `DB_HOST`     | `localhost` | PostgreSQL host                                             |
 | `DB_PORT`     | `5432`      | PostgreSQL port                                             |
-| `DB_NAME`     | `mosbot`    | Database name                                               |
-| `DB_USER`     | `mosbot`    | Database user                                               |
+| `DB_NAME`     | `clawboard`    | Database name                                               |
+| `DB_USER`     | `clawboard`    | Database user                                               |
 | `DB_PASSWORD` | —           | See [Required variables](#required-variables) section above |
 
 ## Authentication
@@ -84,13 +84,13 @@ Virtual path conventions:
 
 ## OpenClaw Gateway
 
-Required to bootstrap OpenClaw gateway connectivity and the MosBot pairing wizard. Without these
+Required to bootstrap OpenClaw gateway connectivity and the Clawboard pairing wizard. Without these
 variables, gateway-backed features remain unavailable.
 
 | Variable                         | Default     | Description                                                                                           |
 | -------------------------------- | ----------- | ----------------------------------------------------------------------------------------------------- |
 | `OPENCLAW_GATEWAY_URL`           | —           | URL of the OpenClaw gateway (e.g. `http://localhost:18789`)                                          |
-| `OPENCLAW_GATEWAY_TOKEN`         | —           | Gateway token used to bootstrap MosBot's device pairing flow                                          |
+| `OPENCLAW_GATEWAY_TOKEN`         | —           | Gateway token used to bootstrap Clawboard's device pairing flow                                          |
 | `OPENCLAW_GATEWAY_TIMEOUT_MS`    | `15000`     | Request timeout in milliseconds                                                                       |
 | `OPENCLAW_WS_PERSISTENT_RPC`     | auto        | Tri-state override for gateway RPC mode: `true` force persistent, `false` force short-lived, unset uses runtime default (`NODE_ENV !== test`) |
 | `OPENCLAW_WS_RPC_IDLE_MS`        | `1800000`   | Idle-close window for persistent gateway RPC socket (30 minutes by default)                          |
@@ -98,19 +98,19 @@ variables, gateway-backed features remain unavailable.
 | `OPENCLAW_GATEWAY_INSECURE_TLS`  | `false`     | Set `true` only when gateway uses self-signed/internal certs and you explicitly accept insecure TLS  |
 
 :::important TLS behavior change
-MosBot now verifies gateway TLS certificates by default for WebSocket RPCs. If your environment uses
+Clawboard now verifies gateway TLS certificates by default for WebSocket RPCs. If your environment uses
 self-signed/internal certificates, set `OPENCLAW_GATEWAY_INSECURE_TLS=true` explicitly.
 :::
 
 ## OpenClaw Device Auth
 
-MosBot now manages device auth through the dashboard pairing workflow. After setting
+Clawboard now manages device auth through the dashboard pairing workflow. After setting
 `OPENCLAW_GATEWAY_URL` and `OPENCLAW_GATEWAY_TOKEN`, sign in as an `owner` or `admin`, open
 `Settings -> OpenClaw Pairing`, then complete `Start pairing` and `Finalize pairing`.
 
 ## Subagent runtime files
 
-Legacy runtime file integrations under `/runtime/mosbot/*` are retired and are no longer part of the
+Legacy runtime file integrations under `/runtime/clawboard/*` are retired and are no longer part of the
 supported workspace contract. Configure subagent observability through supported OpenClaw gateway
 and activity APIs instead of runtime JSON/JSONL files.
 
@@ -129,7 +129,7 @@ The web app (`web`) also has its own `.env` file:
 
 | Variable       | Default                 | Description           |
 | -------------- | ----------------------- | --------------------- |
-| `VITE_API_URL` | `http://localhost:3000` | URL of the MosBot API |
+| `VITE_API_URL` | `http://localhost:3000` | URL of the Clawboard API |
 
 :::note `VITE_*` variables are embedded into the built JavaScript bundle and are therefore
 **public**. Never put secrets in dashboard environment variables. :::

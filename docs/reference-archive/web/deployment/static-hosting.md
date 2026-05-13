@@ -1,6 +1,6 @@
 # Deployment (static hosting)
 
-MosBot Dashboard is a static site. A common deployment model is **S3 + CloudFront**.
+Clawboard Dashboard is a static site. A common deployment model is **S3 + CloudFront**.
 
 ## CI deployment (GitHub Actions)
 

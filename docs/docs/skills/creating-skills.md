@@ -7,7 +7,7 @@ sidebar_position: 3
 
 # Creating Skills
 
-There are two ways to create and manage skills in MosBot OS: (1) directly creating a skill folder in
+There are two ways to create and manage skills in Clawboard: (1) directly creating a skill folder in
 the filesystem, or (2) asking an agent to create the skill for you.
 
 ---
@@ -142,7 +142,7 @@ phrasings. :::
 
 ## Method 2: Ask an Agent to Create the Skill
 
-You can ask any MosBot agent to create a skill for you. This is useful when you want to collaborate
+You can ask any Clawboard agent to create a skill for you. This is useful when you want to collaborate
 on skill design or when you need the agent's expertise.
 
 ### Sample Prompt

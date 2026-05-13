@@ -11,7 +11,7 @@ now, how much it's costing, and how they've been performing over time.
 :::info Requires OpenClaw Gateway The Agent Monitor requires the OpenClaw Gateway to be configured.
 See [OpenClaw Integration](../openclaw/overview). :::
 
-![Agent Monitor](/img/screenshots/mosbot-agent-monitor.png)
+![Agent Monitor](/img/screenshots/clawboard-agent-monitor.png)
 
 ## What you can see
 
@@ -34,14 +34,14 @@ Track how much your agents are spending on AI model calls:
 - **Daily/weekly totals** — spending trends over time
 - **Token usage** — input and output tokens per session
 
-![Usage and Cost](/img/screenshots/mosbot-usage-and-cost.png)
+![Usage and Cost](/img/screenshots/clawboard-usage-and-cost.png)
 
 ### Session history and messages
 
 Browse past sessions and view real-time messages. The messages drawer shows agent conversations as
 they happen.
 
-![Agent Monitor Messages](/img/screenshots/mosbot-agent-monitor-messages-drawer.png)
+![Agent Monitor Messages](/img/screenshots/clawboard-agent-monitor-messages-drawer.png)
 
 Each session shows:
 
@@ -58,7 +58,7 @@ The Agent Monitor also shows the models configured for each agent, including:
 - Fallback models
 - Per-model cost rates
 
-![Model Fleet](/img/screenshots/mosbot-model-fleet.png)
+![Model Fleet](/img/screenshots/clawboard-model-fleet.png)
 
 This helps you understand the cost profile of your agent fleet and optimize model selection.
 

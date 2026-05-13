@@ -22,7 +22,7 @@ function parseJsonl(content) {
 
 /**
  * Fetch runtime subagent data.
- * Runtime JSON/JSONL file integrations under /runtime/mosbot/* are retired.
+ * Runtime JSON/JSONL file integrations under /runtime/clawboard/* are retired.
  * We keep this service interface for route compatibility while returning
  * an explicit empty runtime snapshot.
  * @param {object} options - Query options

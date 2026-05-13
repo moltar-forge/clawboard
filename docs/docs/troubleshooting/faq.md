@@ -9,28 +9,28 @@ sidebar_position: 2
 
 ## General
 
-### What is MosBot OS?
+### What is Clawboard?
 
-MosBot OS is a self-hosted operating system for AI agent work. It provides a human-operable control
+Clawboard is a self-hosted operating system for AI agent work. It provides a human-operable control
 plane on top of OpenClaw (the AI agent runtime), giving you task management, agent monitoring,
 workspace browsing, and more in a single interface.
 
-### Do I need OpenClaw to use MosBot OS?
+### Do I need OpenClaw to use Clawboard?
 
-Technically no — MosBot OS can run without OpenClaw, and basic features like task management, user
+Technically no — Clawboard can run without OpenClaw, and basic features like task management, user
 management, and activity logs will function. However, **OpenClaw is strongly recommended** because
-the core value of MosBot OS — agent monitoring, workspace browsing, agents page, and skills management
+the core value of Clawboard — agent monitoring, workspace browsing, agents page, and skills management
 — requires OpenClaw. Install OpenClaw first for the complete experience.
 
-### Is MosBot OS production-ready?
+### Is Clawboard production-ready?
 
-MosBot OS is currently used for personal use and is vibe-coded with minimal formal code reviews. It
+Clawboard is currently used for personal use and is vibe-coded with minimal formal code reviews. It
 works well for personal and small-team use cases but may have rough edges. Use it with appropriate
 expectations.
 
-### What AI models does MosBot OS support?
+### What AI models does Clawboard support?
 
-MosBot OS itself doesn't call AI models — that's OpenClaw's job. OpenClaw supports:
+Clawboard itself doesn't call AI models — that's OpenClaw's job. OpenClaw supports:
 
 - **OpenRouter** — access to 200+ models (Claude, GPT, Gemini, etc.)
 - **Anthropic** — Claude models directly
@@ -46,17 +46,17 @@ MosBot OS itself doesn't call AI models — that's OpenClaw's job. OpenClaw supp
 With Docker Compose, the full stack can be running in under 10 minutes. See the
 [Quickstart](../getting-started/quickstart).
 
-### Can I run MosBot OS without Docker?
+### Can I run Clawboard without Docker?
 
-Yes. You can run MosBot API and Dashboard directly with Node.js. You'll need a PostgreSQL database
+Yes. You can run Clawboard API and Dashboard directly with Node.js. You'll need a PostgreSQL database
 running separately. See the local development guides in each repo.
 
-### What ports does MosBot OS use?
+### What ports does Clawboard use?
 
 | Service            | Default port           |
 | ------------------ | ---------------------- |
-| MosBot API         | 3000                   |
-| MosBot Dashboard   | 5173 (dev) / 80 (prod) |
+| Clawboard API         | 3000                   |
+| Clawboard Dashboard   | 5173 (dev) / 80 (prod) |
 | PostgreSQL         | 5432                   |
 | OpenClaw Workspace | 18780                  |
 | OpenClaw Gateway   | 18789                  |
@@ -73,7 +73,7 @@ Caddy, Cloudflare, etc.) to point to the API and dashboard.
 ### What is OpenClaw?
 
 OpenClaw is an AI agent runtime. It manages agents, workspaces, sessions, channels (like Telegram),
-and cron jobs. MosBot OS connects to OpenClaw to expose this data through a human-friendly
+and cron jobs. Clawboard connects to OpenClaw to expose this data through a human-friendly
 interface.
 
 ### Where do I get OpenClaw?
@@ -81,7 +81,7 @@ interface.
 OpenClaw has its own repository and documentation. Refer to the OpenClaw documentation for
 installation instructions.
 
-### Can I use MosBot OS with a remote OpenClaw instance?
+### Can I use Clawboard with a remote OpenClaw instance?
 
 Yes. Set `OPENCLAW_WORKSPACE_URL` and `OPENCLAW_GATEWAY_URL` to the remote OpenClaw service URLs.
 Use a VPN or private network for security.
@@ -113,7 +113,7 @@ Shared skills (in `/skills/`) are available to all agents. Agent-specific skills
 ### Where is `openclaw.json`?
 
 `openclaw.json` lives in the root of the OpenClaw workspace filesystem. You can view and edit it in
-the MosBot Dashboard under the workspace browser, or directly in the OpenClaw ControlUI.
+the Clawboard Dashboard under the workspace browser, or directly in the OpenClaw ControlUI.
 
 ### How do I add a new agent?
 
@@ -137,7 +137,7 @@ example.
 
 ### How do I set up daily standups?
 
-1. Create agent user accounts in MosBot (Settings → Users) with the `agent` role and correct
+1. Create agent user accounts in Clawboard (Settings → Users) with the `agent` role and correct
    `agent_id`
 2. Configure a cron job in OpenClaw to trigger the standup daily
 3. See [Standups](../features/standups) for the full guide

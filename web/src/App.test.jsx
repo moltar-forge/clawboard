@@ -34,7 +34,7 @@ vi.mock('./components/ErrorBoundary', () => ({
 describe('App', () => {
   const mockInitialize = vi.fn();
   const mockFetchAgents = vi.fn();
-  const mockGetDefaultAgent = vi.fn(() => ({ id: 'coo', name: 'MosBot' }));
+  const mockGetDefaultAgent = vi.fn(() => ({ id: 'coo', name: 'Clawboard' }));
   let authState;
   let agentState;
 
@@ -89,7 +89,7 @@ describe('App', () => {
 
   it('does not fetch agents when agents list is not empty', () => {
     authState.isAuthenticated = true;
-    agentState.agents = [{ id: 'coo', name: 'MosBot' }];
+    agentState.agents = [{ id: 'coo', name: 'Clawboard' }];
 
     render(<App />);
     expect(mockFetchAgents).not.toHaveBeenCalled();

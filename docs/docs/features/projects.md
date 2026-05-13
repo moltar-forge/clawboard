@@ -24,7 +24,7 @@ A project is a registry entry with:
 
 Agents can be assigned to multiple projects.
 
-For each assignment, MosBot ensures this symlink:
+For each assignment, Clawboard ensures this symlink:
 
 ```text
 /workspace-<agentId>/projects/<project-slug> -> ../../projects/<project-slug>
@@ -36,7 +36,7 @@ This means agents can access project files via a stable local path:
 
 ## Main workspace links
 
-MosBot also ensures the main workspace has links to all active project roots:
+Clawboard also ensures the main workspace has links to all active project roots:
 
 ```text
 /workspace/projects/<project-slug> -> ../../projects/<project-slug>
@@ -50,7 +50,7 @@ MosBot also ensures the main workspace has links to all active project roots:
 2. Enter Name + Slug
 3. Click **Create**
 
-MosBot creates the project record and scaffolds:
+Clawboard creates the project record and scaffolds:
 
 - `/projects/<slug>/.keep`
 - `/projects/<slug>/agent-contract.md` (default template)
@@ -60,14 +60,14 @@ MosBot creates the project record and scaffolds:
 1. Choose an agent in the project card
 2. Click **Assign**
 
-MosBot records assignment and creates/repairs the project symlink in that agent workspace.
+Clawboard records assignment and creates/repairs the project symlink in that agent workspace.
 
 ### Delete project
 
 1. Click **Delete** on a project card
 2. Confirm
 
-MosBot removes:
+Clawboard removes:
 
 - project record
 - assignment rows

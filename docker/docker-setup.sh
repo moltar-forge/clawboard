@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# ── MosBot full-stack test harness setup ──────────────────────────────────
+# ── Clawboard full-stack test harness setup ──────────────────────────────────
 # Adapted from the OpenClaw docker-setup.sh for use as a self-contained
 # test environment inside ./docker/.
 #
@@ -22,7 +22,7 @@ DOCKER_SOCKET_PATH="${OPENCLAW_DOCKER_SOCKET:-}"
 # ── Reset subcommand ─────────────────────────────────────────────────────
 
 if [[ "${1:-}" == "reset" ]]; then
-  echo "==> Resetting MosBot test harness"
+  echo "==> Resetting Clawboard test harness"
   echo ""
 
   # Stop containers and remove volumes
@@ -276,7 +276,7 @@ PY
 fi
 export OPENCLAW_GATEWAY_TOKEN
 
-# ── Generate MosBot secrets if not set ────────────────────────────────────
+# ── Generate Clawboard secrets if not set ────────────────────────────────────
 
 generate_secret() {
   if command -v openssl >/dev/null 2>&1; then
@@ -305,7 +305,7 @@ fi
 export BOOTSTRAP_OWNER_PASSWORD
 
 if [[ -z "${DB_PASSWORD:-}" ]]; then
-  DB_PASSWORD="mosbot"
+  DB_PASSWORD="clawboard"
 fi
 export DB_PASSWORD
 
@@ -626,7 +626,7 @@ fi
 
 echo ""
 echo "=========================================="
-echo "  MosBot Test Harness Setup Complete"
+echo "  Clawboard Test Harness Setup Complete"
 echo "=========================================="
 echo ""
 echo "Config:    $OPENCLAW_CONFIG_DIR"
@@ -649,5 +649,5 @@ echo "  Workspace Service:   http://localhost:18780"
 echo "  PostgreSQL:          localhost:5432"
 echo ""
 echo "Login:"
-echo "  Email:    mosbot@gmail.com"
+echo "  Email:    clawboard@gmail.com"
 echo "  Password: $BOOTSTRAP_OWNER_PASSWORD"

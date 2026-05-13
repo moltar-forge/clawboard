@@ -12,7 +12,7 @@ producing a consolidated summary.
 :::info Requires OpenClaw Gateway Standups Require the OpenClaw Gateway to be configured so the COO
 agent can contact other agents. See [OpenClaw Integration](../openclaw/overview). :::
 
-![Standups](/img/screenshots/mosbot-standup.png)
+![Standups](/img/screenshots/clawboard-standup.png)
 
 ## How standups work
 
@@ -31,7 +31,7 @@ The entire process runs autonomously — you only get notified if something requ
 
 Navigate to **Standups** in the sidebar to see the standup list and detailed notes.
 
-![Standup Notes](/img/screenshots/mosbot-standup-notes.png)
+![Standup Notes](/img/screenshots/clawboard-standup-notes.png)
 
 From the standups page you can view:
 
@@ -63,7 +63,7 @@ agents.
 Standups are triggered by a cron job in OpenClaw. The Scheduler UI in the dashboard lets you manage
 these scheduled tasks.
 
-![Scheduler](/img/screenshots/mosbot-ascheduler.png)
+![Scheduler](/img/screenshots/clawboard-ascheduler.png)
 
 To set up the daily standup:
 
@@ -102,8 +102,8 @@ This is useful for testing or re-running a failed standup.
 ## Agent accounts
 
 For standups to work, each participating agent (COO, CTO, CPO, CMO) must have a user account in
-MosBot with the `agent` role and the correct `agent_id` set. These accounts are used by agents to
-authenticate to the MosBot API.
+Clawboard with the `agent` role and the correct `agent_id` set. These accounts are used by agents to
+authenticate to the Clawboard API.
 
 Create agent accounts under **Settings → Users**.
 

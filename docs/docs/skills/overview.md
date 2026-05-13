@@ -71,7 +71,7 @@ practices. :::
 
 Skills can be invoked by users via chat (e.g. Telegram) or by other agents in multi-agent workflows.
 
-## Skills in the MosBot Dashboard
+## Skills in the Clawboard Dashboard
 
 The **Skills** page in the dashboard provides a visual browser for all skills across your OpenClaw
 installation. You can:
@@ -83,7 +83,7 @@ installation. You can:
 
 ## Types of skills
 
-MosBot OS supports two types of skills:
+Clawboard supports two types of skills:
 
 | Type                      | Location                  | Available to    |
 | ------------------------- | ------------------------- | --------------- |
@@ -92,9 +92,9 @@ MosBot OS supports two types of skills:
 
 See [Shared vs Agent-Specific Skills](./shared-vs-agent) for details.
 
-## Recommended Skills for MosBot OS Integration
+## Recommended Skills for Clawboard Integration
 
-To enable OpenClaw agents to work effectively with MosBot OS, we highly recommend implementing the
+To enable OpenClaw agents to work effectively with Clawboard, we highly recommend implementing the
 following skills:
 
 ### Essential Task Management Skills
@@ -103,7 +103,7 @@ following skills:
 
 - **[task_writing](./reference/task-writing.md)** — Create well-structured, actionable tasks from
   descriptions, meetings, or PRD requirements. Essential for breaking down work into manageable
-  tasks that can be tracked in MosBot OS.
+  tasks that can be tracked in Clawboard.
 - **[create_prd](./reference/create-prd.md)** — Generate comprehensive Product Requirements
   Documents that serve as the foundation for task creation and agent orchestration.
 
@@ -126,13 +126,13 @@ following skills:
 
 These recommended skills enable:
 
-- **Task Orchestration**: Agents can create, assign, and pick up tasks seamlessly within the MosBot
+- **Task Orchestration**: Agents can create, assign, and pick up tasks seamlessly within the Clawboard
   OS ecosystem
 - **Context Management**: Agents can maintain clean working memory, preventing confusion from
   accumulated context
 - **Multi-Modal Input**: Agents can process voice messages and convert them to text for further
   processing
-- **Workflow Integration**: Skills bridge the gap between OpenClaw agents and MosBot OS task
+- **Workflow Integration**: Skills bridge the gap between OpenClaw agents and Clawboard task
   management features
 
 See the [Skill Reference](./reference/skills-reference-overview) for detailed documentation on these

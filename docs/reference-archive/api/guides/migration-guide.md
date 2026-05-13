@@ -1,12 +1,12 @@
 # Database Migration Guide
 
-How to run and troubleshoot database migrations for the Mosbot API. For **conventions when writing migrations** (idempotency, NOT NULL handling, indexes), see the Cursor rule **`.cursor/rules/migrations.mdc`**.
+How to run and troubleshoot database migrations for the Clawboard API. For **conventions when writing migrations** (idempotency, NOT NULL handling, indexes), see the Cursor rule **`.cursor/rules/migrations.mdc`**.
 
 ---
 
 ## Migration System Overview
 
-The Mosbot API uses an **automated migration tracking system** that:
+The Clawboard API uses an **automated migration tracking system** that:
 
 - Tracks which migrations have been applied using a `schema_migrations` table
 - Runs only pending migrations in filename order
@@ -146,8 +146,8 @@ Environment variables not loaded. Ensure `.env` exists in the project root with 
 ```env
 DB_HOST=localhost
 DB_PORT=5432
-DB_NAME=mosbot
-DB_USER=mosbot
+DB_NAME=clawboard
+DB_USER=clawboard
 DB_PASSWORD=your_password
 ```
 

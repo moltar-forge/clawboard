@@ -5,15 +5,15 @@ sidebar_label: Overview
 sidebar_position: 1
 ---
 
-OpenClaw is the AI agent runtime that powers MosBot OS. It manages agents, workspaces, sessions,
-channels, and cron jobs. MosBot API connects to OpenClaw to expose this data through a
+OpenClaw is the AI agent runtime that powers Clawboard. It manages agents, workspaces, sessions,
+channels, and cron jobs. Clawboard API connects to OpenClaw to expose this data through a
 human-friendly interface.
 
-![OpenClaw Configuration](/img/screenshots/mosbot-openclaw-config.png)
+![OpenClaw Configuration](/img/screenshots/clawboard-openclaw-config.png)
 
 ## What OpenClaw provides
 
-OpenClaw is the foundation of the complete MosBot OS experience. Without it, MosBot OS provides only
+OpenClaw is the foundation of the complete Clawboard experience. Without it, Clawboard provides only
 basic task management and user management. With OpenClaw connected, you get:
 
 | Feature                              | Requires          |
@@ -24,18 +24,18 @@ basic task management and user management. With OpenClaw connected, you get:
 | Skills management                    | Workspace service |
 | Agent configuration editing          | Workspace service |
 
-## Services MosBot connects to
+## Services Clawboard connects to
 
-MosBot API connects to two services alongside OpenClaw:
+Clawboard API connects to two services alongside OpenClaw:
 
 ### Workspace service (port 18780)
 
-A lightweight HTTP REST sidecar **provided by MosBot OS** that runs alongside OpenClaw and exposes
+A lightweight HTTP REST sidecar **provided by Clawboard** that runs alongside OpenClaw and exposes
 the OpenClaw workspace filesystem over HTTP. It is not part of the standard OpenClaw distribution —
 you need to deploy it as an additional container next to your OpenClaw instance, sharing the same
 workspace volume.
 
-MosBot uses it to:
+Clawboard uses it to:
 
 - Read and write workspace files
 - Read and update `openclaw.json` configuration
@@ -46,7 +46,7 @@ See [Workspace Service](./workspace-service) for deployment instructions.
 
 ### Gateway (port 18789)
 
-OpenClaw's own HTTP + WebSocket service that provides runtime control and session data. MosBot uses
+OpenClaw's own HTTP + WebSocket service that provides runtime control and session data. Clawboard uses
 it to:
 
 - Query live agent sessions
@@ -54,17 +54,17 @@ it to:
 - Invoke tools and send messages
 - Access real-time agent status
 
-Gateway-backed features are unlocked after an `owner` or `admin` completes the MosBot pairing
+Gateway-backed features are unlocked after an `owner` or `admin` completes the Clawboard pairing
 wizard.
 
 ## Architecture
 
 ```text
-MosBot Dashboard
+Clawboard Dashboard
       │
       │ REST API (JWT auth)
       ▼
-MosBot API
+Clawboard API
       │                    │
       │ HTTP               │ HTTP + WebSocket
       ▼                    ▼
@@ -83,12 +83,12 @@ endpoints that depend on OpenClaw return `503 SERVICE_NOT_CONFIGURED`. The dashb
 degraded state — task management and user management work, but agent monitoring, workspace browsing,
 agents page, and skills will be unavailable.
 
-For the complete MosBot OS experience, OpenClaw should be installed and connected.
+For the complete Clawboard experience, OpenClaw should be installed and connected.
 
 ## Next steps
 
 - [Setup OpenClaw](./setup) — install and configure OpenClaw
-- [Connect MosBot API](./integration) — configure the integration variables
+- [Connect Clawboard API](./integration) — configure the integration variables
 - [Workspace Service](./workspace-service) — workspace service details
 - [Gateway](./gateway) — gateway configuration
 - [Local Development](./local-development) — port-forwarding for local dev

@@ -1,6 +1,6 @@
-# MosBot OS
+# Clawboard
 
-Self-hosted operating system for AI agent work, built on [OpenClaw](https://github.com/anthropics/openclaw). MosBot OS provides a human-operable control plane to monitor agents, manage tasks, browse workspaces, and orchestrate agent activity from a single dashboard.
+Self-hosted operating system for AI agent work, built on [OpenClaw](https://github.com/anthropics/openclaw). Clawboard provides a human-operable control plane to monitor agents, manage tasks, browse workspaces, and orchestrate agent activity from a single dashboard.
 
 ## Architecture
 
@@ -10,7 +10,7 @@ Self-hosted operating system for AI agent work, built on [OpenClaw](https://gith
 └────────────┬─────────────┘
              │ REST API
 ┌────────────▼─────────────┐
-│  MosBot API (Express)    │  api/
+│  Clawboard API (Express)    │  api/
 │  + PostgreSQL            │
 └────────────┬─────────────┘
              │ HTTP + WebSocket
@@ -45,8 +45,8 @@ Key features: Agent Monitor, Task Board (kanban), Workspaces, Skills, Standups, 
 ### Full-stack harness (recommended for first run)
 
 ```bash
-git clone https://github.com/ByMosDev/mosbot-os.git
-cd mosbot
+git clone https://github.com/moltar-forge/clawboard.git
+cd clawboard
 npm install
 make harness.setup   # Interactive first-time setup — generates docker/.env
 make harness.up      # Start all services
@@ -130,7 +130,7 @@ make harness.ps      # Show harness status
 ## Repository structure
 
 ```
-mosbot/
+clawboard/
 ├── api/                  Node/Express backend API
 ├── web/                  React/Vite dashboard
 ├── docs/                 Docusaurus documentation site

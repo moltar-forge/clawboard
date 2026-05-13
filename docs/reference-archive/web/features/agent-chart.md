@@ -20,5 +20,5 @@ Nodes may appear with:
 
 ## Configuration behavior
 
-The dashboard first reads agent definitions from `openclaw.json` through MosBot API + workspace service.
+The dashboard first reads agent definitions from `openclaw.json` through Clawboard API + workspace service.
 If optional hierarchy metadata is unavailable, the page falls back to the default flat/derived rendering.

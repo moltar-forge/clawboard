@@ -30,7 +30,7 @@ export const useUIStore = create(
       },
     }),
     {
-      name: 'mosbot-ui-store',
+      name: 'clawboard-ui-store',
       partialize: (state) => ({
         sidebarCollapsed: state.sidebarCollapsed,
         showHiddenFiles: state.showHiddenFiles,

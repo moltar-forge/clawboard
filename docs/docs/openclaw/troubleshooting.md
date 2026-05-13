@@ -38,7 +38,7 @@ docker compose restart api
 1. Verify the service is running
 2. Check the URL is correct
 3. If using Kubernetes, verify the port-forward is active
-4. Check network connectivity between MosBot API and OpenClaw
+4. Check network connectivity between Clawboard API and OpenClaw
 
 ```bash
 # Test workspace service directly
@@ -67,7 +67,7 @@ path is missing.
 
 ### 401 Unauthorized on OpenClaw endpoints
 
-**Cause**: The bearer token in MosBot's `.env` doesn't match the token configured in OpenClaw.
+**Cause**: The bearer token in Clawboard's `.env` doesn't match the token configured in OpenClaw.
 
 **Fix**:
 
@@ -85,14 +85,14 @@ kubectl get secret -n openclaw-personal openclaw-secrets \
 
 ### `OPENCLAW_PAIRING_REQUIRED` on sessions/config/runtime pages
 
-**Cause**: MosBot can reach the gateway, but the integration has not completed device pairing.
+**Cause**: Clawboard can reach the gateway, but the integration has not completed device pairing.
 
 **Fix**:
 
 1. Sign in as an `owner` or `admin`
 2. Open `Settings -> OpenClaw Pairing`
 3. Click `Start pairing`
-4. Approve the pending MosBot device in OpenClaw
+4. Approve the pending Clawboard device in OpenClaw
 5. Click `Finalize pairing`
 
 If the page still shows `paired_missing_scopes`, verify the gateway granted the expected operator
@@ -102,7 +102,7 @@ scopes and try finalizing again.
 
 ### Pairing wizard shows "origin not allowed"
 
-**Cause**: `gateway.controlUi.allowedOrigins` does not include the exact origin the MosBot gateway
+**Cause**: `gateway.controlUi.allowedOrigins` does not include the exact origin the Clawboard gateway
 client is using.
 
 **Fix**:
@@ -131,15 +131,15 @@ Example:
 
 ### Only seeing one agent (the default agent)
 
-**Cause**: MosBot API cannot reach the workspace service, so it falls back to returning only the
+**Cause**: Clawboard API cannot reach the workspace service, so it falls back to returning only the
 default agent.
 
 **Fix**: Check workspace service connectivity. The agent list is read from `openclaw.json` via the
 workspace service.
 
 ```bash
-# Check workspace status via MosBot API
-curl -H "Authorization: Bearer <mosbot-jwt>" \
+# Check workspace status via Clawboard API
+curl -H "Authorization: Bearer <clawboard-jwt>" \
   http://localhost:3000/api/v1/openclaw/workspace/status
 ```
 
@@ -153,7 +153,7 @@ curl -H "Authorization: Bearer <mosbot-jwt>" \
 
 1. Check workspace service connectivity (see above)
 2. Verify the workspace path exists in the OpenClaw filesystem
-3. Check MosBot API logs for error details:
+3. Check Clawboard API logs for error details:
 
    ```bash
    docker compose logs api --tail=50
@@ -197,12 +197,12 @@ OpenClaw agent config.
 
 **Fix**:
 
-1. Set `OPENCLAW_PATH_REMAP_PREFIXES` in MosBot API (this env var appends custom prefixes)
+1. Set `OPENCLAW_PATH_REMAP_PREFIXES` in Clawboard API (this env var appends custom prefixes)
 2. Built-in prefixes are always active: `/home/node/.openclaw/workspace`, `~/.openclaw/workspace`,
    `/home/node/.openclaw`, `~/.openclaw`
 3. Most specific prefix wins when multiple prefixes match
 4. Add any extra custom prefixes via `OPENCLAW_PATH_REMAP_PREFIXES`, comma-separated
-5. Restart MosBot API
+5. Restart Clawboard API
 
 ---
 
@@ -226,8 +226,8 @@ OpenClaw agent config.
 
 **Fix**:
 
-1. Ensure MosBot API can reach workspace service
-2. Trigger agent create/update flow (or restart MosBot API for `main` reconcile)
+1. Ensure Clawboard API can reach workspace service
+2. Trigger agent create/update flow (or restart Clawboard API for `main` reconcile)
 3. If state is `conflict`, resolve the conflicting path in the agent workspace and retry
 
 ---
@@ -255,7 +255,7 @@ sessions.
 
 1. Verify `OPENCLAW_GATEWAY_URL` and `OPENCLAW_GATEWAY_TOKEN` are set
 2. Check that the gateway is running
-3. Verify MosBot pairing status is `ready`
+3. Verify Clawboard pairing status is `ready`
 4. Verify agents have had recent sessions
 
 ---
@@ -285,21 +285,21 @@ changes.
 ## Diagnostic commands
 
 ```bash
-# Check MosBot API logs
+# Check Clawboard API logs
 docker compose logs api --tail=100
 
 # Check workspace service status
 curl -H "Authorization: Bearer <workspace-token>" http://localhost:18780/status
 
-# List agents via MosBot API
-curl -H "Authorization: Bearer <mosbot-jwt>" \
+# List agents via Clawboard API
+curl -H "Authorization: Bearer <clawboard-jwt>" \
   http://localhost:3000/api/v1/openclaw/agents
 
 # List workspace files
-curl -H "Authorization: Bearer <mosbot-jwt>" \
+curl -H "Authorization: Bearer <clawboard-jwt>" \
   "http://localhost:3000/api/v1/openclaw/workspace/files?path=/workspace&recursive=false"
 
 # Check gateway sessions
-curl -H "Authorization: Bearer <mosbot-jwt>" \
+curl -H "Authorization: Bearer <clawboard-jwt>" \
   http://localhost:3000/api/v1/openclaw/sessions
 ```

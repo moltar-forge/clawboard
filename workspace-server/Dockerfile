@@ -1,4 +1,4 @@
-# MosBot Workspace Service - Multi-stage Docker build
+# Clawboard Workspace Service - Multi-stage Docker build
 # Use Debian slim for better multi-platform (arm64) build compatibility under QEMU
 FROM node:25-alpine3.22 AS base
 

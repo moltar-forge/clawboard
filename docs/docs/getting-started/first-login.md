@@ -5,7 +5,7 @@ sidebar_label: First Login
 sidebar_position: 5
 ---
 
-After starting MosBot OS for the first time, complete these steps to secure your installation.
+After starting Clawboard for the first time, complete these steps to secure your installation.
 
 ## 1. Log in
 
@@ -71,7 +71,7 @@ OPENCLAW_GATEWAY_TOKEN=your-gateway-token
 Then restart the API:
 
 ```bash
-cd mosbot
+cd clawboard
 docker compose restart api
 ```
 
@@ -80,12 +80,12 @@ After restart:
 1. Sign back in as an `owner` or `admin`
 2. Open **Settings -> OpenClaw Pairing**
 3. Click **Start pairing**
-4. Approve the pending MosBot device in OpenClaw
+4. Approve the pending Clawboard device in OpenClaw
 5. Click **Finalize pairing**
 
 See [OpenClaw Integration](../openclaw/overview) for the full setup guide.
 
 ## Production checklist
 
-Before exposing MosBot OS to the internet, review the
+Before exposing Clawboard to the internet, review the
 [Production Checklist](../deployment/production).

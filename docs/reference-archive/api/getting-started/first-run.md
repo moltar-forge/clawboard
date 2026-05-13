@@ -1,6 +1,6 @@
 # First-run setup
 
-This guide walks you through setting up MosBot OS for the first time.
+This guide walks you through setting up Clawboard for the first time.
 
 ## Prerequisites
 
@@ -9,14 +9,14 @@ This guide walks you through setting up MosBot OS for the first time.
 
   ```text
   parent-folder/
-  ├── mosbot-api/
+  ├── clawboard-api/
   └── web/
   ```
 
 ## Step 1: Configure environment
 
 ```bash
-cd mosbot-api
+cd clawboard-api
 cp .env.example .env
 ```
 

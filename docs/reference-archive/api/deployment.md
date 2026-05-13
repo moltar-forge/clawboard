@@ -7,7 +7,7 @@
 Clone both repos side-by-side, then:
 
 ```bash
-cd mosbot-api
+cd clawboard-api
 cp .env.example .env   # edit required values
 make up
 ```
@@ -15,15 +15,15 @@ make up
 ### API only
 
 ```bash
-docker build --target production -t mosbot-api:latest .
-docker run -p 3000:3000 --env-file .env mosbot-api:latest
+docker build --target production -t clawboard-api:latest .
+docker run -p 3000:3000 --env-file .env clawboard-api:latest
 ```
 
 ### Pre-built images (GHCR)
 
 ```bash
-docker pull ghcr.io/bymosbot/mosbot-api:latest
-docker run -p 3000:3000 --env-file .env ghcr.io/bymosbot/mosbot-api:latest
+docker pull ghcr.io/byclawboard/clawboard-api:latest
+docker run -p 3000:3000 --env-file .env ghcr.io/byclawboard/clawboard-api:latest
 ```
 
 Available tags:

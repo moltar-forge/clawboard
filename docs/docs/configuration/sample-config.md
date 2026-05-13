@@ -5,7 +5,7 @@ sidebar_label: Sample Config
 sidebar_position: 2
 ---
 
-This is a complete, annotated `openclaw.json` configuration for a multi-agent MosBot OS setup. It
+This is a complete, annotated `openclaw.json` configuration for a multi-agent Clawboard setup. It
 demonstrates a team of 5 agents with Telegram integration, Ollama local models, and OpenRouter cloud
 models.
 
@@ -31,12 +31,12 @@ The `meta` section is managed automatically by OpenClaw. You don't need to edit 
 ```json
   "env": {
     "BRAVE_API_KEY": "${BRAVE_API_KEY}",
-    "MOSBOT_CF_ACCESS_CLIENT_ID": "${MOSBOT_CF_ACCESS_CLIENT_ID}",
-    "MOSBOT_CF_ACCESS_CLIENT_SECRET": "${MOSBOT_CF_ACCESS_CLIENT_SECRET}",
-    "MOSBOT_EMAIL_COO": "${MOSBOT_EMAIL_COO}",
-    "MOSBOT_PASSWORD_COO": "${MOSBOT_PASSWORD_COO}",
-    "MOSBOT_EMAIL_CTO": "${MOSBOT_EMAIL_CTO}",
-    "MOSBOT_PASSWORD_CTO": "${MOSBOT_PASSWORD_CTO}"
+    "CLAWBOARD_CF_ACCESS_CLIENT_ID": "${CLAWBOARD_CF_ACCESS_CLIENT_ID}",
+    "CLAWBOARD_CF_ACCESS_CLIENT_SECRET": "${CLAWBOARD_CF_ACCESS_CLIENT_SECRET}",
+    "CLAWBOARD_EMAIL_COO": "${CLAWBOARD_EMAIL_COO}",
+    "CLAWBOARD_PASSWORD_COO": "${CLAWBOARD_PASSWORD_COO}",
+    "CLAWBOARD_EMAIL_CTO": "${CLAWBOARD_EMAIL_CTO}",
+    "CLAWBOARD_PASSWORD_CTO": "${CLAWBOARD_PASSWORD_CTO}"
   },
 ```
 
@@ -248,7 +248,7 @@ replies `HEARTBEAT_OK` and no notification is sent.
 
 ```json
         "identity": {
-          "name": "MosBot",
+          "name": "Clawboard",
           "theme": "Research - Delegation - Execution - Orchestration",
           "emoji": "🤖"
         },
@@ -358,7 +358,7 @@ the first fallback for complex reasoning tasks.
 
 Two Telegram bots are configured:
 
-- `default` — the main MosBot bot, responds in specific groups without requiring a mention
+- `default` — the main Clawboard bot, responds in specific groups without requiring a mention
 - `maya` — a separate bot for the PA agent, DMs only with pairing
 
 `dmPolicy: "pairing"` means users must be paired (authorized) before they can DM the bot.
@@ -408,7 +408,7 @@ Bindings route messages to agents:
       "allowedOrigins": [
         "http://localhost:18789",
         "https://openclaw.example.com",
-        "https://mosbot.example.com"
+        "https://clawboard.example.com"
       ]
     },
     "auth": {
@@ -421,7 +421,7 @@ Bindings route messages to agents:
   },
 ```
 
-The gateway runs on port 18789 with TLS (auto-generated self-signed cert). Add your MosBot API and
+The gateway runs on port 18789 with TLS (auto-generated self-signed cert). Add your Clawboard API and
 dashboard URLs to `allowedOrigins` so the gateway's ControlUI can be accessed from those origins.
 
 ---

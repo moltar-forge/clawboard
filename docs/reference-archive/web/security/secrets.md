@@ -1,6 +1,6 @@
 # Secret and Configuration Management
 
-MosBot Dashboard is a static React app (Vite). It has no server-side secrets — all
+Clawboard Dashboard is a static React app (Vite). It has no server-side secrets — all
 configuration is injected at **build time** via `VITE_*` environment variables.
 
 ## Where configuration lives
@@ -16,9 +16,9 @@ configuration is injected at **build time** via `VITE_*` environment variables.
 
 | Variable | Required | Description |
 | -------- | -------- | ----------- |
-| `VITE_API_URL` | **Yes** | Full URL of MosBot API including version prefix (e.g. `https://api.example.com/api/v1`) |
+| `VITE_API_URL` | **Yes** | Full URL of Clawboard API including version prefix (e.g. `https://api.example.com/api/v1`) |
 | `VITE_API_TIMEOUT` | No | Request timeout in ms (default: 10000) |
-| `VITE_APP_NAME` | No | App display name (default: `MosBot`) |
+| `VITE_APP_NAME` | No | App display name (default: `Clawboard`) |
 
 ## What NOT to commit
 
@@ -33,4 +33,4 @@ All `VITE_*` variables are **embedded in the built JavaScript bundle** and are v
 who downloads the app. Do not store secrets in `VITE_*` variables — only public configuration
 (like the API base URL) belongs here.
 
-For the full API secret management guide, see `mosbot-api/docs/security/secrets.md`.
+For the full API secret management guide, see `clawboard-api/docs/security/secrets.md`.

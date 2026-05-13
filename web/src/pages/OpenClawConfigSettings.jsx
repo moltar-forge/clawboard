@@ -491,7 +491,7 @@ export default function OpenClawConfigSettings() {
               {isOriginError && (
                 <div className="mt-3 pt-3 border-t border-red-800/50 space-y-2">
                   <p className="text-xs text-red-400">
-                    The MosBot API&apos;s WebSocket connection to OpenClaw is being rejected. The
+                    The Clawboard API&apos;s WebSocket connection to OpenClaw is being rejected. The
                     API sends its own origin header (derived from{' '}
                     <code className="font-mono bg-red-950/40 px-1 rounded text-red-300">
                       OPENCLAW_GATEWAY_URL
@@ -503,7 +503,7 @@ export default function OpenClawConfigSettings() {
                     .
                   </p>
                   <p className="text-xs text-red-400">
-                    Add the MosBot API&apos;s gateway URL origin to your OpenClaw config. For
+                    Add the Clawboard API&apos;s gateway URL origin to your OpenClaw config. For
                     example, if your{' '}
                     <code className="font-mono bg-red-950/40 px-1 rounded text-red-300">
                       OPENCLAW_GATEWAY_URL

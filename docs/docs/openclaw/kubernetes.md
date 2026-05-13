@@ -7,7 +7,7 @@ sidebar_position: 7
 
 # OpenClaw on Kubernetes
 
-This guide covers deploying OpenClaw in Kubernetes and connecting it to MosBot OS.
+This guide covers deploying OpenClaw in Kubernetes and connecting it to Clawboard.
 
 ## OpenClaw pod architecture
 
@@ -48,12 +48,12 @@ OpenClaw exposes two Kubernetes services:
 Both services should be **ClusterIP** (not LoadBalancer or NodePort) — they should not be publicly
 accessible.
 
-## Connecting MosBot API (in-cluster)
+## Connecting Clawboard API (in-cluster)
 
-If MosBot API runs in the same cluster as OpenClaw, use the Kubernetes service DNS names:
+If Clawboard API runs in the same cluster as OpenClaw, use the Kubernetes service DNS names:
 
 ```bash
-# mosbot-api secret / configmap
+# clawboard-api secret / configmap
 OPENCLAW_WORKSPACE_URL=http://openclaw-workspace.<namespace>.svc.cluster.local:18780
 OPENCLAW_WORKSPACE_TOKEN=<workspace-token>
 OPENCLAW_GATEWAY_URL=http://openclaw.<namespace>.svc.cluster.local:18789
@@ -62,9 +62,9 @@ OPENCLAW_GATEWAY_TOKEN=<gateway-token>
 
 Replace `<namespace>` with the namespace where OpenClaw is deployed (e.g. `openclaw-personal`).
 
-## Connecting MosBot API (external / different cluster)
+## Connecting Clawboard API (external / different cluster)
 
-If MosBot API runs outside the cluster, you have two options:
+If Clawboard API runs outside the cluster, you have two options:
 
 ### Option A: Port-forward (development only)
 
@@ -73,13 +73,13 @@ kubectl port-forward -n <namespace> svc/openclaw-workspace 18780:18780
 kubectl port-forward -n <namespace> svc/openclaw 18789:18789
 ```
 
-Then use `localhost` (or `host.docker.internal` if MosBot runs in Docker). See
+Then use `localhost` (or `host.docker.internal` if Clawboard runs in Docker). See
 [Local Development](./local-development).
 
 ### Option B: Ingress / LoadBalancer (production)
 
 Expose the services via an ingress controller or LoadBalancer, with TLS and authentication. This is
-only recommended if MosBot API cannot run in the same cluster.
+only recommended if Clawboard API cannot run in the same cluster.
 
 ## Secrets management
 
@@ -97,7 +97,7 @@ stringData:
   OPENCLAW_GATEWAY_TOKEN: 'your-gateway-token'
 ```
 
-Reference these secrets in your MosBot API deployment:
+Reference these secrets in your Clawboard API deployment:
 
 ```yaml
 env:
@@ -113,10 +113,10 @@ env:
         key: OPENCLAW_GATEWAY_TOKEN
 ```
 
-After the API is deployed and the secrets are configured, sign in to MosBot as an `owner` or `admin`
+After the API is deployed and the secrets are configured, sign in to Clawboard as an `owner` or `admin`
 and complete `Settings -> OpenClaw Pairing` once for that deployment.
 
-## MosBot API Kubernetes manifests
+## Clawboard API Kubernetes manifests
 
 The monorepo includes Kubernetes manifests under `api/k8s/` (Kustomize layout):
 
@@ -147,14 +147,14 @@ kubectl apply -k k8s/base
 
 ```bash
 # Check pods are running
-kubectl get pods -n <mosbot-namespace>
+kubectl get pods -n <clawboard-namespace>
 
 # Check API health
-kubectl port-forward -n <mosbot-namespace> svc/mosbot-api 3000:3000
+kubectl port-forward -n <clawboard-namespace> svc/clawboard-api 3000:3000
 curl http://localhost:3000/health
 
 # Check OpenClaw connectivity
-curl -H "Authorization: Bearer <mosbot-jwt>" \
+curl -H "Authorization: Bearer <clawboard-jwt>" \
   http://localhost:3000/api/v1/openclaw/agents
 ```
 

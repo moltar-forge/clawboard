@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   deploy:
-    if: github.repository == 'ByMosDev/mosbot-os'
+    if: github.repository == 'moltar-forge/clawboard'
     runs-on: ubuntu-latest
 
     steps:
