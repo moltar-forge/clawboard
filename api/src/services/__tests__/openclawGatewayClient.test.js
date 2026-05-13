@@ -1254,6 +1254,32 @@ Line 2"}`;
       });
     });
 
+    it('should prefer configured public Origin header for ws gateway URLs', async () => {
+      jest.useRealTimers();
+      const WebSocket = require('ws');
+      const deviceAuth = configureDeviceAuth();
+      mockConfig.openclaw.gatewayOrigin = 'https://mosbot.spoved.io';
+
+      const promise = openclawGatewayClient.gatewayWsRpc('sessions.list', {}, { deviceAuth });
+
+      expect(WebSocket).toHaveBeenCalledWith(
+        'ws://test-gateway:18789',
+        expect.objectContaining({
+          headers: expect.objectContaining({
+            Origin: 'https://mosbot.spoved.io',
+            Host: 'test-gateway:18789',
+          }),
+        }),
+      );
+
+      emitWs('error', new Error('connection failed'));
+      await expect(promise).rejects.toMatchObject({
+        status: 503,
+        code: 'SERVICE_UNAVAILABLE',
+      });
+      delete mockConfig.openclaw.gatewayOrigin;
+    });
+
     it('should reject pending requests when websocket closes early', async () => {
       jest.useRealTimers(); // Use real timers for WebSocket tests
       const deviceAuth = configureDeviceAuth();

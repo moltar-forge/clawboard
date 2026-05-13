@@ -197,6 +197,19 @@ function resetPersistentRpcState(cause = null) {
   persistentRpcState.waiters = [];
 }
 
+
+function resolveGatewayWebSocketHeaders(wsUrl, gatewayToken) {
+  const parsedUrl = new URL(wsUrl.replace(/^ws/, 'http'));
+  const originHost = parsedUrl.host;
+  const originScheme = wsUrl.startsWith('wss://') ? 'https' : 'http';
+  const configuredOrigin = String(config.openclaw.gatewayOrigin || '').trim();
+  return {
+    ...(gatewayToken ? { Authorization: `Bearer ${gatewayToken}` } : {}),
+    Origin: configuredOrigin || `${originScheme}://${originHost}`,
+    Host: originHost,
+  };
+}
+
 function buildAuthFingerprint(gatewayToken, deviceAuth) {
   const material = [
     gatewayToken || '',
@@ -949,10 +962,6 @@ async function ensurePersistentRpcConnection(options = {}) {
 
   const wsUrl = gatewayUrl.replace(/^http:\/\//, 'ws://').replace(/^https:\/\//, 'wss://');
   const WebSocket = require('ws');
-  const parsedUrl = new URL(wsUrl.replace(/^ws/, 'http'));
-  const originHost = parsedUrl.host;
-  const originScheme = wsUrl.startsWith('wss://') ? 'https' : 'http';
-
   persistentRpcState.connecting = new Promise((resolve, reject) => {
     let settled = false;
     const connectTimeout = setTimeout(() => {
@@ -966,11 +975,7 @@ async function ensurePersistentRpcConnection(options = {}) {
     }, config.openclaw.gatewayTimeoutMs);
 
     const ws = new WebSocket(wsUrl, {
-      headers: {
-        ...(gatewayToken ? { Authorization: `Bearer ${gatewayToken}` } : {}),
-        Origin: `${originScheme}://${originHost}`,
-        Host: originHost,
-      },
+      headers: resolveGatewayWebSocketHeaders(wsUrl, gatewayToken),
       rejectUnauthorized: !OPENCLAW_GATEWAY_INSECURE_TLS,
     });
 
@@ -1233,15 +1238,8 @@ async function gatewayWsRpcWithDeviceAuth(method, params = {}, options = {}) {
     }, timeoutMs);
 
     const WebSocket = require('ws');
-    const parsedUrl = new URL(wsUrl.replace(/^ws/, 'http'));
-    const originHost = parsedUrl.host; // e.g. "openclaw.openclaw-personal.svc.cluster.local:18789"
-    const originScheme = wsUrl.startsWith('wss://') ? 'https' : 'http';
     const ws = new WebSocket(wsUrl, {
-      headers: {
-        ...(gatewayToken ? { Authorization: `Bearer ${gatewayToken}` } : {}),
-        Origin: `${originScheme}://${originHost}`,
-        Host: originHost,
-      },
+      headers: resolveGatewayWebSocketHeaders(wsUrl, gatewayToken),
       rejectUnauthorized: !OPENCLAW_GATEWAY_INSECURE_TLS,
     });
 
