@@ -75,5 +75,13 @@
   },
   "engines": {
     "node": ">=25.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moltar-forge/clawboard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/moltar-forge/clawboard/issues"
+  },
+  "homepage": "https://github.com/moltar-forge/clawboard/tree/main/docs#readme"
 }

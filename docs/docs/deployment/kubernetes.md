@@ -190,7 +190,7 @@ See [OpenClaw on Kubernetes](../openclaw/kubernetes) for the full guide.
 
 ```bash
 # Update the image tag in your deployment
-kubectl set image deployment/clawboard-api api=ghcr.io/bymosdev/clawboard-api:v1.2.3 -n clawboard
+kubectl set image deployment/clawboard-api api=ghcr.io/moltar-forge/clawboard-api:v1.2.3 -n clawboard
 
 # Or apply updated manifests
 kubectl apply -k k8s/base

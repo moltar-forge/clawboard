@@ -126,7 +126,7 @@ For application-level changes, see the changelogs in the respective repositories
 
 - Updated workspace paths: `/shared/docs` → `/docs` and `/shared/projects` → `/projects`
 - Updated README and documentation to reference new documentation site
-  (bymosdev.github.io/clawboard)
+  (moltar-forge.github.io/clawboard)
 - Added backward compatibility for legacy `/shared/projects` paths in activity feed
 - Updated API documentation to reflect new workspace path structure
 
@@ -150,7 +150,7 @@ For application-level changes, see the changelogs in the respective repositories
 
 - Updated workspace paths: `/shared/docs` → `/docs` and `/shared/projects` → `/projects`
 - Updated README and documentation to reference new documentation site
-  (bymosdev.github.io/clawboard)
+  (moltar-forge.github.io/clawboard)
 - Added backward compatibility for legacy `/shared/projects` paths in Log page
 
 #### [0.1.2] — [Release](https://github.com/moltar-forge/clawboard/releases/tag/web-v0.1.2)

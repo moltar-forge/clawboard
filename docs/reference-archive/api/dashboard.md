@@ -2,7 +2,7 @@
 
 The dashboard docs live in the [clawboard-dashboard repository](https://github.com/moltar-forge/clawboard/tree/main/web) alongside the code they describe.
 
-> **Note:** A dedicated `clawboard-docs` repo is planned. When it exists, all docs will be consolidated there and this page will redirect.
+> **Note:** A dedicated `clawboard` repo is planned. When it exists, all docs will be consolidated there and this page will redirect.
 
 ---
 

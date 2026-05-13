@@ -72,7 +72,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Updated workspace paths: `/shared/docs` → `/docs` and `/shared/projects` → `/projects`
-- Updated README and documentation to reference new documentation site (moltar-forge.github.io/clawboard-docs)
+- Updated README and documentation to reference new documentation site (moltar-forge.github.io/clawboard)
 - Added backward compatibility for legacy `/shared/projects` paths in Log page
 
 ## [0.1.2] - 2026-03-01

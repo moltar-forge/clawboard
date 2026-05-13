@@ -75,8 +75,8 @@ See `docs/getting-started/first-run.md` for initial `.env` setup.
 For a production-like local build using pre-built images from GHCR:
 
 ```bash
-docker pull ghcr.io/byclawboard/clawboard-api:latest
-docker run -p 3000:3000 --env-file .env ghcr.io/byclawboard/clawboard-api:latest
+docker pull ghcr.io/moltar-forge/clawboard-api:latest
+docker run -p 3000:3000 --env-file .env ghcr.io/moltar-forge/clawboard-api:latest
 ```
 
 ## Related

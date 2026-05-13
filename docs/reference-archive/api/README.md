@@ -4,7 +4,7 @@ This is the **canonical documentation home for Clawboard** — the self-hosted o
 
 Clawboard is composed of two repos. Docs live alongside the code they describe, but this file is the single entry point for the full system.
 
-> **User-facing documentation** is now at **[moltar-forge.github.io/clawboard-docs](https://moltar-forge.github.io/clawboard-docs/)**. This file indexes developer-focused docs that live alongside the code.
+> **User-facing documentation** is now at **[moltar-forge.github.io/clawboard](https://moltar-forge.github.io/clawboard/)**. This file indexes developer-focused docs that live alongside the code.
 
 ---
 

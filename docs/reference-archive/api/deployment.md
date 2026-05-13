@@ -22,8 +22,8 @@ docker run -p 3000:3000 --env-file .env clawboard-api:latest
 ### Pre-built images (GHCR)
 
 ```bash
-docker pull ghcr.io/byclawboard/clawboard-api:latest
-docker run -p 3000:3000 --env-file .env ghcr.io/byclawboard/clawboard-api:latest
+docker pull ghcr.io/moltar-forge/clawboard-api:latest
+docker run -p 3000:3000 --env-file .env ghcr.io/moltar-forge/clawboard-api:latest
 ```
 
 Available tags:

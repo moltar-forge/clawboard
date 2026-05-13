@@ -8,7 +8,7 @@ const config = {
   tagline: 'A self-hosted operating system for AI agent work',
   favicon: 'img/favicon.ico',
 
-  url: 'https://bymosdev.github.io',
+  url: 'https://moltar-forge.github.io',
   baseUrl: '/clawboard/',
 
   organizationName: 'moltar-forge',

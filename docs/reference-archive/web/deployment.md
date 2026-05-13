@@ -17,7 +17,7 @@ docker run -p 80:80 clawboard-dashboard:latest
 ### Pre-built images (GHCR)
 
 ```bash
-docker pull ghcr.io/byclawboard/clawboard-dashboard:latest
+docker pull ghcr.io/moltar-forge/clawboard-dashboard:latest
 ```
 
 Available tags: `latest`, `main`, `sha-<short>`, `v1.2.3`.

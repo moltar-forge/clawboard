@@ -1,6 +1,6 @@
 # Architecture
 
-Clawboard Dashboard is the UI layer of Clawboard. See the full system architecture in [clawboard-api/docs/architecture.md](https://github.com/moltar-forge/clawboard/tree/main/api/blob/main/docs/architecture.md).
+Clawboard Dashboard is the UI layer of Clawboard. See the full system architecture in [clawboard-api/docs/architecture.md](https://github.com/moltar-forge/clawboard/tree/main/api/docs/architecture.md).
 
 ## Dashboard internals
 

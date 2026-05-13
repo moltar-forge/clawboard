@@ -5,7 +5,7 @@ These docs describe the **Clawboard Dashboard** (the UI/control plane) and how i
 - If you're a **human/operator**, start with: `clawboard/overview.md`
 - If you're a **developer**, start with: `getting-started/local-development.md`
 
-> **Looking for full Clawboard docs?** Visit **[moltar-forge.github.io/clawboard-docs](https://moltar-forge.github.io/clawboard-docs/)** — the official documentation site covering setup, OpenClaw integration, skills, configuration, and deployment.
+> **Looking for full Clawboard docs?** Visit **[moltar-forge.github.io/clawboard](https://moltar-forge.github.io/clawboard/)** — the official documentation site covering setup, OpenClaw integration, skills, configuration, and deployment.
 
 ## What this docs folder is (and isn't)
 
