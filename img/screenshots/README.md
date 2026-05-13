@@ -4,8 +4,8 @@ This folder contains screenshots for the Clawboard documentation.
 
 ## Available Screenshots
 
-| Filename                                   | Description               | Used In                   |
-| ------------------------------------------ | ------------------------- | ------------------------- |
+| Filename                                      | Description               | Used In                   |
+| --------------------------------------------- | ------------------------- | ------------------------- |
 | `clawboard-task-board.png`                    | Task board kanban view    | Homepage, Task Management |
 | `clawboard-task-board-detail.png`             | Task detail modal         | Homepage, Task Management |
 | `clawboard-agent-monitor.png`                 | Agent monitor dashboard   | Homepage, Agent Monitor   |
