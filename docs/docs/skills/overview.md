@@ -127,7 +127,7 @@ following skills:
 These recommended skills enable:
 
 - **Task Orchestration**: Agents can create, assign, and pick up tasks seamlessly within the
-  Clawboard OS ecosystem
+  Clawboard ecosystem
 - **Context Management**: Agents can maintain clean working memory, preventing confusion from
   accumulated context
 - **Multi-Modal Input**: Agents can process voice messages and convert them to text for further
